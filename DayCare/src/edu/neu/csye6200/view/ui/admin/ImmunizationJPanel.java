@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.admin;
+package edu.neu.csye6200.view.ui.admin;
 
 /**
  *
@@ -37,10 +37,7 @@ public class ImmunizationJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         lblStudentInfoHeading.setText("Immunization Information");
-        add(lblStudentInfoHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 6, -1, -1));
 
         tblImmunizationInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,30 +52,66 @@ public class ImmunizationJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblImmunizationInfo);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 111, 1024, 157));
-
         btnUploadCSV.setText("Upload CSV");
         btnUploadCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUploadCSVActionPerformed(evt);
             }
         });
-        add(btnUploadCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 286, 158, -1));
 
         btnView.setText("View");
-        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 286, -1, -1));
 
         btnAdd.setText("Add");
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 286, -1, -1));
 
         btnUpdate.setText("Update");
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 286, -1, -1));
 
         btnDelete.setText("Delete");
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(803, 286, -1, -1));
 
         btnBack.setText("<<Back");
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 18, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(btnBack)
+                .addGap(428, 428, 428)
+                .addComponent(lblStudentInfoHeading))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1024, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(btnUploadCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(btnView)
+                .addGap(57, 57, 57)
+                .addComponent(btnAdd)
+                .addGap(45, 45, 45)
+                .addComponent(btnUpdate)
+                .addGap(64, 64, 64)
+                .addComponent(btnDelete))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btnBack))
+                    .addComponent(lblStudentInfoHeading))
+                .addGap(64, 64, 64)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUploadCSV)
+                    .addComponent(btnView)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUploadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCSVActionPerformed

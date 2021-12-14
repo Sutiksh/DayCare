@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.admin;
+package edu.neu.csye6200.view.ui.admin;
 
 /**
  *
@@ -45,44 +45,29 @@ public class TeacherJPanel extends javax.swing.JPanel {
         btnCSVUpload = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         lblTeacherInfoHeading.setText("Teacher Information");
-        add(lblTeacherInfoHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 6, -1, -1));
 
         lblFirstName.setText("First Name:");
-        add(lblFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 57, -1, -1));
-        add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 52, 134, -1));
 
         lblFirstName1.setText("Last Name:");
-        add(lblFirstName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 57, -1, -1));
-        add(txtFirstName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 52, 134, -1));
 
         lblAge.setText("Age of Teacher:");
-        add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 101, -1, -1));
-        add(txtFirstName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 96, 134, -1));
 
         lblAddress.setText("Address:");
-        add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 101, -1, -1));
 
         txtFirstName3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstName3ActionPerformed(evt);
             }
         });
-        add(txtFirstName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 96, 134, -1));
 
         btnView.setText("View");
-        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 394, -1, -1));
 
         btnAdd.setText("Add");
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 394, -1, -1));
 
         btnUpdate.setText("Update");
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 394, -1, -1));
 
         btnDelete.setText("Delete");
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(637, 394, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,13 +82,89 @@ public class TeacherJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 179, 706, 167));
-
         btnCSVUpload.setText("Upload CSV");
-        add(btnCSVUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 394, -1, -1));
 
         btnBack.setText("<<Back");
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnBack)
+                .addGap(285, 285, 285)
+                .addComponent(lblTeacherInfoHeading))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(lblFirstName)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(lblFirstName1)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblAge)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(lblAddress)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(btnCSVUpload)
+                .addGap(49, 49, 49)
+                .addComponent(btnView)
+                .addGap(48, 48, 48)
+                .addComponent(btnAdd)
+                .addGap(44, 44, 44)
+                .addComponent(btnUpdate)
+                .addGap(42, 42, 42)
+                .addComponent(btnDelete))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(btnBack))
+                    .addComponent(lblTeacherInfoHeading))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblFirstName1))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAge)
+                            .addComponent(lblAddress))))
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCSVUpload)
+                    .addComponent(btnView)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFirstName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstName3ActionPerformed

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.admin;
+package edu.neu.csye6200.view.ui.admin;
 
 import ui.school.*;
 
@@ -35,21 +35,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageTeachers = new javax.swing.JButton();
         btnManageImmunization = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         btnManageStudents.setText("Manage Students");
-        add(btnManageStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 96, 183, -1));
 
         lblStudentInfoHeading.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading.setText("Administration ");
-        add(lblStudentInfoHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 56, -1, -1));
 
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading1.setText("Welcome to the Day Care");
-        add(lblStudentInfoHeading1, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 16, -1, -1));
 
         btnManageTeachers.setText("Manage Teachers");
-        add(btnManageTeachers, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 143, 183, -1));
 
         btnManageImmunization.setText("Manage Immunization");
         btnManageImmunization.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +51,41 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageImmunizationActionPerformed(evt);
             }
         });
-        add(btnManageImmunization, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 190, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(lblStudentInfoHeading1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblStudentInfoHeading))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(231, 231, 231)
+                .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(231, 231, 231)
+                .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(231, 231, 231)
+                .addComponent(btnManageImmunization))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblStudentInfoHeading1)
+                .addGap(18, 18, 18)
+                .addComponent(lblStudentInfoHeading)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageStudents)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageTeachers)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageImmunization))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageImmunizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageImmunizationActionPerformed

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.admin;
+package edu.neu.csye6200.view.ui.admin;
 
 /**
  *
@@ -65,39 +65,25 @@ public class StudentJPanel extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         btnUploadCSV = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         lblStudentInfoHeading.setText("Student Information");
-        add(lblStudentInfoHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 0, -1, -1));
 
         lblFirstName.setText("First Name:");
-        add(lblFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 46, -1, -1));
-        add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 41, 134, -1));
 
         lblLastName.setText("Last Name:");
-        add(lblLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 46, -1, -1));
-        add(txtFirstName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 41, 134, -1));
 
         lblStudentAge.setText("Age in Months:");
-        add(lblStudentAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 46, -1, -1));
-        add(txtFirstName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(754, 41, 134, -1));
 
         lblStudentAddress.setText("Address:");
-        add(lblStudentAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 90, -1, -1));
 
         txtFirstName3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstName3ActionPerformed(evt);
             }
         });
-        add(txtFirstName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 85, 134, -1));
 
         lblPhoneNumber.setText("Phone Number:");
-        add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 221, -1, -1));
-        add(txtFirstName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 216, 134, -1));
 
         lblStudentInfoHeading1.setText("Student Parent Information");
-        add(lblStudentInfoHeading1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 194, -1, -1));
 
         tblStudentInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,40 +98,25 @@ public class StudentJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblStudentInfo);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 274, 1064, 109));
-
         lblStudentParentName.setText("Parent Name:");
-        add(lblStudentParentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 221, -1, -1));
-        add(txtFirstName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 216, 134, -1));
 
         btnView.setText("View");
-        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 401, 88, -1));
 
         btnUpdate.setText("Update");
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(703, 401, -1, -1));
 
         btnAdd.setText("Add");
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 401, 88, -1));
 
         lblRegistrationDate.setText("Registration Date:");
-        add(lblRegistrationDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 90, -1, -1));
-        add(txtFirstName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 85, 134, -1));
 
         lblImmunizationDate.setText("Last Immunization Date:");
-        add(lblImmunizationDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 90, -1, -1));
-        add(txtFirstName7, new org.netbeans.lib.awtextra.AbsoluteConstraints(754, 85, 134, -1));
 
         btnDelete.setText("Delete");
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(855, 401, 88, -1));
 
         btnBack.setText("<<Back");
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, -1, -1));
 
         jButton1.setText("Track");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1004, 401, -1, -1));
 
         lblStudentInfoHeading2.setText("Track Student Enrollment History");
-        add(lblStudentInfoHeading2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 463, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -160,10 +131,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(621, 525, 548, 311));
-
         lblStudentInfoHeading3.setText("Track Student Immunization History");
-        add(lblStudentInfoHeading3, new org.netbeans.lib.awtextra.AbsoluteConstraints(621, 463, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,23 +146,17 @@ public class StudentJPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jTable2);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 491, 383, 345));
-
         lblSelectVaccName.setText("Select Vaccine Name:");
-        add(lblSelectVaccName, new org.netbeans.lib.awtextra.AbsoluteConstraints(621, 495, -1, -1));
 
         comboBoxVaccineName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(comboBoxVaccineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 491, -1, -1));
 
         lblEmail.setText("Email:");
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(668, 221, -1, -1));
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(712, 216, 134, -1));
 
         btnUploadCSV.setText("Upload CSV");
         btnUploadCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +164,159 @@ public class StudentJPanel extends javax.swing.JPanel {
                 btnUploadCSVActionPerformed(evt);
             }
         });
-        add(btnUploadCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 401, 158, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btnBack)
+                .addGap(238, 238, 238)
+                .addComponent(lblStudentInfoHeading))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lblFirstName)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
+                .addComponent(lblLastName)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addComponent(lblStudentAge)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(lblStudentAddress)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(lblRegistrationDate)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName6, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(lblImmunizationDate)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName7, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblStudentInfoHeading1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblStudentParentName)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(lblPhoneNumber)
+                .addGap(6, 6, 6)
+                .addComponent(txtFirstName4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143)
+                .addComponent(lblEmail)
+                .addGap(6, 6, 6)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(btnUploadCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnUpdate)
+                .addGap(64, 64, 64)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jButton1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(lblStudentInfoHeading2)
+                .addGap(380, 380, 380)
+                .addComponent(lblStudentInfoHeading3))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSelectVaccName)
+                        .addGap(6, 6, 6)
+                        .addComponent(comboBoxVaccineName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnBack))
+                    .addComponent(lblStudentInfoHeading))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblLastName)
+                            .addComponent(lblStudentAge))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStudentAddress)
+                            .addComponent(lblRegistrationDate)
+                            .addComponent(lblImmunizationDate))))
+                .addGap(83, 83, 83)
+                .addComponent(lblStudentInfoHeading1)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFirstName5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStudentParentName)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(lblEmail))))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUploadCSV)
+                    .addComponent(btnView)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete)
+                    .addComponent(jButton1))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentInfoHeading2)
+                    .addComponent(lblStudentInfoHeading3))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(lblSelectVaccName))
+                            .addComponent(comboBoxVaccineName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFirstName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstName3ActionPerformed
