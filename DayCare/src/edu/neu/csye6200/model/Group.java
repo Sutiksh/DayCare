@@ -19,7 +19,9 @@ public class Group {
 		this.groupStatusType = groupStatusType;
 	}
 
-	public Group() {	}
+	public Group() {
+		this.currentStudentCount = 0;
+	}
 
 	public long getGroupId() {
 		return groupId;

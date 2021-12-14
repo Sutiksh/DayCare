@@ -4,13 +4,13 @@ import edu.neu.csye6200.api.abstractClass.AbstractStudent;
 import edu.neu.csye6200.api.helper.StudentHelper;
 import edu.neu.csye6200.dao.StudentDao;
 import edu.neu.csye6200.model.Student;
-import edu.neu.csye6200.utils.ConvertUtil;
+import edu.neu.csye6200.model.data.GetAllStudentData;
+import edu.neu.csye6200.model.form.AddStudentForm;
+import edu.neu.csye6200.model.form.DeleteStudentForm;
+import edu.neu.csye6200.model.form.UpdateStudentForm;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class StudentApi extends AbstractStudent {
     private final StudentDao studentDao = new StudentDao();
@@ -23,67 +23,19 @@ public class StudentApi extends AbstractStudent {
     }
 
     @Override
-    public List<Student> getAllStudents() {
-        return new ArrayList<>();
+    public GetAllStudentData getAllStudents() {
+        return new GetAllStudentData();
     }
 
     @Override
-    public void addStudent(Student student) {
+    public void addStudent(AddStudentForm studentForm) {
+        //Todo Validations required
+
+        //Converting form to Student object
+        Student student = StudentHelper.convertToStudent(studentForm);
 
         // Query the student info from database and cal the age
-        ResultSet rs = studentDao.getStudentFromDb(student);
-        Student dbStudent = null;
-        try{
-            dbStudent = StudentHelper.createStudent(rs);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        int age = 0;
-        try{
-            if(Objects.requireNonNull(rs).next()) {
-                String birthdate = "";
-                try {
-                    birthdate = dbStudent.getDateOfBirth();
-                } catch (NullPointerException e){
-                    e.printStackTrace();
-                }
-                age = ConvertUtil.calAge(birthdate);
-            }
-            else{
-                System.out.println("This student id not exist!");
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
-        //Check if the student age fit this classroom
-        //TODO: migrate the logic to some other class
-        if(age >= AllMinAge[0] && age <= AllMaxAge[0]){
-            // Assign student to a group
-            int assign_group_id = -1;
-//            for(Group g: groups){
-//                if(g.getNumOfStudents() < AllGroupSize[classroom_type]){
-//                    g.addStudent(studentId);
-//                    assign_group_id = g.getGroupId();
-//                    break;
-//                }
-//            }
-
-            // Add student to group
-
-            if(assign_group_id == -1){
-                System.out.println("The class room is full!");
-            }
-
-            //Update classroom id of the student in database
-            //TODO: add the student to group and classroom in db
-//            studentDao.updateClassIdAndGroupIdForStudent(student);
-            System.out.println("Add success!");
-        }
-        else{
-            System.out.println("Student age is not fit!");
-
-        }
+        addStudent(student);
     }
 
     @Override
@@ -91,21 +43,23 @@ public class StudentApi extends AbstractStudent {
         // Get student data if exists from database
         ResultSet rs = studentDao.getStudentFromDb(student);
         // create student object from data
-        Student dbStudent = null;
-        try{
-        dbStudent = StudentHelper.createStudent(rs);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+        Student dbStudent = StudentHelper.convertToStudent(rs);
 
-
-        if(dbStudent != null){
+        if(dbStudent.getStudentId()==0){
             // update the data in the database
             studentDao.updateStudent(dbStudent);
         }else{
             // create a new student
             studentDao.addStudentToDb(student);
         }
+    }
+
+    public void updateStudent(UpdateStudentForm studentForm){
+        //Todo Validations required
+
+        Student student = StudentHelper.convertToStudent(studentForm);
+
+        updateStudent(student);
     }
 
     @Override
@@ -132,13 +86,34 @@ public class StudentApi extends AbstractStudent {
         ResultSet rs = studentDao.getRegDateStudentFromDb(studentId);
         // Creating student from the data
         Student student = null;
-        try{
-            student = StudentHelper.createStudent(rs);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+        student = StudentHelper.convertToStudent(rs);
 
         // Returning the registration date
         return student.getRegistrationDate();
+    }
+
+    public void addStudent(List<Student> studentList) {
+        for(Student student : studentList) {
+            addStudent(student);
+        }
+    }
+
+    public List<Student> getAllStudentByPhoneNo(List<Long> phoneList) {
+        ResultSet rs = studentDao.getStudentsByPhoneNo(phoneList);
+        return StudentHelper.convertToStudentList(rs);
+    }
+
+    public void addStudent(Student student) {
+        ResultSet rs = studentDao.getStudentFromDb(student);
+        Student studentDB = StudentHelper.convertToStudent(rs);
+        if(studentDB.getStudentId()==0) {
+            studentDao.addStudentToDb(student);
+        } else {
+            System.out.println("Record already exists");
+        }
+    }
+
+    public void deleteStudent(DeleteStudentForm studentForm) {
+        deleteStudent(studentForm.getStudentId());
     }
 }

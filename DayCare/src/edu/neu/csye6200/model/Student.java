@@ -16,8 +16,7 @@ public class Student extends Person {
 		this.studentId = studentId;
 	}
 
-	public Student() {
-	}
+	public Student() {    }
 
 	public String getAnnualRegistrationDate() {
 		return annualRegistrationDate;

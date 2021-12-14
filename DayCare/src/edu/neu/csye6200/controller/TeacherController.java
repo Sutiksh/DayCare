@@ -2,6 +2,7 @@ package edu.neu.csye6200.controller;
 
 import edu.neu.csye6200.api.TeacherApi;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.model.form.AddTeacherForm;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class TeacherController {
 		return api.getAllTeachers();
 	}
 
-	public void addTeacher(Teacher teacher) {
+	public void addTeacher(AddTeacherForm teacher) {
 		api.addTeacher(teacher);
 	}
 

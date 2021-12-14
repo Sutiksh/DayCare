@@ -4,6 +4,7 @@ import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.utils.DatabaseUtil;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class StudentDao {
 
@@ -56,5 +57,17 @@ public class StudentDao {
 
     public void deleteStudentFromDb(long studentId){
         DatabaseUtil.deleteRecord("student", "student_id", String.valueOf(studentId));
+    }
+
+    public ResultSet getStudentsByPhoneNo(List<Long> phoneList) {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<phoneList.size(); i++) {
+            sb.append(phoneList.get(i));
+            if(i<phoneList.size()-1) {
+                sb.append(",");
+            }
+        }
+        String sql = "SELECT * FROM student where phone_num in ("+sb+")";
+        return DatabaseUtil.getSQLResult(sql);
     }
 }

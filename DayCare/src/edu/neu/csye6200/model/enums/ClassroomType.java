@@ -5,8 +5,8 @@ public enum ClassroomType {
     ThirteenToTwentyFour(13, 24, 3),
     TwentyFiveToThirtyFive(25, 35, 3),
     ThirtySixToFortySeven(26, 47, 3),
-    fortyEightToFiftyNine(48, 59, 2),
-    sixtyAndUp(60, 100, 2);
+    FortyEightToFiftyNine(48, 59, 2),
+    SixtyAndUp(60, 100, 2);
 
     private final int minAge;
     private final int maxAge;

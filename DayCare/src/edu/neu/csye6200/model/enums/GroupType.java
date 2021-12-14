@@ -6,8 +6,8 @@ public enum GroupType {
     ThirteenToTwentyFour(13, 24, 5),
     TwentyFiveToThirtyFive(25, 35, 6),
     ThirtySixToFortySeven(26, 47, 8),
-    fortyEightToFiftyNine(48, 59, 12),
-    sixtyAndUp(60, 100, 15);
+    FortyEightToFiftyNine(48, 59, 12),
+    SixtyAndUp(60, 100, 15);
 
     private final int minAge;
     private final int maxAge;

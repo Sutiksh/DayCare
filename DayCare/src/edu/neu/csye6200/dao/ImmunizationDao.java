@@ -6,32 +6,26 @@ import edu.neu.csye6200.utils.DatabaseUtil;
 public class ImmunizationDao {
 
     public void addImmunization(Immunization imm) {
-        String sql = "INSERT into IMMUNIZATION(imm_name, student_id, dose_1_id, dose_1_date, dose_2_id, dose_2_date, " +
-                "dose_3_id, dose_3_date, dose_4_id, dose_4_date) " +
+        String sql = "INSERT into IMMUNIZATION(immunization_name, student_id, recent_dose_date, next_dose_date, " +
+                "vaccination_status, doses_taken, total_doses) " +
                 "VALUES("+imm.getImmunizationName()
                 +"','"+imm.getStudentId()
-                +"','"+imm.getDose_1_date()
-                +"','"+imm.getDose_1_date()
-                +"','"+imm.getDose_2_id()
-                +"','"+imm.getDose_2_date()
-                +"','"+imm.getDose_3_id()
-                +"','"+imm.getDose_3_date()
-                +"','"+imm.getDose_4_id()
-                +"','"+imm.getDose_4_date()+"');";
+                +"','"+imm.getRecentVaccineDate()
+                +"','"+imm.getNextVaccineDate()
+                +"','"+imm.getVaccinationStatus()
+                +"','"+imm.getDosesTaken()
+                +"','"+imm.getTotalDoses()+"');";
         DatabaseUtil.executeSQL(sql);
     }
 
     public void updateImmunization(Immunization imm) {
-        String sql = "UPDATE immunization " + "SET imm_name = '" + imm.getImmunizationName()
+        String sql = "UPDATE immunization " + "SET immunization_name = '" + imm.getImmunizationName()
                 + "', student_id = '" + imm.getStudentId()
-                + "', dose_1_id = '" + imm.getDose_1_id()
-                + "', dose_1_date = '" + imm.getDose_1_date()
-                + "', dose_2_id = '" + imm.getDose_2_id()
-                + "', dose_2_date = '" + imm.getDose_2_date()
-                + "', dose_3_id = '" + imm.getDose_3_id()
-                + "', dose_3_date = '" + imm.getDose_3_date()
-                + "', dose_4_id = '" + imm.getDose_4_id()
-                + "', dose_4_date = '" + imm.getDose_4_date()
+                + "', recent_dose_date = '" + imm.getRecentVaccineDate()
+                + "', next_dose_date = '" + imm.getNextVaccineDate()
+                + "', vaccination_status = '" + imm.getVaccinationStatus()
+                + "', doses_taken = '" + imm.getDosesTaken()
+                + "', total_doses = '" + imm.getTotalDoses()
                 + " WHERE immunization_id = " + imm.getImmunizationId() + ";";
         DatabaseUtil.executeSQL(sql);
     }
