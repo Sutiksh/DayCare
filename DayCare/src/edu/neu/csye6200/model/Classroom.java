@@ -20,6 +20,7 @@ public class Classroom {
 	}
 
 	public Classroom() {
+		this.currentGroupCount = 0;
 	}
 
 	public long getClassroomId() {

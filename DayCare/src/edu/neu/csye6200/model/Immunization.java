@@ -26,8 +26,7 @@ public class Immunization {
         this.nextVaccineDate = nextVaccineDate;
     }
 
-    public Immunization() {
-    }
+    public Immunization() {    }
 
     public int getTotalDoses() {
         return totalDoses;

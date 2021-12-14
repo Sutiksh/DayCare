@@ -16,13 +16,13 @@ public class GroupController {
         api.addGroup(group);
     }
 
-    public void updateGroup(Group group) { api.updatedGroup(group); }
+    public void updateGroup(Group group) { api.updateGroup(group); }
 
     public void delGroup(Group group) {
-        api.delGroup(group);
+        api.deleteGroup(group);
     }
 
     public void delGroup(int groupId) {
-        api.delGroup(groupId);
+        api.deleteGroup(groupId);
     }
 }

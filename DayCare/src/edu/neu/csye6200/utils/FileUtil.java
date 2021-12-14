@@ -53,7 +53,7 @@ public class FileUtil {
 			String line = br.readLine();
 			while(line != null) {
 				String[] attributes = line.split(",");
-				Student student = StudentHelper.createStudent(attributes);
+				Student student = StudentHelper.convertToStudent(attributes);
 				studentApi.addStudent(student);
 				line = br.readLine();
 			}

@@ -1,8 +1,10 @@
 package edu.neu.csye6200.api;
 
 import edu.neu.csye6200.api.abstractClass.AbstractTeacher;
+import edu.neu.csye6200.api.helper.TeacherHelper;
 import edu.neu.csye6200.dao.TeacherDao;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.model.form.AddTeacherForm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -70,5 +72,21 @@ public class TeacherApi extends AbstractTeacher {
     @Override
     public void deleteTeacher(long teacherId) {
         dao.deleteTeacherFromDb(teacherId);
+    }
+
+    public long getTeacherNotAssignedToGroup() {
+        long teacherId = 0;
+        ResultSet rs = dao.getTeacherNotAssignedToGroup();
+        try {
+            teacherId = rs.getLong("teacher_id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return teacherId;
+    }
+
+    public void addTeacher(AddTeacherForm teacherForm) {
+        Teacher teacher = TeacherHelper.convertToTeacher(teacherForm);
+        addTeacher(teacher);
     }
 }

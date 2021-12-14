@@ -52,4 +52,9 @@ public class TeacherDao {
     public void deleteTeacherFromDb(long teacherId){
         DatabaseUtil.deleteRecord("teacher", "teacher_id", String.valueOf(teacherId));
     }
+
+    public ResultSet getTeacherNotAssignedToGroup() {
+        String sql = "";
+        return DatabaseUtil.getSQLResult(sql);
+    }
 }
