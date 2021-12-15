@@ -18,6 +18,10 @@ public class StudentHelper {
     public static Student convertToStudent(ResultSet rs) {
         Student student = new Student();
         try {
+            if(!rs.next()) {
+                student.setStudentId(0);
+                return student;
+            }
             student.setStudentId(stringToLong(rs.getString("student_id")));
             student.setFirstName(rs.getString("first_name"));
             student.setLastName(rs.getString("last_name"));
@@ -61,6 +65,8 @@ public class StudentHelper {
     }
 
     public static Student convertToStudent(AddStudentForm studentForm) {
+        LocalDate localDate = stringtoDate(studentForm.getRegistrationDate());
+        LocalDate annualDate = localDate.plusYears(1);
         Student student = new Student();
         student.setFirstName(studentForm.getFirstName());
         student.setLastName(studentForm.getLastName());
@@ -70,6 +76,8 @@ public class StudentHelper {
         student.setParentName(studentForm.getParentName());
         student.setPhoneNum(studentForm.getPhoneNum());
         student.setRegistrationDate(studentForm.getRegistrationDate());
+        student.setAnnualRegistrationDate(annualDate.toString());
+        student.setAge(ConvertUtil.calAge(studentForm.getDateOfBirth()));
         student.setReview(studentForm.getReview());
         return student;
     }

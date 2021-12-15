@@ -53,7 +53,7 @@ public class ConvertUtil {
 	}
 
 	public static int calAge(String birthdate){
-		String[] date = birthdate.split("-");
+		String[] date = birthdate.split("/");
 		int year = Integer.parseInt(date[0]);
 		int month = Integer.parseInt(date[1]);
 		LocalDate now = LocalDate.now();
