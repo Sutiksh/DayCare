@@ -5,6 +5,9 @@
  */
 package edu.neu.csye6200.view.ui.admin;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author nagashreeseshadri
@@ -14,8 +17,13 @@ public class StudentJPanel extends javax.swing.JPanel {
     /**
      * Creates new form Student
      */
-    public StudentJPanel() {
+    
+    private JPanel userProcessContainer;
+    
+    public StudentJPanel(JPanel userProcessContainer) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -35,7 +43,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         lblStudentAge = new javax.swing.JLabel();
         txtFirstName2 = new javax.swing.JTextField();
         lblStudentAddress = new javax.swing.JLabel();
-        txtFirstName3 = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
         lblPhoneNumber = new javax.swing.JLabel();
         txtFirstName4 = new javax.swing.JTextField();
         lblStudentInfoHeading1 = new javax.swing.JLabel();
@@ -75,12 +83,6 @@ public class StudentJPanel extends javax.swing.JPanel {
 
         lblStudentAddress.setText("Address:");
 
-        txtFirstName3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFirstName3ActionPerformed(evt);
-            }
-        });
-
         lblPhoneNumber.setText("Phone Number:");
 
         lblStudentInfoHeading1.setText("Student Parent Information");
@@ -113,6 +115,11 @@ public class StudentJPanel extends javax.swing.JPanel {
         btnDelete.setText("Delete");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Track");
 
@@ -152,12 +159,6 @@ public class StudentJPanel extends javax.swing.JPanel {
 
         lblEmail.setText("Email:");
 
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-
         btnUploadCSV.setText("Upload CSV");
         btnUploadCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +192,7 @@ public class StudentJPanel extends javax.swing.JPanel {
                 .addGap(68, 68, 68)
                 .addComponent(lblStudentAddress)
                 .addGap(6, 6, 6)
-                .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(lblRegistrationDate)
                 .addGap(6, 6, 6)
@@ -269,7 +270,7 @@ public class StudentJPanel extends javax.swing.JPanel {
                             .addComponent(lblStudentAge))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFirstName6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFirstName7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -319,17 +320,16 @@ public class StudentJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFirstName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstName3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstName3ActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
     private void btnUploadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCSVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUploadCSVActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -361,11 +361,11 @@ public class StudentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblStudentInfoHeading3;
     private javax.swing.JLabel lblStudentParentName;
     private javax.swing.JTable tblStudentInfo;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtFirstName1;
     private javax.swing.JTextField txtFirstName2;
-    private javax.swing.JTextField txtFirstName3;
     private javax.swing.JTextField txtFirstName4;
     private javax.swing.JTextField txtFirstName5;
     private javax.swing.JTextField txtFirstName6;

@@ -29,8 +29,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnManageClassrooms1" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnManageClassrooms" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAdmin" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnListClassRooms" linkSize="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -46,9 +46,9 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="lblStudentInfoHeading2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-              <Component id="btnManageClassrooms1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnManageClassrooms" min="-2" max="-2" attributes="0"/>
+              <Component id="btnListClassRooms" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="189" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -63,17 +63,20 @@
         <Property name="text" type="java.lang.String" value="Welcome to the Day Care"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnManageClassrooms">
+    <Component class="javax.swing.JButton" name="btnListClassRooms">
       <Properties>
         <Property name="text" type="java.lang.String" value="List Classrooms"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListClassRoomsActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnManageClassrooms1">
+    <Component class="javax.swing.JButton" name="btnAdmin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter as Admin"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageClassrooms1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblStudentInfoHeading2">

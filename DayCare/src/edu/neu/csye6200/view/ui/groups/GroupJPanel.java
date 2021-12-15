@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.groups;
+package edu.neu.csye6200.view.ui.groups;
+
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,8 +17,12 @@ public class GroupJPanel extends javax.swing.JPanel {
     /**
      * Creates new form GroupJPanel
      */
-    public GroupJPanel() {
+    private JPanel userProcessContainer;
+    
+    public GroupJPanel(JPanel userProcessContainer) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -38,7 +45,7 @@ public class GroupJPanel extends javax.swing.JPanel {
         lblTeacherID = new javax.swing.JLabel();
         lblFNameTeacher = new javax.swing.JLabel();
         lblLastNameTeacher = new javax.swing.JLabel();
-        btnStudentInfo = new javax.swing.JButton();
+        btnViewStudentInfo = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -73,9 +80,19 @@ public class GroupJPanel extends javax.swing.JPanel {
 
         lblLastNameTeacher.setText("jLabel1");
 
-        btnStudentInfo.setText("View Student Info");
+        btnViewStudentInfo.setText("View Student Info");
+        btnViewStudentInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewStudentInfoActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,12 +128,11 @@ public class GroupJPanel extends javax.swing.JPanel {
                                         .addGap(189, 189, 189)))
                                 .addComponent(lblFirstName1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblLastNameTeacher)))))
+                                .addComponent(lblLastNameTeacher))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(btnViewStudentInfo)))
                 .addContainerGap(143, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnStudentInfo)
-                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,16 +157,28 @@ public class GroupJPanel extends javax.swing.JPanel {
                     .addComponent(lblLastNameTeacher))
                 .addGap(63, 63, 63)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnStudentInfo)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewStudentInfo)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnViewStudentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentInfoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnViewStudentInfoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnStudentInfo;
+    private javax.swing.JButton btnViewStudentInfo;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblEmployeeID;
     private javax.swing.JLabel lblFNameTeacher;

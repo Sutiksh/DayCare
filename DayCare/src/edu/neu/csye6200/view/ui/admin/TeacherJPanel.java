@@ -5,6 +5,9 @@
  */
 package edu.neu.csye6200.view.ui.admin;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author nagashreeseshadri
@@ -14,8 +17,12 @@ public class TeacherJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TeacherJPanel
      */
-    public TeacherJPanel() {
+    private JPanel userProcessContainer;
+    
+    public TeacherJPanel(JPanel userProcessContainer) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
     }
 
     /**
@@ -33,9 +40,9 @@ public class TeacherJPanel extends javax.swing.JPanel {
         lblFirstName1 = new javax.swing.JLabel();
         txtFirstName1 = new javax.swing.JTextField();
         lblAge = new javax.swing.JLabel();
-        txtFirstName2 = new javax.swing.JTextField();
+        txtTeacherAge = new javax.swing.JTextField();
         lblAddress = new javax.swing.JLabel();
-        txtFirstName3 = new javax.swing.JTextField();
+        txtTeacherAddress = new javax.swing.JTextField();
         btnView = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -54,12 +61,6 @@ public class TeacherJPanel extends javax.swing.JPanel {
         lblAge.setText("Age of Teacher:");
 
         lblAddress.setText("Address:");
-
-        txtFirstName3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFirstName3ActionPerformed(evt);
-            }
-        });
 
         btnView.setText("View");
 
@@ -85,6 +86,11 @@ public class TeacherJPanel extends javax.swing.JPanel {
         btnCSVUpload.setText("Upload CSV");
 
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,11 +114,11 @@ public class TeacherJPanel extends javax.swing.JPanel {
                 .addGap(73, 73, 73)
                 .addComponent(lblAge)
                 .addGap(6, 6, 6)
-                .addComponent(txtFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTeacherAge, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120)
                 .addComponent(lblAddress)
                 .addGap(6, 6, 6)
-                .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtTeacherAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -148,8 +154,8 @@ public class TeacherJPanel extends javax.swing.JPanel {
                             .addComponent(lblFirstName1))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFirstName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFirstName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTeacherAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTeacherAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,9 +173,13 @@ public class TeacherJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFirstName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstName3ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstName3ActionPerformed
+        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -188,7 +198,7 @@ public class TeacherJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTeacherInfoHeading;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtFirstName1;
-    private javax.swing.JTextField txtFirstName2;
-    private javax.swing.JTextField txtFirstName3;
+    private javax.swing.JTextField txtTeacherAddress;
+    private javax.swing.JTextField txtTeacherAge;
     // End of variables declaration//GEN-END:variables
 }
