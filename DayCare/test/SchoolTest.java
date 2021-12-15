@@ -2,7 +2,6 @@ import static org.junit.Assert.assertEquals;
 
 import edu.neu.csye6200.model.AbstractClassroom;
 import edu.neu.csye6200.model.Classroom;
-import edu.neu.csye6200.model.School;
 import org.junit.Test;
 
 public class SchoolTest {

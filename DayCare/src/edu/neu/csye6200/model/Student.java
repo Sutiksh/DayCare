@@ -1,74 +1,50 @@
 package edu.neu.csye6200.model;
 
-import java.time.*;
-
-import java.util.Date;
-import java.util.Map;
-
-// import java.util.Map;
-
-// import edu.neu.csye6200.utils.ConversionHelper;
-
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class Student extends Person {
+    private int studentId;
+    private Date registrationDate;
+    private double rating;
 
-	private Date immunizationDate;
-	private Date registrationDate;
-	private long studentId;
-	
-	
-	/**
-	 * 
-	 * @param immunizationDate
-	 */
-	public void setImmunizationDate(Date immunizationDate) {
-		this.immunizationDate = immunizationDate;
-	}
+    public Student(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,
+                   long phoneNum, String parentName, int studentId, Date registrationDate, double rating,
+                   int classroomId, int groupId) {
+        super(firstName, lastName, address, dateOfBirth, email, phoneNum, parentName, classroomId, groupId);
+        this.studentId = studentId;
+        this.registrationDate = registrationDate;
+        this.rating = rating;
+    }
 
-	public Date getImmunizationDate() {
-		return this.immunizationDate;
-	}
+    public Student(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,
+                   long phoneNum, String parentName, int studentId, Date registrationDate) {
+        super(firstName, lastName, address, dateOfBirth, email, phoneNum, parentName);
+        this.studentId = studentId;
+        this.registrationDate = registrationDate;
+    }
 
-	/**
-	 * 
-	 * @param registrationDate
-	 */
-	public void setRegistrationDate(Date registrationDate) {
-		this.registrationDate = registrationDate;
-	}
+    public int getStudentId() {
+        return studentId;
+    }
 
-	public Date getRegistrationDate() {
-		return this.registrationDate;
-	}
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
 
-	/**
-	 * 
-	 * @param studentId
-	 */
-	public void setStudentId(long studentId) {
-		this.studentId = studentId;
-	}
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
 
-	public long getStudentId() {
-		return this.studentId;
-	}
-	
-	public static Student createStudent(String[] attributes) {
+    public double getRating() {
+        return rating;
+    }
 
-		ConversionHelper convHelp = new ConversionHelper();
-		Student s = new Student();
-		s.setFirstName(attributes[0]);
-		s.setLastName(attributes[1]);
-		s.setAge(convHelp.stringToInt(attributes[2]));
-		s.setAddress(attributes[3]);	
-		s.setPhoneNum(convHelp.stringToLong(attributes[4]));
-// 		s.setImmunizationDate(convHelp.stringtoDate(attributes[5]));
-// 		s.setRegistrationDate(convHelp.stringtoDate(attributes[6]));
-		s.setStudentId(convHelp.stringToLong(attributes[7]));
-
-		
-		return s;
-	}
-
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
 }

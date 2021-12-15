@@ -1,38 +1,45 @@
 package edu.neu.csye6200.model;
 
-public class Group extends AbstractGroup{
+import edu.neu.csye6200.model.enums.GroupType;
+import edu.neu.csye6200.model.enums.StatusType;
 
-	private long teacher_id;
-	private int  student_num;
-	private final int groupId;
+public class Group {
+    private int groupId;
+    private int classroomId;
+    private int teacherId;
 
-	public Group(int id){
-		student_num = 0;
-		teacher_id = -1;
-		this.groupId = id;
-	}
+    public Group(int groupId, int classroomId) {
+        this.groupId = groupId;
+        this.classroomId = classroomId;
+    }
 
-	public long getTeacher() {
-		return this.teacher_id;
-	}
+    public Group(int groupId, int classroomId, int teacherId) {
+        this.groupId = groupId;
+        this.classroomId = classroomId;
+        this.teacherId = teacherId;
+    }
 
-	public void setTeacher(long teacherId) {
-		this.teacher_id = teacherId;
-	}
+    public int getGroupId() {
+        return groupId;
+    }
 
-	public int getGroupId() {
-		return this.groupId;
-	}
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
 
-	public void addStudent(long studentId) {
-		student_num++;
-	}
+    public int getClassroomId() {
+        return classroomId;
+    }
 
-	public void delStudent(long studentId) {
-		student_num--;
-	}
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
+    }
 
-	public int getNumOfStudents() {
-		return student_num;
-	}
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 }

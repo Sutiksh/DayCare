@@ -8,8 +8,8 @@ public class DatabaseUtil {
     static final String RDS_HOSTNAME = "edu-neu-csye6200-daycare-rds-mysql.c3nsipkesvaj.us-east-2.rds.amazonaws.com";
     static final String RDS_PORT = "3306";
     static final String RDS_DB_NAME = "day_care_db";
-    static final String RDS_USERNAME = "admin";
-    static final String RDS_PASSWORD = "daycare1129_";
+    static final String RDS_USERNAME = "dc1";
+    static final String RDS_PASSWORD = "day_care1213";
 
     enum DataType {
         STRING,
@@ -133,7 +133,7 @@ public class DatabaseUtil {
         createTable(tableName, keys, primaryKey, null);
     }
 
-    static void dropTable(String tableName) {
+    public static void dropTable(String tableName) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
             stmt.executeUpdate("DROP TABLE " + tableName.toUpperCase());
@@ -142,7 +142,7 @@ public class DatabaseUtil {
         }
     }
 
-    static void deleteRecord(String tableName, String primaryKey, String primaryValue) {
+    public static void deleteRecord(String tableName, String primaryKey, String primaryValue) {
         try {
             Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
             stmt.executeUpdate("DELETE  FROM " + tableName +
@@ -162,9 +162,5 @@ public class DatabaseUtil {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

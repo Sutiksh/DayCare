@@ -1,24 +1,39 @@
 package edu.neu.csye6200.controller;
 
-import edu.neu.csye6200.model.AbstractClassroom;
-import edu.neu.csye6200.model.Classroom;
-import edu.neu.csye6200.model.School;
+import edu.neu.csye6200.api.SchoolApi;
+import edu.neu.csye6200.api.concrete.ConcreteSchoolApi;
+import edu.neu.csye6200.model.Student;
 
 import java.util.List;
 
 public class SchoolController {
-    private final School model;
+    private final SchoolApi api = new ConcreteSchoolApi();
 
-    public SchoolController(School model) { this.model = model; }
+    public void rateAllTeachers() {
+        api.rateAllTeachers();
+    }
 
-    public int getNumOfClassrooms() { return model.getNumOfClassrooms(); }
+    public void rateTeacher(int teacherId) {
+        api.rateTeacher(teacherId);
+    }
 
-    public List<AbstractClassroom> getAllClassrooms() { return model.getAllClassrooms(); }
+    public void assignAllStudentsAndTeachers() {
+        api.assignAllStudentsAndTeachers();
+    }
 
-    public AbstractClassroom addClassroom(int type) { return model.addClassroom(type); }
+    public List<Student> findUnvaccinatedStudentsByImmNameDose(String immName, int dose) {
+        return api.findUnvaccinatedStudentsByImmNameDose(immName, dose);
+    }
 
-    public void delClassroom(Classroom classroom) { model.delClassroom(classroom); }
+    public List<Student> findUnvaccinatedStudents() {
+        return api.findUnvaccinatedStudents();
+    }
 
-    public void delClassroom(int classroomId) { model.delClassroom(classroomId); }
+    public void trackStudentEnrollment() {
+        api.trackStudentEnrollment();
+    }
 
+    public void trackStudentRegistration() {
+        api.trackStudentRegistration();
+    }
 }

@@ -1,62 +1,36 @@
 package edu.neu.csye6200.model;
 
-
 import java.time.LocalDate;
 
-import edu.neu.csye6200.utils.ConversionHelper;
-
-
 public class Teacher extends Person {
+	private long teacherId;
+	private double rating;
 
-	private double review;
-	private long employeeId;
-
-	/**
-	 * 
-	 * @param review
-	 */
-	public void setReview(double review) {
-		this.review = review;
+	public Teacher(String firstName, String lastName, String address, LocalDate dateOfBirth, long phoneNum,
+				   String parentName, long teacherId) {
+		super(firstName, lastName, address, dateOfBirth, null, phoneNum, parentName);
+		this.teacherId = teacherId;
 	}
 
-	public double getReview() {
-		return this.review;
+	public Teacher(String firstName, String lastName, String address, LocalDate dateOfBirth, long phoneNum,
+				   String parentName, int classroom_id, int group_id, long teacherId) {
+		super(firstName, lastName, address, dateOfBirth, null, phoneNum, parentName, classroom_id, group_id);
+		this.teacherId = teacherId;
 	}
 
-	/**
-	 * 
-	 * @param emplpyeeId
-	 */
-	public void setEmployeeId(long emplpyeeId) {
-		this.employeeId = emplpyeeId;
+	public double getRating() {
+		return rating;
 	}
 
-	public long getEmployeeId() {
-		return this.employeeId;
-	}
-	
-	public static Teacher createTeacher(String[] attributes) {
-
-// 		Teacher t = new Teacher();
-// 		t.setFirstName(attributes[0]);
-// 		t.setLastName(attributes[1]);
-// 		t.setAge(Integer.parseInt(attributes[2]));
-// 		t.setAddress(attributes[3]);
-// 		t.setPhoneNum(Integer.parseInt(attributes[4]));
-// 		t.setReview(Double.parseDouble(attributes[5]));
-// 		t.setEmployeeId(Integer.parseInt(attributes[6]));
-
-		ConversionHelper convHelp = new ConversionHelper();
-		Teacher t = new Teacher();
-		t.setFirstName(attributes[0]);
-		t.setLastName(attributes[1]);
-		t.setAge((int)(convHelp.stringToInt(attributes[2])/12));
-		t.setAddress(attributes[3]);
-		t.setPhoneNum(convHelp.stringToLong(attributes[4]));
-		t.setReview(convHelp.stringToDouble(attributes[5]));
-		t.setEmployeeId(convHelp.stringToLong(attributes[6]));
-		
-		return t;
+	public void setRating(double rating) {
+		this.rating = rating;
 	}
 
+	public long getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(long teacherId) {
+		this.teacherId = teacherId;
+	}
 }

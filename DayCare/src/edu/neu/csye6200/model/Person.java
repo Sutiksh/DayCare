@@ -1,96 +1,114 @@
 package edu.neu.csye6200.model;
 
-public class Person extends AbstractPerson {
-	
-	private String firstName;
-	private String lastName;
-	private int age;
-	private String address;
-	private long phoneNum;
-	private String parentName;
-	
-	/**
-	 * 
-	 * @param firstName
-	 */
-	@Override
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+import java.time.LocalDate;
 
-	@Override
-	public String getFirstName() {
-		return this.firstName;
-	}
+public abstract class Person {
+    private String firstName;
+    private String lastName;
+    private String address;
+    private LocalDate dateOfBirth;
+    private String email;
+    private long phoneNum;
+    private String parentName;
+    private int classroom_id;
+    private int group_id;
 
-	/**
-	 * 
-	 * @param lastName
-	 */
-	@Override
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    protected Person(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,
+                     long phoneNum, String parentName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.phoneNum = phoneNum;
+        this.parentName = parentName;
+        // to indicate the person is not assigned
+        this.classroom_id = -1;
+        this.group_id = -1;
+    }
 
-	@Override
-	public String getLastName() {
-		return this.lastName;
-	}
+    public Person(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,
+                  long phoneNum, String parentName, int classroom_id, int group_id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.phoneNum = phoneNum;
+        this.parentName = parentName;
+        this.classroom_id = classroom_id;
+        this.group_id = group_id;
+    }
 
-	/**
-	 * 
-	 * @param age
-	 */
-	@Override
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	@Override
-	public int getAge() {
-		return this.age;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	/**
-	 * 
-	 * @param address
-	 */
-	@Override
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	@Override
-	public String getAddress() {
-		return this.address;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	/**
-	 * 
-	 * @param phoneNum
-	 */
-	@Override
-	public void setPhoneNum(long phoneNum) {
-		// TODO - implement AbstractPerson.setPhoneNum
-		this.phoneNum = phoneNum;
-	}
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	@Override
-	public long getPhoneNum() {
-		return this.phoneNum;
-	}
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	/**
-	 * 
-	 * @param parentName
-	 */
-	@Override
-	public void setParentName(String parentName) {
-		this.parentName = parentName;
-	}
-	@Override
-	public String getParentName() {
-		return this.parentName;
-	}
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public long getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(long phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public int getClassroom_id() {
+        return classroom_id;
+    }
+
+    public void setClassroom_id(int classroom_id) {
+        this.classroom_id = classroom_id;
+    }
+
+    public int getGroup_id() {
+        return group_id;
+    }
+
+    public void setGroup_id(int group_id) {
+        this.group_id = group_id;
+    }
 }

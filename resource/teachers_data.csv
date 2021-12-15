@@ -1,3 +1,56 @@
+<<<<<<< HEAD
+FirstName,LastName,Age(month),Address,PhoneNum,review,employeeId
+Elizabeth,Jesus,418,Mae Ave 428,781500289,0.0,3000002
+Keshawn,Pontius,486,Tami Ave 80,781500666,0.0,3000007
+Helen,Mei,574,Pell Ave 380,781501620,0.0,3000017
+Odelia,Ulam,494,Yulunda Ave 280,781502506,0.0,3000022
+Lenore,River,446,Ulicia Ave 499,781502809,0.0,3000029
+Gord,Major,467,Orville Ave 338,781503776,0.0,3000032
+Glendon,Liza,484,Orabelle Ave 288,781504431,0.0,3000041
+Pauline,Virgee,452,Abram Ave 489,781504585,0.0,3000042
+Roman,Zaine,469,Bobby Ave 318,781505070,0.0,3000047
+Harlen,Marvin,440,Pamela Ave 432,781505404,0.0,3000057
+Kelsi,Phylis,399,Tad Ave 466,781505870,0.0,3000060
+Handy,Marlene,403,Paddy Ave 213,781506027,0.0,3000068
+Poratha,Whitby,500,Ali Ave 104,781506164,0.0,3000079
+Osmunda,Varik,398,Zena Ave 244,781507131,0.0,3000088
+Valeri,Caitlin,406,Elsie Ave 4,781507429,0.0,3000095
+Dick,Ivar,600,Lel Ave 264,781508166,0.0,3000106
+Deidre,Ingram,376,Lamya Ave 262,781508537,0.0,3000115
+Tierney,Bastienne,468,Desirae Ave 80,781508742,0.0,3000126
+Heath,Maya,534,Payden Ave 158,781509236,0.0,3000128
+Nana,Tait,366,Welton Ave 53,781509982,0.0,3000135
+Damon,Iden,482,Kian Ave 39,781510003,0.0,3000136
+Verda,Carmelita,372,Er Ave 413,781510302,0.0,3000147
+Tacy,Albany,433,Dalston Ave 192,781510324,0.0,3000149
+Kelly,Phrygia,559,Tacita Ave 129,781510860,0.0,3000154
+Rosamond,Zander,587,Bowen Ave 430,781511470,0.0,3000159
+Faye,Kathi,521,Merle Ave 143,781511577,0.0,3000166
+Versie,Cascata,450,Ernesto Ave 340,781512388,0.0,3000169
+Lanelle,Ranit,431,Thrine Ave 7,781512441,0.0,3000176
+Fawne,Kata,585,Meriel Ave 40,781512896,0.0,3000183
+Babbette,Gabriel,500,Inis Ave 327,781513138,0.0,3000188
+Precious,Wil,441,Alish Ave 326,781513245,0.0,3000195
+Zechariah,Emelia,431,Ham Ave 236,781513942,0.0,3000198
+Yvon,Efrem,533,Gino Ave 288,781514938,0.0,3000203
+Yarnell,Dianne,570,Geraldean Ave 299,781514957,0.0,3000204
+Pomonia,Wess,437,Alexis Ave 281,781515537,0.0,3000215
+Reiko,Yannik,446,Belden Ave 133,781515655,0.0,3000224
+Camlin,Handy,445,Josephina Ave 413,781516589,0.0,3000229
+Diann,Ithiel,452,Lefty Ave 77,781517420,0.0,3000235
+Ponce,Westley,376,Alfred Ave 290,781518122,0.0,3000236
+Quennell,Willa,447,Alvin Ave 465,781518626,0.0,3000238
+Roald,Yvonne,455,Beulah Ave 312,781518668,0.0,3000244
+Nereida,Tennille,442,Willow Ave 28,781519093,0.0,3000247
+Jule,Pamella,480,Sheena Ave 489,781519846,0.0,3000257
+Terris,Baird,379,Delbert Ave 327,781520135,0.0,3000264
+Meriwether,Star,395,Wafa Ave 283,781520262,0.0,3000268
+Abeni,Fallon,464,Helene Ave 219,781521167,0.0,3000270
+Kandace,Pearle,440,Sinclair Ave 499,781522096,0.0,3000280
+Henderson,Melody,593,Pennye Ave 395,781522876,0.0,3000290
+Nandag,Talen,555,Wendelle Ave 496,781522885,0.0,3000294
+Tarin,Alisha,469,Darrin Ave 349,781523871,0.0,3000297
+=======
 teacherId,classroom_id,group_id,FirstName,LastName,DateOfBirth,Address,parent_name,PhoneNum,rating
 3000004,,,Ali,Fluellen,1991-3-12,"141 Ilene Street, Boston",King,781898568,0.0
 3000007,,,Verlie,Carolyn,1980-7-25,"96 Erick Street, Boston",Hartman,781295082,0.0
@@ -29,3 +82,4 @@ teacherId,classroom_id,group_id,FirstName,LastName,DateOfBirth,Address,parent_na
 3000135,,,Ned,Tasmine,1989-12-16,"381 Wilburn Road, Boston",Alize,781510997,0.0
 3000144,,,Lanford,Ransom,1975-12-19,"186 Thurlow Road, Boston",Xanthia,781515259,0.0
 3000150,,,Danica,Igdaliah,1990-10-7,"152 Kieran Road, Boston",Nedra,781876496,0.0
+>>>>>>> 19797caa59c76ed85b0db15bf7504c5b5c0211a4
