@@ -25,10 +25,6 @@ public class SchoolController {
         return api.findUnvaccinatedStudentsByImmNameDose(immName, dose);
     }
 
-    public List<Student> findUnvaccinatedStudents() {
-        return api.findUnvaccinatedStudents();
-    }
-
     public void trackStudentEnrollment() {
         api.trackStudentEnrollment();
     }
