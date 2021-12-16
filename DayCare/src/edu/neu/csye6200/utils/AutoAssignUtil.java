@@ -12,6 +12,7 @@ import edu.neu.csye6200.model.enums.ClassroomType;
 import edu.neu.csye6200.model.enums.GroupType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,30 @@ public class AutoAssignUtil {
         ClassroomDao.clearAll();
 
         GroupByAgeAndAssign(students);
+    }
+
+    public static void groupingLogicForSingleStudent(Student student){
+        int age = student.getAge();
+        if(age >= 6 && age <= 12){
+            assignGroupsAndClassrooms(List.of(student),
+                    GroupType.SixToTwelve, ClassroomType.SixToTwelve);
+        }
+        else if(age >= 13 && age <= 24){
+            assignGroupsAndClassrooms(List.of(student),
+                    GroupType.ThirteenToTwentyFour, ClassroomType.ThirteenToTwentyFour);
+        }else if(age >= 25 && age <= 35){
+            assignGroupsAndClassrooms(List.of(student),
+                    GroupType.TwentyFiveToThirtyFive, ClassroomType.TwentyFiveToThirtyFive);
+        }else if(age >= 36 && age <= 47){
+            assignGroupsAndClassrooms(List.of(student),
+                    GroupType.ThirtySixToFortySeven, ClassroomType.ThirtySixToFortySeven);
+        }else if(age >= 48 && age <= 59){
+            assignGroupsAndClassrooms(List.of(student),
+                    GroupType.FortyEightToFiftyNine, ClassroomType.FortyEightToFiftyNine);
+        }else if(age >= 60){
+            assignGroupsAndClassrooms(List.of(student),
+                    GroupType.SixtyAndUp, ClassroomType.SixtyAndUp);
+        }
     }
 
     public static void groupingLogicForNewStudents(List<Student> students) {
@@ -53,6 +78,37 @@ public class AutoAssignUtil {
 
             groupApi.updatedGroup(tempG);
             teacherApi.updateTeacher(tempT);
+        }
+    }
+
+    public static void groupingLogicForNewGroups(){
+        List<Teacher> teachers = teacherApi.getAllTeachers();
+        List<Group> groups = groupApi.getAllGroups();
+
+        assert teachers.size() >= groups.size();
+
+        System.out.println("Assigning teachers...");
+        int teacher_count = 0;
+        for (Group tempG : groups) {
+            if (tempG.getTeacherId() != 0) {
+                continue;
+            }
+
+            while (teacher_count < teachers.size()) {
+                Teacher tempT = teachers.get(teacher_count);
+                if (tempT.getGroup_id() > 0) {
+                    teacher_count++;
+                    continue;
+                }
+
+                tempG.setTeacherId(tempT.getTeacherId());
+                tempT.setClassroom_id(tempG.getClassroomId());
+                tempT.setGroup_id(tempG.getGroupId());
+                teacherApi.updateTeacher(tempT);
+                break;
+            }
+
+            groupApi.updatedGroup(tempG);
         }
     }
 

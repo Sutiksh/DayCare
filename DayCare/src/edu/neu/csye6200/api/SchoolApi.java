@@ -13,6 +13,10 @@ public interface SchoolApi {
 
     void assignAllStudentsAndTeachers();
 
+    void AddSingleStudentAndAssign(Student student);
+
+    void AddNewStudentsAndAssign(List<Student> students);
+
     List<Student> findUnvaccinatedStudentsByImmNameDose(String immName, int dose);
 
     void trackStudentEnrollment();
