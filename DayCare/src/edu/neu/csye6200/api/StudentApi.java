@@ -33,7 +33,7 @@ public interface StudentApi {
 
     void deleteStudent(Student student);
 
-    void deleteStudent(int studentId);
+    void deleteStudent(long studentId);
 
     void sendMail(List<Student> studentList, String vaccineName, int doseNumber);
 }

@@ -175,7 +175,7 @@ public class StudentDao {
                 String.valueOf(student.getStudentId()));
     }
 
-    public static void deleteStudentDao(int studentId) {
+    public static void deleteStudentDao(long studentId) {
         DatabaseUtil.deleteRecord("student", "student_id",
                 String.valueOf(studentId));
     }
