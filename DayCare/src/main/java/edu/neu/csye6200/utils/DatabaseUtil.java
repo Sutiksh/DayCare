@@ -7,9 +7,9 @@ import java.util.Objects;
 public class DatabaseUtil {
     static final String RDS_HOSTNAME = "localhost";//"edu-neu-csye6200-daycare-rds-mysql.c3nsipkesvaj.us-east-2.rds.amazonaws.com";
     static final String RDS_PORT = "3306";
-    static final String RDS_DB_NAME = "daycare";//"day_care_db";
+    static final String RDS_DB_NAME = "mysql";//"day_care_db";
     static final String RDS_USERNAME = "root";//"admin";
-    static final String RDS_PASSWORD = "root";//"daycare1129_";
+    static final String RDS_PASSWORD = "";//"daycare1129_";
 
     enum DataType {
         STRING,
