@@ -44,6 +44,10 @@ public class ConvertUtil {
 	}
 	
 	public static long stringToLong(String str) {
+		if(str == null){
+			return 0;
+		}
+
 		long val = 0;
 		try {
 			val = Long.parseLong(str);
@@ -62,6 +66,10 @@ public class ConvertUtil {
 	}
 	
 	public static LocalDate stringtoLocalDate(String str) {
+		if(str == null){
+			return null;
+		}
+
 		LocalDate val = null;
 		
 		try {
