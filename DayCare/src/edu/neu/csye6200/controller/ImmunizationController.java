@@ -18,6 +18,11 @@ public class ImmunizationController {
         return api.getImmunizationByName(immName);
     }
 
+    public List<Immunization> getImmunizationByNameAndId(String immName,
+                                                  long studentId){
+        return api.getImmunizationByNameAndId(immName, studentId);
+    }
+
     public void addImmunization(Immunization imm) {
         api.addImmunization(imm);
     }

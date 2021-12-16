@@ -11,6 +11,9 @@ public interface ImmunizationApi {
 
     List<Immunization> getImmunizationByName(String immName);
 
+    List<Immunization> getImmunizationByNameAndId(String immName,
+                                                              long studentId);
+
     void addImmunization(Immunization imm);
 
     void updateImmunization(Immunization imm);
