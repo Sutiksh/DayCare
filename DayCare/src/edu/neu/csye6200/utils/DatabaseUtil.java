@@ -8,8 +8,8 @@ public class DatabaseUtil {
     static final String RDS_HOSTNAME = "edu-neu-csye6200-daycare-rds-mysql.c3nsipkesvaj.us-east-2.rds.amazonaws.com";
     static final String RDS_PORT = "3306";
     static final String RDS_DB_NAME = "day_care_db";
-    static final String RDS_USERNAME = "admin";
-    static final String RDS_PASSWORD = "$erac_yad";
+    static final String RDS_USERNAME = "dc1";
+    static final String RDS_PASSWORD = "day_care1213";
 
     enum DataType {
         STRING,
