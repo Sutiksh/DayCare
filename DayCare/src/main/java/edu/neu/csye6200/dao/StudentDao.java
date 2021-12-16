@@ -9,18 +9,18 @@ import java.util.List;
 public class StudentDao {
 
     public void addStudentToDb(Student student){
-        String sql = "INSERT INTO student (first_name, last_name, address, date_of_birth, parent_name, email, " +
-                "reg_date, phone_no, classroom_id, group_id, rating)" +
+        String sql = "INSERT INTO student (first_name, last_name, address, date_of_birth, age, parent_name, email, " +
+                "reg_date, annual_reg_date, phone_number, review)" +
                 "VALUES('" + student.getFirstName()
                 + "','" + student.getLastName()
                 + "','" + student.getAddress()
                 + "','" + student.getDateOfBirth()
                 + "','" + student.getAge()
                 + "','" + student.getParentName()
-                + "','" + student.getPhoneNum()
                 + "','" + student.getEmail()
                 + "','" + student.getRegistrationDate()
                 + "','" + student.getAnnualRegistrationDate()
+                + "','" + student.getPhoneNum()
                 + "','" + student.getReview() + "');";
         DatabaseUtil.executeSQL(sql);
     }

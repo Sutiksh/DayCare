@@ -27,5 +27,9 @@ hs_err_pid*
 **/bin
 
 *.*ml
+<<<<<<< HEAD
 /nbproject/private/
 /build/
+=======
+/DayCare/nbproject/**
+>>>>>>> db64a1b212af0cdfdcfa4d58693e6e440e2034ae
