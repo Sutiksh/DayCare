@@ -298,19 +298,26 @@ public class StudentJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+        model.setRowCount(0);
+        model.fireTableDataChanged();
         populateTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String parentName = txtParentName.getText();
         String parentPhoneNumber = txtParentPhoneNumber.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
+        Date dob = jDateBirthday.getDate();
+        Date reg_date = jDateRegistrationDate.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
+        java.sql.Date registrationDate = ConvertUtil.stringToDate(dateFormat.format(reg_date));
 
         try {
             if(firstName == null || firstName.isEmpty()){
@@ -365,14 +372,14 @@ public class StudentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
             return;
         }
-
-        Student student = new Student(firstName, lastName, email, address, parentName, ConvertUtil.stringToLong(parentPhoneNumber));
-        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+        Student student = new Student(firstName, lastName, email, address, parentName, ConvertUtil.stringToLong(parentPhoneNumber), dateOfBirth, registrationDate);
+//        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
         StudentController studentController = new StudentController();
-        studentController.addStudent(student);
-
-        String studentId = ConvertUtil.longToString(student.getStudentId());
-        populateTable();
+        List<Student> students = studentController.getAllStudents();
+        long lastStudId = students.get(students.size() - 1).getStudentId();
+        student.setStudentId(lastStudId + 1);
+        studentController.updateStudent(student);
+        btnRefreshActionPerformed(evt);
 
         //update student with following parameters
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -450,12 +457,12 @@ public class StudentJPanel extends javax.swing.JPanel {
         Student student = new Student(firstName, lastName, email, address, parentName, ConvertUtil.stringToLong(parentPhoneNumber), dateOfBirth, registrationDate);
 //        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
         StudentController studentController = new StudentController();
+        List<Student> students = studentController.getAllStudents();
+        long lastStudId = students.get(students.size() - 1).getStudentId();
+        student.setStudentId(lastStudId + 1);
         AutoAssignUtil.groupingLogicForSingleStudent(student);
         studentController.addStudent(student);
-        populateTable();
-//        System.out.println(dateOfBirth);
-//        System.out.println(registrationDate);
-
+        btnRefreshActionPerformed(evt);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -468,8 +475,11 @@ public class StudentJPanel extends javax.swing.JPanel {
             return;
         }
 
-        Student selectedStudent = (Student)model.getValueAt(selectedRowIndex, 0);
-
+        long studentId = ConvertUtil.stringToLong(model.getValueAt(selectedRowIndex, 0).toString());
+        StudentController studentController = new StudentController();
+        studentController.deleteStudent(studentId);
+        ((DefaultTableModel) tblStudentInfo.getModel()).fireTableDataChanged();
+        btnRefreshActionPerformed(evt);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
