@@ -3,6 +3,7 @@ package edu.neu.csye6200.utils;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatterBuilder;
+import java.sql.Date;
 import java.util.logging.SimpleFormatter;
 
 public class ConvertUtil {
@@ -92,6 +93,11 @@ public class ConvertUtil {
 	public static String dateToString(LocalDate date){
 		String strDate = date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth();
 		return strDate;
+	}
+
+	public static java.sql.Date stringToDate(String strdate){
+		String[] tokens = strdate.split("-");
+		return (java.sql.Date) new Date(ConvertUtil.stringToInt(tokens[0]), ConvertUtil.stringToInt(tokens[1]), ConvertUtil.stringToInt(tokens[2]));
 	}
 
 	public static int calAge(LocalDate birthdate){

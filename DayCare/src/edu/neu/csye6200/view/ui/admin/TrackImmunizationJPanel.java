@@ -62,10 +62,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
 
         tblImmunizationInfo.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null, null}
+
                 },
                 new String [] {
                         "Vaccine Name", "Dose 1 ID", "Date for Dose 1", "Dose 2 ID", "Dose 2 Date", "Dose 3 ID", "Dose 3 Date", "Dose 4 ID", "Dose 4 Date"
@@ -160,7 +157,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
     public void populateImmTable(){
         DefaultTableModel model = (DefaultTableModel) tblImmunizationInfo.getModel();
         ImmunizationController controller = new ImmunizationController();
-        List<Immunization> immunizations = controller.getImmunizationByNameAndId("DTaP", studentId);
+        List<Immunization> immunizations = controller.getImmunizationByIdDao(studentId);
         for(Immunization vaccine: immunizations){
             String vaccineName = vaccine.getImmunizationName();
             String dose1Id = ConvertUtil.longToString(vaccine.getDoseId1());
@@ -186,5 +183,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblImmunizationInfo;
     // End of variables declaration//GEN-END:variables
 }
+
+
 
 

@@ -18,11 +18,13 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
      * Creates new form StudentEnrollmentJPanel
      */
     private JPanel userProcessContainer;
+    long studentId;
     
-    public TrackStudentEnrollmentJPanel(JPanel userProcessContainer) {
+    public TrackStudentEnrollmentJPanel(JPanel userProcessContainer, long studentId) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
+        this.studentId = studentId;
     }
 
     /**

@@ -33,6 +33,12 @@ public class Student extends Person {
         super(firstName, lastName, email, address, parentName, phoneNumber);
     }
 
+    public Student(String firstName, String lastName, String email, String address, String parentName, long phoneNumber,
+                   LocalDate dateOfBirth, Date registrationDate){
+        super(firstName, lastName, address, dateOfBirth, email, phoneNumber, parentName);
+        this.registrationDate = registrationDate;
+    }
+
     public long getStudentId() {
         return studentId;
     }

@@ -5,26 +5,27 @@
  */
 package edu.neu.csye6200.view.ui.admin;
 
-import javax.swing.*;
-import java.awt.*;
+import edu.neu.csye6200.view.ui.MainJFrame;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 /**
  *
  * @author nagashreeseshadri
  */
-public class AdminWorkAreaJPanel extends JPanel {
+public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SchoolJPanel
      */
-    
+
     private JPanel userProcessContainer;
-    
+
     public AdminWorkAreaJPanel(JPanel userProcessContainer) {
         initComponents();
-        
+
         this.userProcessContainer=userProcessContainer;
-        
+
     }
 
     /**
@@ -72,57 +73,56 @@ public class AdminWorkAreaJPanel extends JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(btnBack)
-                        .addGap(82, 82, 82)
-                        .addComponent(lblStudentInfoHeading1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lblStudentInfoHeading)))
-                .addContainerGap(310, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(53, 53, 53)
+                                                .addComponent(lblStudentInfoHeading))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(17, 17, 17)
+                                                .addComponent(btnBack)
+                                                .addGap(445, 445, 445)
+                                                .addComponent(lblStudentInfoHeading1))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(572, 572, 572)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(577, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStudentInfoHeading1)
-                    .addComponent(btnBack))
-                .addGap(18, 18, 18)
-                .addComponent(lblStudentInfoHeading)
-                .addGap(11, 11, 11)
-                .addComponent(btnManageStudents)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageTeachers)
-                .addContainerGap(620, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblStudentInfoHeading1)
+                                        .addComponent(btnBack))
+                                .addGap(69, 69, 69)
+                                .addComponent(lblStudentInfoHeading)
+                                .addGap(164, 164, 164)
+                                .addComponent(btnManageStudents)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnManageTeachers)
+                                .addContainerGap(410, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStudentsActionPerformed
         // TODO add your handling code here:
-        
-    StudentJPanel studentJPanel = new StudentJPanel(userProcessContainer);
-    userProcessContainer.add("Student Panel Opening", studentJPanel);
-    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    layout.next(userProcessContainer);
+
+        StudentJPanel studentJPanel = new StudentJPanel(userProcessContainer);
+        userProcessContainer.add("Student Panel Opening", studentJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageStudentsActionPerformed
 
     private void btnManageTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTeachersActionPerformed
         // TODO add your handling code here:
-    TeacherJPanel teacherJPanel = new TeacherJPanel(userProcessContainer);
-    userProcessContainer.add("Teacher Panel Opening", teacherJPanel);
-    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    layout.next(userProcessContainer);
+        TeacherJPanel teacherJPanel = new TeacherJPanel(userProcessContainer);
+        userProcessContainer.add("Teacher Panel Opening", teacherJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageTeachersActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
