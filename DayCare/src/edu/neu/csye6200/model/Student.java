@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class Student extends Person {
-    private long studentId;
+    private int studentId;
     private Date registrationDate;
     private double rating;
     private int monthAge;
@@ -39,11 +39,11 @@ public class Student extends Person {
         this.registrationDate = registrationDate;
     }
 
-    public long getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(long studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 

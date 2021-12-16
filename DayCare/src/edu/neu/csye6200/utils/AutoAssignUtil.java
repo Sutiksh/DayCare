@@ -160,9 +160,12 @@ public class AutoAssignUtil {
         }
 
         for (int i = 0; i < count; i++) {
-            partialGroupFillingStudents.add(AllStudentList.get(i));
+            if(i >= AllStudentList.size()){
+                break;
+            }
+                partialGroupFillingStudents.add(AllStudentList.get(i));
         }
-        AllStudentList.removeAll(partialGroupFillingStudents);
+//        AllStudentList.removeAll(partialGroupFillingStudents);
 
 
         if (groupList.size() > 0) {
@@ -184,6 +187,9 @@ public class AutoAssignUtil {
                 // If group has enough space, add students to it.
                 List<Student> addedStudents = new ArrayList<>();
                 for(int i = 0; i < seat; i++) {
+                    if(i >= studentFromDb.size()){
+                        break;
+                    }
                     Student student = studentFromDb.get(i);
                     student.setClassroom_id(group.getClassroomId());
                     student.setGroup_id(group.getGroupId());
