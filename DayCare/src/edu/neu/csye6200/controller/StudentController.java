@@ -40,4 +40,8 @@ public class StudentController {
 	public void deleteStudent(int studentId) {
 		api.deleteStudent(studentId);
 	}
+
+	public void sendEmail(List<Student> studentList, String vaccineName, int doseNumber){
+		api.sendMail(studentList, vaccineName, doseNumber);
+	}
 }

@@ -4,9 +4,23 @@ import edu.neu.csye6200.api.StudentApi;
 import edu.neu.csye6200.dao.StudentDao;
 import edu.neu.csye6200.model.Student;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class ConcreteStudentApi implements StudentApi {
+    private Session session = null;
+    private MimeMessage mimeMessage = null;
+
     @Override
     public int getNumOfStudents() {
         return StudentDao.getNumOfStudentsDao();
@@ -50,5 +64,63 @@ public class ConcreteStudentApi implements StudentApi {
     @Override
     public void deleteStudent(int studentId) {
         StudentDao.deleteStudentDao(studentId);
+    }
+
+    @Override
+    public void sendMail(List<Student> studentList, String vaccineName, int doseNumber) {
+        setupServerProp();
+        draftMail(studentList, vaccineName, doseNumber);
+        mailingInfo();
+        System.out.println("Email Sent Successfully!");
+    }
+
+    private void mailingInfo() {
+        System.out.println("Sending Email...");
+        String fromEmail ="daycare.ad21@gmail.com";
+        String fromPass = "daycare123";
+        String emailHost = "smtp.gmail.com";
+        try {
+            Transport transport = session.getTransport("smtp");
+            transport.connect(emailHost, fromEmail, fromPass);
+            transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
+            transport.close();
+        } catch (MessagingException me){
+            me.printStackTrace();
+        }
+
+    }
+
+    private MimeMessage draftMail(List<Student> studentList, String vaccineName, int doseNumber) {
+        List<String> emaillist = new ArrayList<>();
+        for(Student stud: studentList) {
+            emaillist.add(stud.getEmail());
+        }
+        String sub = "Vaccination Dose Reminder";
+        String body = "Your child has pending dose " + doseNumber + " for " + vaccineName + ". Please take the test and update the date of test to us.";
+        mimeMessage = new MimeMessage(session);
+        try {
+            for (int i = 0; i < emaillist.size(); i++) {
+                mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(emaillist.get(i)));
+            }
+            mimeMessage.setSubject(sub);
+            MimeMultipart multipart = new MimeMultipart();
+            MimeBodyPart bodypart = new MimeBodyPart();
+            bodypart.setContent(body, "html/text");
+            multipart.addBodyPart(bodypart);
+            mimeMessage.setContent(multipart);
+        } catch (MessagingException me){
+            me.printStackTrace();
+        }
+        return mimeMessage;
+    }
+
+    private void setupServerProp() {
+        Properties prop = System.getProperties();
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        session = Session.getDefaultInstance(prop, null);
     }
 }

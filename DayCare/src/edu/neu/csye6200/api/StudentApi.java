@@ -2,8 +2,18 @@ package edu.neu.csye6200.api;
 
 import edu.neu.csye6200.model.Student;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public interface StudentApi {
 
@@ -24,4 +34,6 @@ public interface StudentApi {
     void deleteStudent(Student student);
 
     void deleteStudent(int studentId);
+
+    void sendMail(List<Student> studentList, String vaccineName, int doseNumber);
 }
