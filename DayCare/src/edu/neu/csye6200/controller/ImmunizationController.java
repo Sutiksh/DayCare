@@ -23,6 +23,10 @@ public class ImmunizationController {
         return api.getImmunizationByNameAndId(immName, studentId);
     }
 
+    public List<Immunization> getImmunizationByIdDao(long studentId){
+        return api.getImmunizationByIdDao(studentId);
+    }
+
     public void addImmunization(Immunization imm) {
         api.addImmunization(imm);
     }

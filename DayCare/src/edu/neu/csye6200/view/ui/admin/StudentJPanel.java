@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.neu.csye6200.view.ui.admin;
 
 import edu.neu.csye6200.controller.StudentController;
@@ -10,6 +15,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -47,7 +53,6 @@ public class StudentJPanel extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         lblPhoneNumber = new javax.swing.JLabel();
         txtParentPhoneNumber = new javax.swing.JTextField();
-        lblStudentInfoHeading1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStudentInfo = new javax.swing.JTable();
         lblStudentParentName = new javax.swing.JLabel();
@@ -61,9 +66,11 @@ public class StudentJPanel extends javax.swing.JPanel {
         btnTrackImmunization = new javax.swing.JButton();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        btnPopulateTable = new javax.swing.JButton();
         btnTrackEnrollment = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateRegistrationDate = new com.toedter.calendar.JDateChooser();
+        jDateBirthday = new com.toedter.calendar.JDateChooser();
+        lblRegistrationDate1 = new javax.swing.JLabel();
+        btnPopulateTable = new javax.swing.JButton();
 
         lblStudentInfoHeading.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading.setText("Student Information");
@@ -75,8 +82,6 @@ public class StudentJPanel extends javax.swing.JPanel {
         lblStudentAddress.setText("Address:");
 
         lblPhoneNumber.setText("Parent Phone Number:");
-
-        lblStudentInfoHeading1.setText("Student Parent Information");
 
         tblStudentInfo.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -129,17 +134,19 @@ public class StudentJPanel extends javax.swing.JPanel {
 
         lblEmail.setText("Email:");
 
-        btnPopulateTable.setText("Populate Table");
-        btnPopulateTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPopulateTableActionPerformed(evt);
-            }
-        });
-
         btnTrackEnrollment.setText("Track Enrollment");
         btnTrackEnrollment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrackEnrollmentActionPerformed(evt);
+            }
+        });
+
+        lblRegistrationDate1.setText("Date of Birth");
+
+        btnPopulateTable.setText("Populate Table");
+        btnPopulateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPopulateTableActionPerformed(evt);
             }
         });
 
@@ -158,33 +165,18 @@ public class StudentJPanel extends javax.swing.JPanel {
                                                 .addGap(99, 99, 99))))
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblStudentInfoHeading1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(11, 11, 11)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblLastName)
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblFirstName)
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(78, 78, 78)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addComponent(lblRegistrationDate)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblPhoneNumber)
-                                                                .addGap(1, 1, 1)))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(txtParentPhoneNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(lblLastName)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblFirstName)
+                                                .addGap(6, 6, 6)
+                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblStudentParentName)
-                                                .addGap(6, 6, 6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
@@ -195,21 +187,37 @@ public class StudentJPanel extends javax.swing.JPanel {
                                                 .addGap(478, 478, 478)
                                                 .addComponent(lblStudentInfoHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(85, 85, 85)
+                                                .addGap(214, 214, 214)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblEmail)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(lblRegistrationDate)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(jDateRegistrationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(lblRegistrationDate1)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(jDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(lblPhoneNumber)
+                                                                                .addGap(1, 1, 1)
+                                                                                .addComponent(txtParentPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addGap(133, 133, 133)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addComponent(lblStudentAddress)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addComponent(lblEmail)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblStudentAddress)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnPopulateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(47, 47, 47)
+                                                                .addComponent(btnPopulateTable)
+                                                                .addGap(63, 63, 63)
                                                                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(61, 61, 61)
+                                                                .addGap(37, 37, 37)
                                                                 .addComponent(btnUpdate)
                                                                 .addGap(49, 49, 49)
                                                                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,12 +225,12 @@ public class StudentJPanel extends javax.swing.JPanel {
                                                                 .addComponent(btnTrackEnrollment)))
                                                 .addGap(31, 31, 31)
                                                 .addComponent(btnTrackImmunization)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 15, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnDelete, btnPopulateTable, btnTrackEnrollment, btnTrackImmunization, btnUpdate});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnDelete, btnTrackEnrollment, btnTrackImmunization, btnUpdate});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jDateChooser1, txtParentPhoneNumber});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jDateBirthday, jDateRegistrationDate, txtParentPhoneNumber});
 
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,31 +239,9 @@ public class StudentJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnBack)
                                         .addComponent(lblStudentInfoHeading))
-                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(lblRegistrationDate))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addComponent(lblFirstName))
-                                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addGap(5, 5, 5)
-                                                                                .addComponent(lblLastName))))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(6, 6, 6)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(lblPhoneNumber)
-                                                                        .addComponent(txtParentPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(layout.createSequentialGroup()
@@ -264,36 +250,51 @@ public class StudentJPanel extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lblEmail))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblStudentInfoHeading1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblEmail)))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(5, 5, 5)
-                                                .addComponent(lblStudentParentName)))
-                                .addGap(40, 40, 40)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(6, 6, 6)
+                                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(11, 11, 11)
+                                                                .addComponent(lblFirstName))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblRegistrationDate1)
+                                                                        .addComponent(jDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGap(18, 18, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(lblLastName)
+                                                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(lblRegistrationDate)
+                                                                .addComponent(jDateRegistrationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(lblStudentParentName)
+                                                .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(lblPhoneNumber)
+                                                .addComponent(txtParentPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(73, 73, 73)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnPopulateTable)
                                         .addComponent(btnAdd)
                                         .addComponent(btnUpdate)
                                         .addComponent(btnDelete)
                                         .addComponent(btnTrackEnrollment)
-                                        .addComponent(btnTrackImmunization))
+                                        .addComponent(btnTrackImmunization)
+                                        .addComponent(btnPopulateTable))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnRefresh)
-                                .addContainerGap(373, Short.MAX_VALUE))
+                                .addContainerGap(350, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnPopulateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateTableActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-
-    }//GEN-LAST:event_btnPopulateTableActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -304,15 +305,43 @@ public class StudentJPanel extends javax.swing.JPanel {
 
     private void btnTrackEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackEnrollmentActionPerformed
         // TODO add your handling code here:
-        TrackStudentEnrollmentJPanel trackStudentEnrollmentJPanel = new TrackStudentEnrollmentJPanel(userProcessContainer);
-        userProcessContainer.add("Tracking student Enrollment", trackStudentEnrollmentJPanel);
+
+        int selectedRowIndex = tblStudentInfo.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+
+        Student selectedStudent = (Student)model.getValueAt(selectedRowIndex, 0);
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a student to view Immunization.");
+            return;
+        }
+
+//        TrackStudentEnrollmentJPanel trackStudentEnrollmentJPanel = new TrackStudentEnrollmentJPanel(userProcessContainer, selectedStudent);
+//        userProcessContainer.add("Tracking student Enrollment", trackStudentEnrollmentJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+
+
     }//GEN-LAST:event_btnTrackEnrollmentActionPerformed
 
     private void btnTrackImmunizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackImmunizationActionPerformed
         // TODO add your handling code here:
-        TrackImmunizationJPanel trackImmunizationJPanel = new TrackImmunizationJPanel(userProcessContainer);
+//        TrackImmunizationJPanel trackImmunizationJPanel = new TrackImmunizationJPanel(userProcessContainer);
+//        userProcessContainer.add("Tracking student Immunization", trackImmunizationJPanel);
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        layout.next(userProcessContainer);
+
+        int selectedRowIndex = tblStudentInfo.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+
+        long studentId = ConvertUtil.stringToLong(tblStudentInfo.getModel().getValueAt(selectedRowIndex, 0).toString());
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a student to view Immunization.");
+            return;
+        }
+
+        TrackImmunizationJPanel trackImmunizationJPanel = new TrackImmunizationJPanel(userProcessContainer, studentId);
         userProcessContainer.add("Tracking student Immunization", trackImmunizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -380,6 +409,7 @@ public class StudentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
             return;
         }
+
         Student student = new Student(firstName, lastName, email, address, parentName, ConvertUtil.stringToLong(parentPhoneNumber));
         DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
         StudentController studentController = new StudentController();
@@ -387,8 +417,7 @@ public class StudentJPanel extends javax.swing.JPanel {
 
 //        String studentId = ConvertUtil.longToString(student.getStudentId());
         populateTable();
-//        Object[] row = {studentId, firstName, lastName, parentName, parentPhoneNumber, email, address};
-//        model.addRow(row);
+
 
 
     }//GEN-LAST:event_btnAddActionPerformed
@@ -459,6 +488,11 @@ public class StudentJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnPopulateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateTableActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnPopulateTableActionPerformed
+
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
         StudentController controller = new StudentController();
@@ -475,8 +509,6 @@ public class StudentJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
@@ -486,16 +518,17 @@ public class StudentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTrackEnrollment;
     private javax.swing.JButton btnTrackImmunization;
     private javax.swing.JButton btnUpdate;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateBirthday;
+    private com.toedter.calendar.JDateChooser jDateRegistrationDate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblRegistrationDate;
+    private javax.swing.JLabel lblRegistrationDate1;
     private javax.swing.JLabel lblStudentAddress;
     private javax.swing.JLabel lblStudentInfoHeading;
-    private javax.swing.JLabel lblStudentInfoHeading1;
     private javax.swing.JLabel lblStudentParentName;
     private javax.swing.JTable tblStudentInfo;
     private javax.swing.JTextField txtAddress;
@@ -506,6 +539,3 @@ public class StudentJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtParentPhoneNumber;
     // End of variables declaration//GEN-END:variables
 }
-
-
-

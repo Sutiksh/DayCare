@@ -81,6 +81,11 @@ public class ConvertUtil {
 		}
 	}
 
+	public static String dateToString(LocalDate date){
+		String strDate = date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth();
+		return strDate;
+	}
+
 	public static int calAge(LocalDate birthdate){
 		int year = birthdate.getYear();
 		int month = birthdate.getMonthValue();

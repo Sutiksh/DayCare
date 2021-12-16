@@ -19,4 +19,6 @@ public interface ImmunizationApi {
     void updateImmunization(Immunization imm);
 
     void deleteImmunization(Immunization imm);
+
+    List<Immunization> getImmunizationByIdDao(long studentId);
 }
