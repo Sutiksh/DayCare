@@ -166,7 +166,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmployeeID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Employee ID:"/>
+        <Property name="text" type="java.lang.String" value="Teacher ID:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTeacherInfoHeading">

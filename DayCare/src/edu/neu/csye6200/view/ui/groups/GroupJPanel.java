@@ -70,7 +70,7 @@ public class GroupJPanel extends javax.swing.JPanel {
 
         lblFirstName.setText("First Name:");
 
-        lblEmployeeID.setText("Employee ID:");
+        lblEmployeeID.setText("Teacher ID:");
 
         lblTeacherInfoHeading.setText("Teacher Information for this group");
 

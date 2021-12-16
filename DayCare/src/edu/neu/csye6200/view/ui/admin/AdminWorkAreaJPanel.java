@@ -41,7 +41,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         lblStudentInfoHeading = new javax.swing.JLabel();
         lblStudentInfoHeading1 = new javax.swing.JLabel();
         btnManageTeachers = new javax.swing.JButton();
-        btnManageImmunization = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         btnManageStudents.setText("Manage Students");
@@ -61,13 +60,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageTeachers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageTeachersActionPerformed(evt);
-            }
-        });
-
-        btnManageImmunization.setText("Manage Immunization");
-        btnManageImmunization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageImmunizationActionPerformed(evt);
             }
         });
 
@@ -91,9 +83,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(231, 231, 231)
                         .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(btnManageImmunization))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(btnBack)
                         .addGap(82, 82, 82)
@@ -116,9 +105,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageStudents)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageTeachers)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageImmunization)
-                .addContainerGap(573, Short.MAX_VALUE))
+                .addContainerGap(620, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,15 +126,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageTeachersActionPerformed
 
-    private void btnManageImmunizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageImmunizationActionPerformed
-        // TODO add your handling code here:
-    ImmunizationJPanel immunizationJPanel = new ImmunizationJPanel(userProcessContainer);
-    userProcessContainer.add("Immunization Page Opening", immunizationJPanel);
-    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_btnManageImmunizationActionPerformed
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -158,7 +136,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnManageImmunization;
     private javax.swing.JButton btnManageStudents;
     private javax.swing.JButton btnManageTeachers;
     private javax.swing.JLabel lblStudentInfoHeading;

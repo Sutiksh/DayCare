@@ -26,10 +26,6 @@
                       <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
                       <Component id="btnManageTeachers" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
-                      <Component id="btnManageImmunization" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
@@ -59,9 +55,7 @@
               <Component id="btnManageStudents" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Component id="btnManageTeachers" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-              <Component id="btnManageImmunization" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="573" max="32767" attributes="0"/>
+              <EmptySpace pref="620" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,14 +91,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageTeachersActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnManageImmunization">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Manage Immunization"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageImmunizationActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
