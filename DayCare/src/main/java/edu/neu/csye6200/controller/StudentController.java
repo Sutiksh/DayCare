@@ -7,6 +7,8 @@ import edu.neu.csye6200.model.form.AddStudentForm;
 import edu.neu.csye6200.model.form.DeleteStudentForm;
 import edu.neu.csye6200.model.form.UpdateStudentForm;
 
+import java.util.List;
+
 public class StudentController {
 
 	public static final StudentApi api = new StudentApi();
@@ -40,5 +42,7 @@ public class StudentController {
 	public String getRegistrationDate(Student student){
 		return api.getRegistrationDate(student.getStudentId());
 	}
+
+	public void sendMail(List<Student> studentList, String vaccineName, int doseNumber) { api.sendMail(studentList, vaccineName, doseNumber);}
 
 }
