@@ -30,10 +30,10 @@ public class StudentHelper {
             student.setParentName(rs.getString("parent_name"));
             student.setEmail(rs.getString("email"));
             student.setRegistrationDate(rs.getString("reg_date"));
-            student.setPhoneNum(stringToInt(rs.getString("phone_no")));
+            student.setPhoneNum(stringToInt(rs.getString("phone_number")));
             student.setAge(stringToInt(rs.getString("age")));
             student.setAnnualRegistrationDate(rs.getString("annual_reg_date"));
-            student.setReview(stringToDouble(rs.getString("rating")));
+            student.setReview(stringToDouble(rs.getString("review")));
         } catch (SQLException e) {
             e.printStackTrace();
         }
