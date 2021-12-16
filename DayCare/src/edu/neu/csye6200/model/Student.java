@@ -29,6 +29,10 @@ public class Student extends Person {
         this.monthAge = ConvertUtil.calAge(dateOfBirth);
     }
 
+    public Student(String firstName, String lastName, String email, String address, String parentName, long phoneNumber) {
+        super(firstName, lastName, email, address, parentName, phoneNumber);
+    }
+
     public long getStudentId() {
         return studentId;
     }
@@ -60,4 +64,5 @@ public class Student extends Person {
     public void setAge(int monthAge) {
         this.monthAge = monthAge;
     }
+
 }

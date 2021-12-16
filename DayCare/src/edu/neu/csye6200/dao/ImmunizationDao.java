@@ -67,8 +67,30 @@ public class ImmunizationDao {
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM immunization"
-                    + " WHERE imm_name = " + immName
-                    + " AND student_id = " + studentId;
+                    + " WHERE imm_name = '" + immName
+                    + "' AND student_id = '" + studentId +"';";
+            ResultSet rs = state.executeQuery(sql);
+            while (rs.next()) {
+                immunizations.add(ImmunizationHelper.createImmunization(rs));
+            }
+
+            rs.close();
+            state.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return immunizations;
+    }
+
+    public static List<Immunization> getImmunizationByIdDao(long studentId) {
+        List<Immunization> immunizations = new ArrayList<>();
+        try {
+            Connection con = DatabaseUtil.getRemoteConnection();
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT * FROM immunization"
+                    + " WHERE student_id = " + studentId;
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 immunizations.add(ImmunizationHelper.createImmunization(rs));
@@ -121,4 +143,6 @@ public class ImmunizationDao {
                 + "AND student_id = " + imm.getStudentId();
         DatabaseUtil.executeSQL(sql);
     }
+
+
 }

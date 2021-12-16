@@ -40,6 +40,15 @@ public abstract class Person {
         this.group_id = group_id;
     }
 
+    public Person(String firstName, String lastName, String email, String address, String parentName, long phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.parentName = parentName;
+        this.phoneNum = phoneNumber;
+    }
+
     public String getFirstName() {
         return firstName;
     }

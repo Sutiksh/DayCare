@@ -19,6 +19,12 @@ public class ConvertUtil {
 		
 	}
 
+	public static String intToString(int val){
+		String str = "";
+		str += val;
+		return str;
+	}
+
 	public static double stringToDouble(String str) {
 		double val = 0.0;
 		try {
@@ -29,6 +35,12 @@ public class ConvertUtil {
 		
 		return val;
 		
+	}
+
+	public static String doubleToString(double val){
+		String str = "";
+		str += val;
+		return str;
 	}
 	
 	public static long stringToLong(String str) {
@@ -45,6 +57,12 @@ public class ConvertUtil {
 		
 		return val;
 		
+	}
+
+	public static String longToString(long val){
+		String str = "";
+		str += val;
+		return str;
 	}
 	
 	public static LocalDate stringtoLocalDate(String str) {
@@ -69,6 +87,11 @@ public class ConvertUtil {
 		} else {
 			return String.valueOf(id);
 		}
+	}
+
+	public static String dateToString(LocalDate date){
+		String strDate = date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth();
+		return strDate;
 	}
 
 	public static int calAge(LocalDate birthdate){
