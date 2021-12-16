@@ -21,6 +21,14 @@ public class SchoolController {
         api.assignAllStudentsAndTeachers();
     }
 
+    public void AddSingleStudentAndAssign(Student student){
+        api.AddSingleStudentAndAssign(student);
+    }
+
+    public void AddNewStudentsAndAssign(List<Student> students){
+        api.AddNewStudentsAndAssign(students);
+    }
+
     public List<Student> findUnvaccinatedStudentsByImmNameDose(String immName, int dose) {
         return api.findUnvaccinatedStudentsByImmNameDose(immName, dose);
     }
