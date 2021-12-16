@@ -62,7 +62,7 @@ public class ConcreteStudentApi implements StudentApi {
     }
 
     @Override
-    public void deleteStudent(int studentId) {
+    public void deleteStudent(long studentId) {
         StudentDao.deleteStudentDao(studentId);
     }
 
