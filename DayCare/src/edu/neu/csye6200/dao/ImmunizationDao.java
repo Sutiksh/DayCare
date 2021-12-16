@@ -44,7 +44,31 @@ public class ImmunizationDao {
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM immunization"
-                    + "WHERE imm_name = " + immName;
+                    + " WHERE imm_name = " + immName;
+            ResultSet rs = state.executeQuery(sql);
+            while (rs.next()) {
+                immunizations.add(ImmunizationHelper.createImmunization(rs));
+            }
+
+            rs.close();
+            state.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return immunizations;
+    }
+
+    public static List<Immunization> getImmunizationByNameAndIdDao(String immName,
+                                                              long studentId) {
+        List<Immunization> immunizations = new ArrayList<>();
+        try {
+            Connection con = DatabaseUtil.getRemoteConnection();
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT * FROM immunization"
+                    + " WHERE imm_name = " + immName
+                    + " AND student_id = " + studentId;
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 immunizations.add(ImmunizationHelper.createImmunization(rs));

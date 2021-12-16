@@ -23,6 +23,11 @@ public class ConcreteImmunizationApi implements ImmunizationApi {
     }
 
     @Override
+    public List<Immunization> getImmunizationByNameAndId(String immName, long studentId) {
+        return ImmunizationDao.getImmunizationByNameAndIdDao(immName, studentId);
+    }
+
+    @Override
     public void addImmunization(Immunization imm) {
         ImmunizationDao.addImmunizationDao(imm);
     }
