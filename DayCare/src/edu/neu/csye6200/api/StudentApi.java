@@ -9,6 +9,8 @@ public interface StudentApi {
 
     int getNumOfStudents();
 
+    int getNumOfStudentsInGroup(int classroomId, int groupId);
+
     List<Student> getAllStudents();
 
     List<Student> getAllStudentsInClassroom(int classroomId);

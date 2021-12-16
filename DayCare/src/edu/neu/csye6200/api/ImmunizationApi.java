@@ -5,6 +5,8 @@ import edu.neu.csye6200.model.Immunization;
 import java.util.List;
 
 public interface ImmunizationApi {
+    int getNumOfImmunization();
+
     List<Immunization> getAllImmunization();
 
     List<Immunization> getImmunizationByName(String immName);

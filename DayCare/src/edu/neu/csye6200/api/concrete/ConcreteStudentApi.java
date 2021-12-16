@@ -13,6 +13,11 @@ public class ConcreteStudentApi implements StudentApi {
     }
 
     @Override
+    public int getNumOfStudentsInGroup(int classroomId, int groupId) {
+        return StudentDao.getNumOfStudentsInGroup(classroomId, groupId);
+    }
+
+    @Override
     public List<Student> getAllStudents() {
         return StudentDao.getAllStudentsDao();
     }

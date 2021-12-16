@@ -1,5 +1,6 @@
 package edu.neu.csye6200.api.helper;
 
+import edu.neu.csye6200.api.factory.GroupFactory;
 import edu.neu.csye6200.model.Group;
 import static edu.neu.csye6200.utils.ConvertUtil.*;
 
@@ -157,12 +158,14 @@ public class GroupHelper {
 //
 //	}
 
+    static GroupFactory factory = GroupFactory.getInstance();
+
     public static Group createGroup(ResultSet rs) throws SQLException {
-        Group group = new Group(
-                stringToInt(rs.getString("group_id")),
-                stringToInt(rs.getString("classroom_id")),
-                stringToInt(rs.getString("teacher_id")));
-        return group;
+        return factory.getObject(
+                rs.getInt("group_id"),
+                rs.getInt("classroom_id"),
+                rs.getInt("teacher_id")
+        );
     }
 
 

@@ -15,8 +15,6 @@ public interface SchoolApi {
 
     List<Student> findUnvaccinatedStudentsByImmNameDose(String immName, int dose);
 
-    List<Student> findUnvaccinatedStudents();
-
     void trackStudentEnrollment();
 
     void trackStudentRegistration();

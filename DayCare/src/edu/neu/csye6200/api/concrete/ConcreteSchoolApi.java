@@ -28,11 +28,6 @@ public class ConcreteSchoolApi implements SchoolApi {
     }
 
     @Override
-    public List<Student> findUnvaccinatedStudents() {
-        return SchoolDao.findUnvaccinatedStudentsDao();
-    }
-
-    @Override
     public void trackStudentEnrollment() {
         SchoolDao.trackStudentEnrollmentDao();
     }

@@ -55,11 +55,21 @@ public class ConvertUtil {
 		return val;
 	}
 
-	public static int calAge(String birthdate){
-		String[] date = birthdate.split("-");
-		int year = Integer.parseInt(date[0]);
-		int month = Integer.parseInt(date[1]);
+	public static String idToString(int id) {
+		if (id == -1) {
+			return "null";
+		} else {
+			return String.valueOf(id);
+		}
+	}
+
+	public static int calAge(LocalDate birthdate){
+		int year = birthdate.getYear();
+		int month = birthdate.getMonthValue();
+//		String[] date = birthdate.split("-");
+//		int year = Integer.parseInt(date[0]);
+//		int month = Integer.parseInt(date[1]);
 		LocalDate now = LocalDate.now();
-		return 12 * (now.getYear() - year - 1) + (12 - now.getMonthValue()) + month;
+		return 12 * (now.getYear() - year - 1) + (12 - month) + now.getMonthValue();
 	}
 }

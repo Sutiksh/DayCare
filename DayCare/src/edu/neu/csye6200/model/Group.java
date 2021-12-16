@@ -6,7 +6,7 @@ import edu.neu.csye6200.model.enums.StatusType;
 public class Group {
     private int groupId;
     private int classroomId;
-    private int teacherId;
+    private long teacherId;
 
     public Group(int groupId, int classroomId) {
         this.groupId = groupId;
@@ -35,11 +35,11 @@ public class Group {
         this.classroomId = classroomId;
     }
 
-    public int getTeacherId() {
+    public long getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(long teacherId) {
         this.teacherId = teacherId;
     }
 }

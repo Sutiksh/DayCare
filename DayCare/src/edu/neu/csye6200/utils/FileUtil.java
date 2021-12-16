@@ -2,13 +2,10 @@ package edu.neu.csye6200.utils;
 
 import edu.neu.csye6200.api.concrete.ConcreteStudentApi;
 import edu.neu.csye6200.api.concrete.ConcreteTeacherApi;
-import edu.neu.csye6200.api.helper.StudentHelper;
-import edu.neu.csye6200.api.helper.TeacherHelper;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtil {

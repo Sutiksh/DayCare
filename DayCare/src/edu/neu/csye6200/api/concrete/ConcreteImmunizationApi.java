@@ -8,6 +8,11 @@ import java.util.List;
 
 public class ConcreteImmunizationApi implements ImmunizationApi {
     @Override
+    public int getNumOfImmunization() {
+        return ImmunizationDao.getNumOfImmunizationDao();
+    }
+
+    @Override
     public List<Immunization> getAllImmunization() {
         return ImmunizationDao.getAllImmunizationDao();
     }

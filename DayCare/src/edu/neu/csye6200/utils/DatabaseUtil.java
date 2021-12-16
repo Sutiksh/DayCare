@@ -8,8 +8,8 @@ public class DatabaseUtil {
     static final String RDS_HOSTNAME = "edu-neu-csye6200-daycare-rds-mysql.c3nsipkesvaj.us-east-2.rds.amazonaws.com";
     static final String RDS_PORT = "3306";
     static final String RDS_DB_NAME = "day_care_db";
-    static final String RDS_USERNAME = "dc1";
-    static final String RDS_PASSWORD = "day_care1213";
+    static final String RDS_USERNAME = "admin";
+    static final String RDS_PASSWORD = "$erac_yad";
 
     enum DataType {
         STRING,
@@ -98,11 +98,33 @@ public class DatabaseUtil {
 
     public static void executeSQL(String sql) {
         try {
-            Statement stmt = Objects.requireNonNull(getRemoteConnection()).createStatement();
-            stmt.executeUpdate(sql);
+            Connection con = getRemoteConnection();
+            assert con != null;
+            Statement state = con.createStatement();
+            state.executeUpdate(sql);
+
+            state.close();
+            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getTableSize(String tableName) {
+        Connection con = DatabaseUtil.getRemoteConnection();
+        int size = 0;
+        try {
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT COUNT(*) as num FROM " + tableName;
+            ResultSet rs = state.executeQuery(sql);
+            if(rs.next()){
+                size = rs.getInt("num");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return size;
     }
 
     static void createTable(String tableName, Map<String, DataType> keys, String primaryKey, Map<String, String> foreignKey) {
@@ -153,11 +175,17 @@ public class DatabaseUtil {
     }
 
     public static ResultSet getSQLResult(String sql){
-        Connection con = DatabaseUtil.getRemoteConnection();
         try {
+            Connection con = DatabaseUtil.getRemoteConnection();
+
             assert con != null;
             Statement state = con.createStatement();
-            return state.executeQuery(sql);
+            ResultSet temp = state.executeQuery(sql);
+
+            state.close();
+            con.close();
+
+            return temp;
         }catch (SQLException e){
             e.printStackTrace();
         }

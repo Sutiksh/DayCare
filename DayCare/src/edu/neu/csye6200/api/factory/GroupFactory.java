@@ -15,8 +15,12 @@ public class GroupFactory {
 		}
 		return instance;
 	}
-	
-//	public Group getObject() {
-//		return new Group();
-//	}
+
+	public Group getObject(int group_id, int classroom_id) {
+		return new Group(group_id, classroom_id);
+	}
+
+	public Group getObject(int group_id, int classroom_id, int teacher_id ) {
+		return new Group(group_id, classroom_id, teacher_id);
+	}
 }
