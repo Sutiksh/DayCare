@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package edu.neu.csye6200.view.ui.admin;
 
@@ -9,35 +8,38 @@ import edu.neu.csye6200.controller.StudentController;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.utils.AutoAssignUtil;
 import edu.neu.csye6200.utils.ConvertUtil;
-
 import java.awt.CardLayout;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
- * @author nagashreeseshadri
+ * @author Aksha
  */
 public class StudentJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form StudentJPanel
-     * @param userProcessContainer
+     * Creates new form StudentJPanel1
      */
-
     private JPanel userProcessContainer;
     public StudentJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
     }
-
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,67 +50,74 @@ public class StudentJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblStudentInfo = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
         lblStudentInfoHeading = new javax.swing.JLabel();
         lblFirstName = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
-        lblLastName = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
-        lblStudentAddress = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
-        lblPhoneNumber = new javax.swing.JLabel();
-        txtParentPhoneNumber = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblStudentInfo = new javax.swing.JTable();
-        lblStudentParentName = new javax.swing.JLabel();
+        lblFirstName1 = new javax.swing.JLabel();
         txtParentName = new javax.swing.JTextField();
-        btnRefresh = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
-        lblRegistrationDate = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
-        btnTrackImmunization = new javax.swing.JButton();
-        lblEmail = new javax.swing.JLabel();
+        lblFirstName2 = new javax.swing.JLabel();
+        lblFirstName3 = new javax.swing.JLabel();
+        lblFirstName4 = new javax.swing.JLabel();
+        txtPhoneNumber = new javax.swing.JTextField();
+        lblFirstName5 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        lblFirstName6 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        lblFirstName7 = new javax.swing.JLabel();
+        jDateRegis = new com.toedter.calendar.JDateChooser();
+        jDateDoB = new com.toedter.calendar.JDateChooser();
+        btnUploadCSV = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnImmune = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
         btnPopulateTable = new javax.swing.JButton();
-        jDateRegistrationDate = new com.toedter.calendar.JDateChooser();
-        lblRegistrationDate1 = new javax.swing.JLabel();
-        jDateBirthday = new com.toedter.calendar.JDateChooser();
+
+        tblStudentInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "StudentID", "First Name", "Last Name", "Parent Name", "Phone Number", "Email", "Address"
+            }
+        ));
+        jScrollPane1.setViewportView(tblStudentInfo);
+
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblStudentInfoHeading.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading.setText("Student Information");
 
         lblFirstName.setText("First Name:");
 
-        lblLastName.setText("Last Name:");
+        lblFirstName1.setText("Last Name");
 
-        lblStudentAddress.setText("Address:");
+        lblFirstName2.setText("Parent Name");
 
-        lblPhoneNumber.setText("Parent Phone Number:");
+        lblFirstName3.setText("Registration Date:");
 
-        tblStudentInfo.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
+        lblFirstName4.setText("Phone Number");
 
-                },
-                new String [] {
-                        "StudentID", "First Name", "Last Name", "Parent Name", "Phone Number", "Email", "Address"
-                }
-        ));
-        jScrollPane1.setViewportView(tblStudentInfo);
+        lblFirstName5.setText("Address");
 
-        lblStudentParentName.setText("Parent Name:");
+        lblFirstName6.setText("Email");
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+        lblFirstName7.setText("Date of Birth");
+
+        btnUploadCSV.setText("Upload CSV");
+        btnUploadCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
+                btnUploadCSVActionPerformed(evt);
             }
         });
 
@@ -119,7 +128,12 @@ public class StudentJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblRegistrationDate.setText("Registration Date:");
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -128,21 +142,19 @@ public class StudentJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnBack.setText("<<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnImmune.setText("Track Immunization");
+        btnImmune.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnImmuneActionPerformed(evt);
             }
         });
 
-        btnTrackImmunization.setText("Track Immunization");
-        btnTrackImmunization.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrackImmunizationActionPerformed(evt);
+                btnRefreshActionPerformed(evt);
             }
         });
-
-        lblEmail.setText("Email:");
 
         btnPopulateTable.setText("Populate Table");
         btnPopulateTable.addActionListener(new java.awt.event.ActionListener() {
@@ -151,249 +163,220 @@ public class StudentJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblRegistrationDate1.setText("Date of Birth:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)
+                        .addGap(339, 339, 339)
+                        .addComponent(lblStudentInfoHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(371, 371, 371)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(61, 61, 61)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(lblRegistrationDate)
-                                                .addComponent(lblRegistrationDate1)
-                                                .addComponent(lblPhoneNumber))
-                                        .addGap(36, 36, 36)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                .addComponent(jDateRegistrationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                        .addComponent(lblStudentAddress)
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                        .addComponent(lblEmail)
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGap(92, 92, 92))
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(txtParentPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(0, 0, Short.MAX_VALUE))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(102, 102, 102)
-                                        .addComponent(btnPopulateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblFirstName3)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jDateRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblFirstName7)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jDateDoB, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(23, 23, 23)))
+                                .addGap(69, 69, 69)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFirstName6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(660, 660, 660)
+                                        .addComponent(btnRefresh))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnUploadCSV)
                                         .addGap(47, 47, 47)
-                                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(61, 61, 61)
-                                        .addComponent(btnUpdate)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnAdd)
                                         .addGap(51, 51, 51)
-                                        .addComponent(btnTrackImmunization)
-                                        .addGap(457, 457, 457)))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(57, 57, 57)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblLastName)
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblFirstName)
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblStudentParentName)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(47, 47, 47)
-                                                .addComponent(btnBack)
-                                                .addGap(478, 478, 478)
-                                                .addComponent(lblStudentInfoHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(441, 441, 441))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(275, 275, 275))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(17, 17, 17))))
+                                        .addComponent(btnUpdate)
+                                        .addGap(48, 48, 48)
+                                        .addComponent(btnDelete)
+                                        .addGap(59, 59, 59)
+                                        .addComponent(btnImmune)))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPopulateTable))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 7, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnBack)
-                                        .addComponent(lblStudentInfoHeading))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(lblRegistrationDate1))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addComponent(lblFirstName)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(lblRegistrationDate, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                                                                .addGap(27, 27, 27))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addGap(5, 5, 5)
-                                                                                .addComponent(lblLastName)))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lblStudentParentName)
-                                                        .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(78, 78, 78))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addGap(5, 5, 5)
-                                                                                .addComponent(lblStudentAddress)))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(lblEmail)))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addComponent(jDateRegistrationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jDateBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(17, 17, 17)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(txtParentPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(lblPhoneNumber))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnPopulateTable)
-                                        .addComponent(btnAdd)
-                                        .addComponent(btnUpdate)
-                                        .addComponent(btnDelete)
-                                        .addComponent(btnTrackImmunization))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRefresh))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(lblStudentInfoHeading))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFirstName)
+                        .addComponent(lblFirstName3)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFirstName5))
+                    .addComponent(jDateRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFirstName1)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFirstName4)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFirstName6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFirstName2)
+                        .addComponent(lblFirstName7))
+                    .addComponent(jDateDoB, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUploadCSV)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete)
+                    .addComponent(btnImmune)
+                    .addComponent(btnRefresh)
+                    .addComponent(btnPopulateTable))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void traverseStudentCSVFileRow(String path) {
+        String line = "";
+        List<Student> students = new ArrayList<>();
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            int i=0;
+            while((line = br.readLine())!=null){
+                if(i==0){
+                    i++;
+                    continue;
+                }
+                String[] values = line.split(",");
+                String firstName = values[0];
+                String lastName = values[1];
+                String address = values[2];
+                LocalDate dob = ConvertUtil.stringtoLocalDate(values[3]);
+                String parentName = values[4];
+                String email = values[5];
+                Date reg_date = ConvertUtil.stringToDate(values[6]);
+                long phoneNum = Long.parseLong(values[7]);
+                Student student = new Student(firstName, lastName, email, address, parentName, phoneNum, dob, reg_date);
+                students.add(student);
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        StudentController controller = new StudentController();
+        controller.addStudent(students);
+    }
+
+    public void uploadCSV() {
+        JFileChooser browse=new JFileChooser();
+        FileNameExtensionFilter file=new FileNameExtensionFilter("*.csv", "txt");
+        browse.addChoosableFileFilter(file);
+        int selected= browse.showOpenDialog(null);
+        if(selected==JFileChooser.APPROVE_OPTION){
+            File uploadedImage=browse.getSelectedFile();
+            String path=uploadedImage.getAbsolutePath();
+            traverseStudentCSVFileRow(path);
+            JOptionPane.showMessageDialog(null, "File uploaded successfully!!");
+        }
+        populateTable();
+    }
+    
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnUploadCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCSVActionPerformed
+        // TODO add your handling code here:
+        uploadCSV();
+    }//GEN-LAST:event_btnUploadCSVActionPerformed
+
+    private void btnImmuneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImmuneActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblStudentInfo.getSelectedRow();
+
+        long studentId = ConvertUtil.stringToLong(tblStudentInfo.getModel().getValueAt(selectedRowIndex, 0).toString());
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a student to view Immunization.");
+            return;
+        }
+
+        TrackImmunizationJPanel trackImmunizationJPanel = new edu.neu.csye6200.view.ui.admin.TrackImmunizationJPanel(userProcessContainer, studentId);
+        userProcessContainer.add("Tracking student Immunization", trackImmunizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnImmuneActionPerformed
+
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here
-        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
         model.setRowCount(0);
         model.fireTableDataChanged();
         populateTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-        String firstName = txtFirstName.getText();
-        String lastName = txtLastName.getText();
-        String parentName = txtParentName.getText();
-        String parentPhoneNumber = txtParentPhoneNumber.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        Date dob = jDateBirthday.getDate();
-        Date reg_date = jDateRegistrationDate.getDate();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
-        java.sql.Date registrationDate = ConvertUtil.stringToDate(dateFormat.format(reg_date));
-
-        try {
-            if(firstName == null || firstName.isEmpty()){
-                throw new NullPointerException("First Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "First Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(lastName == null || lastName.isEmpty()){
-                throw new NullPointerException("Last Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Last Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(address == null || address.isEmpty()){
-                throw new NullPointerException("Address field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Address field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(email == null || email.isEmpty()){
-                throw new NullPointerException("Email field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Email field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(parentName == null || parentName.isEmpty()){
-                throw new NullPointerException("Parent Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Parent Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(parentPhoneNumber == null || parentPhoneNumber.isEmpty()){
-                throw new NullPointerException("Parent Phone Number field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
-            return;
-        }
-        Student student = new Student(firstName, lastName, email, address, parentName, ConvertUtil.stringToLong(parentPhoneNumber), dateOfBirth, registrationDate);
-//        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
-        StudentController studentController = new StudentController();
-        List<Student> students = studentController.getAllStudents();
-        long lastStudId = students.get(students.size() - 1).getStudentId();
-        student.setStudentId(lastStudId + 1);
-        studentController.updateStudent(student);
-        btnRefreshActionPerformed(evt);
-
-        //update student with following parameters
-    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String parentName = txtParentName.getText();
-        String parentPhoneNumber = txtParentPhoneNumber.getText();
+        String parentPhoneNumber = txtParentName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
-        Date dob = jDateBirthday.getDate();
-        Date reg_date = jDateRegistrationDate.getDate();
+        Date dob = jDateDoB.getDate();
+        Date reg_date = jDateRegis.getDate();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
         java.sql.Date registrationDate = ConvertUtil.stringToDate(dateFormat.format(reg_date));
@@ -463,7 +446,86 @@ public class StudentJPanel extends javax.swing.JPanel {
         AutoAssignUtil.groupingLogicForSingleStudent(student);
         studentController.addStudent(student);
         btnRefreshActionPerformed(evt);
+    
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String parentName = txtParentName.getText();
+        String parentPhoneNumber = txtPhoneNumber.getText();
+        String address = txtAddress.getText();
+        String email = txtEmail.getText();
+        Date dob = jDateDoB.getDate();
+        Date reg_date = jDateRegis.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
+        java.sql.Date registrationDate = ConvertUtil.stringToDate(dateFormat.format(reg_date));
+
+        try {
+            if(firstName == null || firstName.isEmpty()){
+                throw new NullPointerException("First Name field cannot be Empty !!!");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "First Name field cannot be Empty !!!");
+            return;
+        }
+
+        try {
+            if(lastName == null || lastName.isEmpty()){
+                throw new NullPointerException("Last Name field cannot be Empty !!!");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Last Name field cannot be Empty !!!");
+            return;
+        }
+
+        try {
+            if(address == null || address.isEmpty()){
+                throw new NullPointerException("Address field cannot be Empty !!!");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Address field cannot be Empty !!!");
+            return;
+        }
+
+        try {
+            if(email == null || email.isEmpty()){
+                throw new NullPointerException("Email field cannot be Empty !!!");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Email field cannot be Empty !!!");
+            return;
+        }
+
+        try {
+            if(parentName == null || parentName.isEmpty()){
+                throw new NullPointerException("Parent Name field cannot be Empty !!!");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Parent Name field cannot be Empty !!!");
+            return;
+        }
+
+        try {
+            if(parentPhoneNumber == null || parentPhoneNumber.isEmpty()){
+                throw new NullPointerException("Parent Phone Number field cannot be Empty !!!");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
+            return;
+        }
+        Student student = new Student(firstName, lastName, email, address, parentName, ConvertUtil.stringToLong(parentPhoneNumber), dateOfBirth, registrationDate);
+//        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+        StudentController studentController = new StudentController();
+        List<Student> students = studentController.getAllStudents();
+        long lastStudId = students.get(students.size() - 1).getStudentId();
+        student.setStudentId(lastStudId + 1);
+        studentController.updateStudent(student);
+        btnRefreshActionPerformed(evt);
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -482,36 +544,14 @@ public class StudentJPanel extends javax.swing.JPanel {
         btnRefreshActionPerformed(evt);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnTrackImmunizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackImmunizationActionPerformed
-        int selectedRowIndex = tblStudentInfo.getSelectedRow();
-
-        long studentId = ConvertUtil.stringToLong(tblStudentInfo.getModel().getValueAt(selectedRowIndex, 0).toString());
-
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a student to view Immunization.");
-            return;
-        }
-
-        TrackImmunizationJPanel trackImmunizationJPanel = new edu.neu.csye6200.view.ui.admin.TrackImmunizationJPanel(userProcessContainer, studentId);
-        userProcessContainer.add("Tracking student Immunization", trackImmunizationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnTrackImmunizationActionPerformed
-
     private void btnPopulateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateTableActionPerformed
         // TODO add your handling code here:
         populateTable();
     }//GEN-LAST:event_btnPopulateTableActionPerformed
 
-    public void populateTable(){
+public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+        model.setRowCount(0);
         StudentController controller = new StudentController();
         List<Student> studentList = controller.getAllStudents();
         for(Student student: studentList){
@@ -526,35 +566,33 @@ public class StudentJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnImmune;
     private javax.swing.JButton btnPopulateTable;
     private javax.swing.JButton btnRefresh;
-    private javax.swing.JButton btnTrackImmunization;
     private javax.swing.JButton btnUpdate;
-    private com.toedter.calendar.JDateChooser jDateBirthday;
-    private com.toedter.calendar.JDateChooser jDateRegistrationDate;
+    private javax.swing.JButton btnUploadCSV;
+    private com.toedter.calendar.JDateChooser jDateDoB;
+    private com.toedter.calendar.JDateChooser jDateRegis;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFirstName;
-    private javax.swing.JLabel lblLastName;
-    private javax.swing.JLabel lblPhoneNumber;
-    private javax.swing.JLabel lblRegistrationDate;
-    private javax.swing.JLabel lblRegistrationDate1;
-    private javax.swing.JLabel lblStudentAddress;
+    private javax.swing.JLabel lblFirstName1;
+    private javax.swing.JLabel lblFirstName2;
+    private javax.swing.JLabel lblFirstName3;
+    private javax.swing.JLabel lblFirstName4;
+    private javax.swing.JLabel lblFirstName5;
+    private javax.swing.JLabel lblFirstName6;
+    private javax.swing.JLabel lblFirstName7;
     private javax.swing.JLabel lblStudentInfoHeading;
-    private javax.swing.JLabel lblStudentParentName;
     private javax.swing.JTable tblStudentInfo;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtParentName;
-    private javax.swing.JTextField txtParentPhoneNumber;
+    private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
 }
-
-

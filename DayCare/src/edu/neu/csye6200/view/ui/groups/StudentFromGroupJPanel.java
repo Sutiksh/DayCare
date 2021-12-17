@@ -91,11 +91,12 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         lblRegistrationDate.setText("Registration Date:");
 
-        lblImmunizationDate.setText("Immunization Date:");
+        lblImmunizationDate.setText("");
 
         btnBack.setText("<<Back");
 
         jButton1.setText("Track");
+        jButton1.setVisible(false);
 
         lblStudentInfoHeading2.setText("Track Student Enrollment History");
 
@@ -119,6 +120,9 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         lblStudentInfoHeading3.setText("Track Student Immunization History");
 
+        StudentController controller_2 = new StudentController();
+        Student student = controller_2.getStudentById(studentId);
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
             },
@@ -126,13 +130,13 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
                 "Student ID", "Enrollment History"
             }
         ));
-
-        StudentController controller_2 = new StudentController();
-        Student student = controller_2.getStudentById(studentId);
+        model = (DefaultTableModel) jTable2.getModel();
+        Object[] row = {String.valueOf(studentId), String.valueOf(student.getRegistrationDate())};
+        model.addRow(row);
 
         jScrollPane3.setViewportView(jTable2);
 
-        lblEmail.setText(student.getEmail());
+        lblEmail.setText("Email: " + student.getEmail());
 
         jLabel1.setText(student.getFirstName());
 
@@ -144,13 +148,14 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         jLabel5.setText(String.valueOf(student.getAge()));
 
-        jLabel6.setText("List below");
+        jLabel6.setText("");
 
         jLabel7.setText(student.getParentName());
 
         jLabel8.setText(String.valueOf(student.getPhoneNum()));
 
-        jLabel9.setText("jLabel1");
+        jLabel9.setText("");
+
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

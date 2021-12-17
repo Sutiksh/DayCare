@@ -1,21 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package edu.neu.csye6200.view.ui.admin;
 
-import edu.neu.csye6200.controller.SchoolController;
-import edu.neu.csye6200.controller.StudentController;
 import edu.neu.csye6200.controller.TeacherController;
-import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
-import edu.neu.csye6200.utils.AutoAssignUtil;
 import edu.neu.csye6200.utils.ConvertUtil;
-
 import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -27,12 +19,12 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author nagashreeseshadri
+ * @author Aksha
  */
 public class TeacherJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form TeacherJPanel
+     * Creates new form TeacherJPanel1
      */
     private JPanel userProcessContainer;
 
@@ -51,42 +43,71 @@ public class TeacherJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
         lblTeacherInfoHeading = new javax.swing.JLabel();
         lblFirstName = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
         lblFirstName1 = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
-        lblAge = new javax.swing.JLabel();
-        lblAddress = new javax.swing.JLabel();
+        lblFirstName2 = new javax.swing.JLabel();
+        txtParentName = new javax.swing.JTextField();
+        lblFirstName3 = new javax.swing.JLabel();
+        lblFirstName4 = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
-        btnView = new javax.swing.JButton();
+        lblFirstName5 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblFirstName6 = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JTextField();
+        jDateDoB = new com.toedter.calendar.JDateChooser();
+        btnUpload = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        btnPopulateTable = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
-        lblFirstName2 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblPhoneNumber = new javax.swing.JLabel();
-        txtPhoneNumber = new javax.swing.JTextField();
-        lblFirstName3 = new javax.swing.JLabel();
-        txtParentName = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         btnRefresh = new javax.swing.JButton();
+        btnRating = new javax.swing.JButton();
+        btnPopulate = new javax.swing.JButton();
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Teacher ID", "First Name", "Last Name", "Date of Birth", "Email", "Address", "Phone Number", "Rating"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblTeacherInfoHeading.setText("Teacher Information");
 
         lblFirstName.setText("First Name:");
 
-        lblFirstName1.setText("Last Name:");
+        lblFirstName1.setText("Last Name");
 
-        lblAge.setText("Date of Birth:");
+        lblFirstName2.setText("Parent Name");
 
-        lblAddress.setText("Address:");
+        lblFirstName3.setText("Date of Birth");
 
-        btnView.setText("View");
+        lblFirstName4.setText("Address");
+
+        lblFirstName5.setText("Email");
+
+        lblFirstName6.setText("Phone Number");
+
+        btnUpload.setText("Upload CSV");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadActionPerformed(evt);
+            }
+        });
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -96,200 +117,175 @@ public class TeacherJPanel extends javax.swing.JPanel {
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null}
-                },
-                new String [] {
-                        "Teacher ID", "First Name", "Last Name", "Date of Birth", "Email", "Address", "Phone Number", "Rating"
-                }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        btnPopulateTable.setText("Populate Table");
-        btnPopulateTable.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnPopulateTableActionPerformed(e);
-            }
-        });
-        btnBack.setText("<<Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-
-        btnDelete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnDeleteActionPerformed(e);
-            }
-        });
-
-        lblFirstName2.setText("Email:");
-
-        lblPhoneNumber.setText("Phone Number:");
-
-        lblFirstName3.setText("Parent Name:");
 
         btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnRefreshActionPerformed(e);
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
             }
         });
 
-        btnUpdate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnUpdateActionPerformed(e);
+        btnRating.setText("Get Rating");
+        btnRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRatingActionPerformed(evt);
             }
         });
+
+        btnPopulate.setText("Populate");
+        btnPopulate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPopulateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)
+                        .addGap(285, 285, 285)
+                        .addComponent(lblTeacherInfoHeading))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFirstName1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFirstName)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFirstName2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFirstName3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateDoB, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFirstName6)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFirstName4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblFirstName5)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(btnUpload)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnAdd)
+                                .addGap(46, 46, 46)
+                                .addComponent(btnUpdate)
+                                .addGap(48, 48, 48)
+                                .addComponent(btnDelete)
+                                .addGap(49, 49, 49)
                                 .addComponent(btnRefresh)
-                                .addGap(291, 291, 291))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(btnBack)
-                                                .addGap(285, 285, 285)
-                                                .addComponent(lblTeacherInfoHeading))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(94, 94, 94)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(lblFirstName3)
-                                                                                .addGap(6, 6, 6)
-                                                                                .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(lblFirstName1)
-                                                                                        .addComponent(lblFirstName))
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                                .addGap(88, 88, 88)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(lblPhoneNumber)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(lblAge)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(23, 23, 23)))
-                                                                .addGap(67, 67, 67)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(lblFirstName2)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(lblAddress)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(132, 132, 132)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(172, 172, 172)
-                                                                .addComponent(btnView)
-                                                                .addGap(63, 63, 63)
-                                                                .addComponent(btnAdd)
-                                                                .addGap(75, 75, 75)
-                                                                .addComponent(btnUpdate)
-                                                                .addGap(69, 69, 69)
-                                                                .addComponent(btnDelete))
-                                                        .addComponent(btnPopulateTable))))
-                                .addContainerGap(255, Short.MAX_VALUE))
+                                .addGap(149, 149, 149))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnRating)
+                                .addGap(37, 37, 37)))
+                        .addComponent(btnPopulate)))
+                .addContainerGap(191, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnPopulateTable, btnDelete, btnUpdate, btnView});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtFirstName, txtLastName, txtParentName});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtPhoneNumber});
-
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addComponent(btnBack))
-                                        .addComponent(lblTeacherInfoHeading))
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(lblAge)
-                                                                .addComponent(lblAddress)
-                                                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(lblFirstName)
-                                                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addComponent(lblFirstName1))
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(lblPhoneNumber)
-                                                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(lblFirstName2)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addComponent(lblFirstName3))))
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnPopulateTable)
-                                        .addComponent(btnView)
-                                        .addComponent(btnAdd)
-                                        .addComponent(btnUpdate)
-                                        .addComponent(btnDelete))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnRefresh)
-                                .addContainerGap(131, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(btnBack))
+                    .addComponent(lblTeacherInfoHeading))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblFirstName)
+                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFirstName3)
+                        .addComponent(lblFirstName4)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateDoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName1)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFirstName5)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFirstName6)
+                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName2)
+                    .addComponent(txtParentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpload)
+                    .addComponent(btnAdd)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete)
+                    .addComponent(btnRefresh)
+                    .addComponent(btnRating)
+                    .addComponent(btnPopulate))
+                .addContainerGap(203, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(221, 221, 221)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRefreshActionPerformed(ActionEvent e) {
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-        model.fireTableDataChanged();
-        populateTable();
-    }
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
 
-    private void btnDeleteActionPerformed(ActionEvent e) {
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
         int selectedRowIndex = jTable2.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
 
@@ -302,16 +298,8 @@ public class TeacherJPanel extends javax.swing.JPanel {
         TeacherController teacherController = new TeacherController();
         teacherController.deleteTeacher(teacherId);
         ((DefaultTableModel) jTable2.getModel()).fireTableDataChanged();
-        btnRefreshActionPerformed(e);
-    }
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+        btnRefreshActionPerformed(evt);
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -320,8 +308,8 @@ public class TeacherJPanel extends javax.swing.JPanel {
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String parentName = txtParentName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        Date dob = jDateChooser1.getDate();
+        String phoneNumber = txtPhone.getText();
+        Date dob = jDateDoB.getDate();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
         try {
@@ -387,102 +375,120 @@ public class TeacherJPanel extends javax.swing.JPanel {
         teacher.setTeacherId(lastTeachId + 1);
         teacherController.addTeacher(teacher);
         btnRefreshActionPerformed(evt);
-    }
+    
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnPopulateTableActionPerformed(ActionEvent evt){
-        populateTable();
-    }
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-
-
         int row = jTable2.getSelectedRow();
-        long teacherId = ConvertUtil.stringToLong(jTable2.getModel().getValueAt(row, 0).toString());
-        String firstName = jTable2.getModel().getValueAt(row, 1).toString();
-        String lastName = jTable2.getModel().getValueAt(row, 2).toString();
-        String address = jTable2.getModel().getValueAt(row, 3).toString();
-        String email = jTable2.getModel().getValueAt(row, 4).toString();
-        String parentName = jTable2.getModel().getValueAt(row, 5).toString();
-        String phoneNumber = jTable2.getModel().getValueAt(row, 6).toString();
-        Date dob = ConvertUtil.stringToDate(jTable2.getModel().getValueAt(row, 5).toString());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
-        try {
-            if(firstName == null || firstName.isEmpty()){
-                throw new NullPointerException("First Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "First Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(lastName == null || lastName.isEmpty()){
-                throw new NullPointerException("Last Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Last Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(address == null || address.isEmpty()){
-                throw new NullPointerException("Address field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Address field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(email == null || email.isEmpty()){
-                throw new NullPointerException("Email field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Email field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(parentName == null || parentName.isEmpty()){
-                throw new NullPointerException("Parent Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Parent Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(phoneNumber == null || phoneNumber.isEmpty()){
-                throw new NullPointerException("Parent Phone Number field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
-            return;
-        }
+//        long teacherId = ConvertUtil.stringToLong(jTable2.getModel().getValueAt(row, 0).toString());
+//        String firstName = jTable2.getModel().getValueAt(row, 1).toString();
+//        String lastName = jTable2.getModel().getValueAt(row, 2).toString();
+//        String address = jTable2.getModel().getValueAt(row, 3).toString();
+//        String email = jTable2.getModel().getValueAt(row, 4).toString();
+//        String parentName = jTable2.getModel().getValueAt(row, 5).toString();
+//        String phoneNumber = jTable2.getModel().getValueAt(row, 6).toString();
+//        Date dob = ConvertUtil.stringToDate(jTable2.getModel().getValueAt(row, 5).toString());
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
+//        try {
+//            if(firstName == null || firstName.isEmpty()){
+//                throw new NullPointerException("First Name field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "First Name field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(lastName == null || lastName.isEmpty()){
+//                throw new NullPointerException("Last Name field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Last Name field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(address == null || address.isEmpty()){
+//                throw new NullPointerException("Address field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Address field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(email == null || email.isEmpty()){
+//                throw new NullPointerException("Email field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Email field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(parentName == null || parentName.isEmpty()){
+//                throw new NullPointerException("Parent Name field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Parent Name field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(phoneNumber == null || phoneNumber.isEmpty()){
+//                throw new NullPointerException("Parent Phone Number field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
+//            return;
+//        }
 //        Teacher teacher = new Teacher(firstName, lastName, address, dateOfBirth, email, ConvertUtil.stringToLong(phoneNumber), parentName);
 ////        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
 //        TeacherController teacherController = new TeacherController();
 //        //TODO: Assign Teacher to group
 //        teacherController.updateTeacher(teacher);
 //        btnRefreshActionPerformed(evt);
-        SchoolController schoolController = new SchoolController();
-        schoolController.rateAllTeachers();
-    }//GEN-LAST:event_btnAddActionPerformed
+//        SchoolController schoolController = new SchoolController();
+//        schoolController.rateAllTeachers();
+        btnRefreshActionPerformed(evt);
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        model.fireTableDataChanged();
+        populateTable();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRatingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRatingActionPerformed
+
+    private void btnPopulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnPopulateActionPerformed
 
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         TeacherController controller = new TeacherController();
-        List<Teacher> studentList = controller.getAllTeachers();
-        for(Teacher teacher: studentList){
+        List<Teacher> teachers = controller.getAllTeachers();
+        for(Teacher teacher: teachers){
             String teacherId = ConvertUtil.longToString(teacher.getTeacherId());
             String firstName = teacher.getFirstName();
             String lastName = teacher.getLastName();
-            String parentName = teacher.getParentName();
-            String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
+            String dateOfBirth = ConvertUtil.dateToString(teacher.getDateOfBirth());
             String email = teacher.getEmail();
+            String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
             String address = teacher.getAddress();
-            Object[] row = {teacherId, firstName, lastName, parentName, phoneNumber, email, address};
+            String rating = ConvertUtil.doubleToString(teacher.getRating());
+            if(rating.length() > 4){
+                rating = rating.substring(0, 4);
+            }
+            Object[] row = {teacherId, firstName, lastName, dateOfBirth, email, address, phoneNumber, rating};
             model.addRow(row);
         }
     }
@@ -490,27 +496,28 @@ public class TeacherJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnPopulateTable;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnPopulate;
+    private javax.swing.JButton btnRating;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btnView;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnUpload;
+    private com.toedter.calendar.JDateChooser jDateDoB;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblFirstName1;
     private javax.swing.JLabel lblFirstName2;
     private javax.swing.JLabel lblFirstName3;
-    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblFirstName4;
+    private javax.swing.JLabel lblFirstName5;
+    private javax.swing.JLabel lblFirstName6;
     private javax.swing.JLabel lblTeacherInfoHeading;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtParentName;
-    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 }
