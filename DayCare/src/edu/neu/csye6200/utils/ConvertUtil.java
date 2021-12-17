@@ -91,8 +91,10 @@ public class ConvertUtil {
 	}
 
 	public static String dateToString(LocalDate date){
-		String strDate = date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth();
-		return strDate;
+		if(date == null){
+			return "";
+		}
+		return date.getYear() + "/" + date.getMonthValue() + "/" + date.getDayOfMonth();
 	}
 
 	public static java.sql.Date stringToDate(String strdate){

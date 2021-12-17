@@ -161,12 +161,24 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
             String vaccineName = vaccine.getImmunizationName();
             String dose1Id = ConvertUtil.longToString(vaccine.getDoseId1());
             String dose1Date = ConvertUtil.dateToString(vaccine.getDoseDate1());
-            String dose2Id = ConvertUtil.longToString(vaccine.getDoseId1());
-            String dose2Date = ConvertUtil.dateToString(vaccine.getDoseDate1());
-            String dose3Id = ConvertUtil.longToString(vaccine.getDoseId1());
-            String dose3Date = ConvertUtil.dateToString(vaccine.getDoseDate1());
-            String dose4Id = ConvertUtil.longToString(vaccine.getDoseId1());
-            String dose4Date = ConvertUtil.dateToString(vaccine.getDoseDate1());
+            String dose2Id = ConvertUtil.longToString(vaccine.getDoseId2());
+            String dose2Date = ConvertUtil.dateToString(vaccine.getDoseDate2());
+            String dose3Id = ConvertUtil.longToString(vaccine.getDoseId3());
+            String dose3Date = ConvertUtil.dateToString(vaccine.getDoseDate3());
+            String dose4Id = ConvertUtil.longToString(vaccine.getDoseId4());
+            String dose4Date = ConvertUtil.dateToString(vaccine.getDoseDate4());
+            if(dose1Id.equals("0")){
+                dose1Id = "";
+            }
+            if(dose2Id.equals("0")){
+                dose2Id = "";
+            }
+            if(dose3Id.equals("0")){
+                dose3Id = "";
+            }
+            if(dose4Id.equals("0")){
+                dose4Id = "";
+            }
             Object[] row = {vaccineName, dose1Id, dose1Date, dose2Id, dose2Date, dose3Id, dose3Date, dose4Id, dose4Date};
             model.addRow(row);
         }
