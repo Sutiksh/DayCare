@@ -4,17 +4,28 @@
  */
 package edu.neu.csye6200.view.ui.admin;
 
+import edu.neu.csye6200.controller.StudentController;
 import edu.neu.csye6200.controller.TeacherController;
+import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
 import edu.neu.csye6200.utils.ConvertUtil;
 import java.awt.CardLayout;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,8 +41,8 @@ public class TeacherJPanel extends javax.swing.JPanel {
 
     public TeacherJPanel(JPanel userProcessContainer) {
         initComponents();
-
         this.userProcessContainer = userProcessContainer;
+        populateTable();
     }
 
     /**
@@ -67,7 +78,6 @@ public class TeacherJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         btnRating = new javax.swing.JButton();
-        btnPopulate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -79,7 +89,7 @@ public class TeacherJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Teacher ID", "First Name", "Last Name", "Date of Birth", "Email", "Address", "Phone Number", "Rating"
+                "Teacher ID", "First Name", "Last Name", "Date of Birth", "Address", "Phone Number", "Rating"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -157,14 +167,6 @@ public class TeacherJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnPopulate.setBackground(new java.awt.Color(153, 255, 255));
-        btnPopulate.setText("Populate");
-        btnPopulate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPopulateActionPerformed(evt);
-            }
-        });
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/istockphoto-639573662-612x612.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
 
@@ -235,13 +237,11 @@ public class TeacherJPanel extends javax.swing.JPanel {
                                         .addGap(44, 44, 44)
                                         .addComponent(btnRating)
                                         .addGap(54, 54, 54)
-                                        .addComponent(btnPopulate)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(10, 10, 10)
@@ -249,7 +249,7 @@ public class TeacherJPanel extends javax.swing.JPanel {
                     .addContainerGap(889, Short.MAX_VALUE)))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnDelete, btnPopulate, btnRating, btnUpdate, btnUpload});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnDelete, btnRating, btnUpdate, btnUpload});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,11 +286,10 @@ public class TeacherJPanel extends javax.swing.JPanel {
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnRating)
-                    .addComponent(btnPopulate)
                     .addComponent(btnRefresh))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(jLabel1))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -299,7 +298,7 @@ public class TeacherJPanel extends javax.swing.JPanel {
                     .addContainerGap()))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAdd, btnDelete, btnPopulate, btnRating, btnRefresh, btnUpdate, btnUpload});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAdd, btnDelete, btnRating, btnRefresh, btnUpdate, btnUpload});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,8 +312,66 @@ public class TeacherJPanel extends javax.swing.JPanel {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
+        uploadCSV();
     }//GEN-LAST:event_btnUploadActionPerformed
 
+    public void uploadCSV() {
+        JFileChooser browse=new JFileChooser();
+        FileNameExtensionFilter file=new FileNameExtensionFilter("*.csv", "txt");
+        browse.addChoosableFileFilter(file);
+        int selected= browse.showOpenDialog(null);
+        if(selected==JFileChooser.APPROVE_OPTION){
+            File uploadedImage=browse.getSelectedFile();
+            String path=uploadedImage.getAbsolutePath();
+            traverseTeacherCSVFileRow(path);
+            JOptionPane.showMessageDialog(null, "File uploaded successfully!!");
+        }
+        populateTable();
+    }
+    
+    public void traverseTeacherCSVFileRow(String path) {
+        String line = "";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Duplicate records found: \n");
+        TeacherController teacherController = new TeacherController();
+        List<Teacher> teacherDB = teacherController.getAllTeachers();
+        Map<Long, Teacher> teacherMap = new HashMap<>();
+        teacherDB.forEach(teacher -> teacherMap.put(teacher.getPhoneNum(), teacher));
+        long lastTeacherId = teacherDB.get(teacherDB.size() - 1).getTeacherId();
+        List<Teacher> teachers = new ArrayList<>();
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            int i=0;
+            while((line = br.readLine())!=null){
+                if(i==0){
+                    i++;
+                    continue;
+                }
+                String[] values = line.split(";");
+                String firstName = values[0];
+                String lastName = values[1];
+                String address = values[2];
+                LocalDate dob = ConvertUtil.stringtoLocalDate(values[3]);
+                long phoneNum = Long.parseLong(values[4]);
+                String parentName = values[5];
+                long teacherId = (lastTeacherId + i);
+                Teacher teacherExist = teacherMap.get(phoneNum);
+                if(teacherExist!=null) {
+                    stringBuilder.append(line).append("\n");
+                }else {
+                    Teacher teacher = new Teacher(firstName, lastName, address, dob, phoneNum, parentName, teacherId);
+                    teachers.add(teacher);
+                    teacherMap.put(teacher.getPhoneNum(), teacher);
+                }
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        TeacherController controller = new TeacherController();
+        controller.addTeacher(teachers);
+        JOptionPane.showMessageDialog(this, stringBuilder.toString());
+    }
+        
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = jTable2.getSelectedRow();
@@ -498,11 +555,6 @@ public class TeacherJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRatingActionPerformed
 
-    private void btnPopulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-    }//GEN-LAST:event_btnPopulateActionPerformed
-
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         TeacherController controller = new TeacherController();
@@ -512,14 +564,13 @@ public class TeacherJPanel extends javax.swing.JPanel {
             String firstName = teacher.getFirstName();
             String lastName = teacher.getLastName();
             String dateOfBirth = ConvertUtil.dateToString(teacher.getDateOfBirth());
-            String email = teacher.getEmail();
             String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
             String address = teacher.getAddress();
             String rating = ConvertUtil.doubleToString(teacher.getRating());
             if(rating.length() > 4){
                 rating = rating.substring(0, 4);
             }
-            Object[] row = {teacherId, firstName, lastName, dateOfBirth, email, address, phoneNumber, rating};
+            Object[] row = {teacherId, firstName, lastName, dateOfBirth, address, phoneNumber, rating};
             model.addRow(row);
         }
     }
@@ -528,7 +579,6 @@ public class TeacherJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnPopulate;
     private javax.swing.JButton btnRating;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;

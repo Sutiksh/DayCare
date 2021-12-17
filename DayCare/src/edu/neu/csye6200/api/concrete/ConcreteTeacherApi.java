@@ -58,4 +58,11 @@ public class ConcreteTeacherApi implements TeacherApi {
     public double getRating(int teacherId) {
         return TeacherDao.getRatingDao(teacherId);
     }
+
+    @Override
+    public void addTeacher(List<Teacher> teachers) {
+        for(Teacher teacher : teachers) {
+            addTeacher(teacher);
+        }
+    }
 }

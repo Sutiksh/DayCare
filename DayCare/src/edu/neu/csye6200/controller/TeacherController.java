@@ -49,4 +49,8 @@ public class TeacherController {
 	public double getRating(int teacherId) {
 		return api.getRating(teacherId);
 	}
+
+	public void addTeacher(List<Teacher> teachers) {
+		api.addTeacher(teachers);
+	}
 }

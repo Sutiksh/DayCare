@@ -25,4 +25,6 @@ public interface TeacherApi {
     void deleteTeacher(long teacherId);
 
     double getRating(int teacherId);
+
+    void addTeacher(List<Teacher> teachers);
 }

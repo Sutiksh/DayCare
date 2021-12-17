@@ -24,7 +24,7 @@ public class Teacher extends Person {
         super(firstName, lastName, address, dateOfBirth, email,  phoneNumber, parentName);
     }
 
-    public double getRating() {
+	public double getRating() {
 		if(rating > 0){
 			return rating;
 		}
