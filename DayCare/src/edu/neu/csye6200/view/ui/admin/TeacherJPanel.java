@@ -101,10 +101,10 @@ public class TeacherJPanel extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null}
+//                        {null, null, null, null, null, null, null, null},
+//                        {null, null, null, null, null, null, null, null},
+//                        {null, null, null, null, null, null, null, null},
+//                        {null, null, null, null, null, null, null, null}
                 },
                 new String [] {
                         "Teacher ID", "First Name", "Last Name", "Date of Birth", "Email", "Address", "Phone Number", "Rating"
