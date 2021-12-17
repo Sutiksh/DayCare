@@ -43,7 +43,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageTeachers = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnTrackStudentEnrollment = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         btnManageStudents.setText("Manage Students");
         btnManageStudents.addActionListener(new java.awt.event.ActionListener() {
@@ -73,58 +72,47 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnTrackStudentEnrollment.setText("Track Student Enrollment");
-        btnTrackStudentEnrollment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrackStudentEnrollmentActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(17, 17, 17)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnBack)
-                                                                .addGap(241, 241, 241)
-                                                                .addComponent(lblStudentInfoHeading1))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(132, 132, 132)
-                                                                .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(83, 83, 83)
-                                                                .addComponent(btnTrackStudentEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(54, 54, 54)
-                                                .addComponent(lblStudentInfoHeading))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(78, 78, 78)
-                                                .addComponent(jLabel1)))
-                                .addContainerGap(569, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnBack)
+                        .addGap(138, 138, 138)
+                        .addComponent(lblStudentInfoHeading1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(lblStudentInfoHeading))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTrackStudentEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblStudentInfoHeading1)
-                                        .addComponent(btnBack))
-                                .addGap(52, 52, 52)
-                                .addComponent(lblStudentInfoHeading)
-                                .addGap(114, 114, 114)
-                                .addComponent(jLabel1)
-                                .addGap(115, 115, 115)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnTrackStudentEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnManageTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(366, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStudentInfoHeading1)
+                    .addComponent(btnBack))
+                .addGap(18, 18, 18)
+                .addComponent(lblStudentInfoHeading)
+                .addGap(11, 11, 11)
+                .addComponent(btnManageStudents)
+                .addGap(18, 18, 18)
+                .addComponent(btnManageTeachers)
+                .addGap(34, 34, 34)
+                .addComponent(btnTrackStudentEnrollment)
+                .addContainerGap(557, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -152,14 +140,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnTrackStudentEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackStudentEnrollmentActionPerformed
+    private void btnTrackStudentEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTeachers1ActionPerformed
         // TODO add your handling code here:
-        TrackStudentEnrollmentJPanel trackStudentEnrollmentJPanel = new TrackStudentEnrollmentJPanel(userProcessContainer);
-        userProcessContainer.add("Tracking student enrollment ", trackStudentEnrollmentJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-
-    }//GEN-LAST:event_btnTrackStudentEnrollmentActionPerformed
+        
+    }//GEN-LAST:event_btnManageTeachers1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,7 +151,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageStudents;
     private javax.swing.JButton btnManageTeachers;
     private javax.swing.JButton btnTrackStudentEnrollment;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblStudentInfoHeading;
     private javax.swing.JLabel lblStudentInfoHeading1;
     // End of variables declaration//GEN-END:variables

@@ -61,32 +61,25 @@ public class GroupJPanel extends JPanel {
         lblLastNameTeacher = new javax.swing.JLabel();
         btnViewStudentInfo = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading1.setText("Hello, you are viewing the Group");
 
-        String groupInfo = "Classroom ID: " + classroomId + "  Group Id: " + groupId;
-        lblGroupID.setText("");
+        lblGroupID.setText("jLabel1");
 
         tblGroupInfoStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Student ID", "Student First Name", "Student Last Name"
             }
         ));
-
-        DefaultTableModel model = (DefaultTableModel) tblGroupInfoStudent.getModel();
-        StudentController controller_2 = new StudentController();
-        List<Student> studentList =
-                controller_2.getAllStudentsInGroup(classroomId, groupId);
-        for(Student student: studentList){
-            String stuID = String.valueOf(student.getStudentId());
-            String stuFName = student.getFirstName();
-            String stuLName = student.getLastName();
-            Object[] row = {stuID, stuFName, stuLName};
-            model.addRow(row);
-        }
         jScrollPane2.setViewportView(tblGroupInfoStudent);
 
         lblFirstName1.setText("Last Name:");
@@ -97,11 +90,11 @@ public class GroupJPanel extends JPanel {
 
         lblTeacherInfoHeading.setText("Teacher Information for this group");
 
-        TeacherController controller = new TeacherController();
-        Teacher teacher = controller.getTeacherInGroup(classroomId, groupId);
-        lblTeacherID.setText(String.valueOf(teacher.getTeacherId()));
-        lblFNameTeacher.setText(teacher.getFirstName());
-        lblLastNameTeacher.setText(teacher.getLastName());
+        lblTeacherID.setText("jLabel1");
+
+        lblFNameTeacher.setText("jLabel1");
+
+        lblLastNameTeacher.setText("jLabel1");
 
         btnViewStudentInfo.setText("View Student Info");
         btnViewStudentInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +110,12 @@ public class GroupJPanel extends JPanel {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/istockphoto-639573662-612x612.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/banner-enrollment-1.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,65 +123,77 @@ public class GroupJPanel extends JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(lblGroupID, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addGap(42, 42, 42)
-                                .addComponent(lblStudentInfoHeading1))
-                            .addComponent(lblTeacherInfoHeading)
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnBack)
+                                        .addGap(217, 217, 217)
+                                        .addComponent(lblStudentInfoHeading1))
+                                    .addComponent(lblTeacherInfoHeading)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblFirstName)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblFNameTeacher)
+                                                .addGap(189, 189, 189)
+                                                .addComponent(lblFirstName1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblLastNameTeacher))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblEmployeeID)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblTeacherID))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(439, 439, 439)
+                                        .addComponent(lblGroupID, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblEmployeeID)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblTeacherID)
-                                        .addGap(177, 177, 177))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblFirstName)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblFNameTeacher)
-                                        .addGap(189, 189, 189)))
-                                .addComponent(lblFirstName1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblLastNameTeacher))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(btnViewStudentInfo)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                                .addGap(57, 57, 57)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(214, 214, 214)
+                                .addComponent(btnViewStudentInfo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStudentInfoHeading1)
-                    .addComponent(btnBack))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblGroupID)
-                .addGap(44, 44, 44)
-                .addComponent(lblTeacherInfoHeading)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmployeeID)
-                    .addComponent(lblTeacherID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName)
-                    .addComponent(lblFirstName1)
-                    .addComponent(lblFNameTeacher)
-                    .addComponent(lblLastNameTeacher))
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnViewStudentInfo)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStudentInfoHeading1)
+                            .addComponent(btnBack))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblGroupID)
+                        .addGap(44, 44, 44)
+                        .addComponent(lblTeacherInfoHeading)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmployeeID)
+                            .addComponent(lblTeacherID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblFirstName1)
+                            .addComponent(lblFNameTeacher)
+                            .addComponent(lblLastNameTeacher))
+                        .addGap(63, 63, 63)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -212,6 +223,8 @@ public class GroupJPanel extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnViewStudentInfo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblEmployeeID;
     private javax.swing.JLabel lblFNameTeacher;

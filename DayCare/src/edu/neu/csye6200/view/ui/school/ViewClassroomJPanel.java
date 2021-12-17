@@ -52,23 +52,16 @@ public class ViewClassroomJPanel extends JPanel {
         lblStudentInfoHeading1.setText(" View Classrooms in School");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {},
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
             new String [] {
-                "ClassRoomId", "StudentNum", "GroupNum"
+                "ClassRoom"
             }
         ));
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        ClassroomController controller = new ClassroomController();
-        List<Classroom> classroomList = controller.getAllClassrooms();
-
-        for(Classroom classroom: classroomList){
-            String classroomId = String.valueOf(classroom.getClassroomId());
-            String studentNum = String.valueOf(classroom.getNumOfStudent());
-            String groupNum = String.valueOf(classroom.getNumOfGroup());
-            Object[] row = {classroomId, studentNum, groupNum};
-            model.addRow(row);
-        }
-
         jScrollPane1.setViewportView(jTable1);
 
         btnBack.setText("<<Back");
@@ -90,20 +83,20 @@ public class ViewClassroomJPanel extends JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(btnBack)
-                .addGap(77, 77, 77)
-                .addComponent(lblStudentInfoHeading1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(333, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(607, 607, 607))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnViewGroup)
-                        .addGap(195, 195, 195))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnBack)
+                        .addGap(314, 314, 314)
+                        .addComponent(lblStudentInfoHeading1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(446, 446, 446)
+                        .addComponent(btnViewGroup)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,11 +105,11 @@ public class ViewClassroomJPanel extends JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStudentInfoHeading1)
                     .addComponent(btnBack))
-                .addGap(18, 18, 18)
+                .addGap(114, 114, 114)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnViewGroup)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(btnViewGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(243, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -33,6 +33,8 @@ public class GoToGroupsJPanel extends JPanel {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
+        
+        
     }
 
     /**
@@ -43,6 +45,7 @@ public class GoToGroupsJPanel extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblStudentInfoHeading1 = new javax.swing.JLabel();
         lblClassroomID = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -51,34 +54,21 @@ public class GoToGroupsJPanel extends JPanel {
         btnBack = new javax.swing.JButton();
 
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        lblStudentInfoHeading1.setText("Hello, you are in Classroom: " + classroomId);
+        lblStudentInfoHeading1.setText("Hello, you are in Classroom:");
 
-        lblClassroomID.setText("");
+        lblClassroomID.setText("jLabel1");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {},
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
             new String [] {
-                "Classroom ID", "Group ID", "Teacher ID"
+                "Group ID"
             }
         ));
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        GroupController controller = new GroupController();
-        List<Group> groupList;
-        if(classroomId < 0){
-            groupList = controller.getAllGroupsInClassroom(0);
-        }
-        else{
-            groupList = controller.getAllGroupsInClassroom(classroomId);
-        }
-
-        for(Group group: groupList){
-            String groupId = String.valueOf(group.getGroupId());
-            String teacherID = String.valueOf(group.getTeacherId());
-            Object[] row = {classroomId, groupId, teacherID};
-            model.addRow(row);
-        }
-
         jScrollPane2.setViewportView(jTable1);
 
         btnGroupInfo.setText("View Group Info");
@@ -114,7 +104,7 @@ public class GoToGroupsJPanel extends JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,9 +116,9 @@ public class GoToGroupsJPanel extends JPanel {
                     .addComponent(btnBack))
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btnGroupInfo)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGroupInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

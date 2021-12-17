@@ -22,22 +22,25 @@
                       <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
                       <Component id="btnManageStudents" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
-                      <Component id="btnManageTeachers" min="-2" pref="183" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
                       <Component id="lblStudentInfoHeading1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="lblStudentInfoHeading" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnTrackStudentEnrollment" min="-2" pref="183" max="-2" attributes="0"/>
+                          <Component id="btnManageTeachers" min="-2" pref="183" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="310" max="32767" attributes="0"/>
+              <EmptySpace pref="258" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,7 +58,9 @@
               <Component id="btnManageStudents" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Component id="btnManageTeachers" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="620" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="btnTrackStudentEnrollment" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="557" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,6 +105,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTrackStudentEnrollment">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Track Student Enrollment"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
