@@ -37,6 +37,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.studentId = studentId;
         initComponents();
+        populateImmTable();
     }
 
     /**
@@ -51,7 +52,6 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
         lblStudentInfoHeading = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblImmunizationInfo = new javax.swing.JTable();
-        btnPopulateTable = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -72,15 +72,6 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(tblImmunizationInfo);
-
-        btnPopulateTable.setBackground(new java.awt.Color(153, 255, 255));
-        btnPopulateTable.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        btnPopulateTable.setText("Populate Table");
-        btnPopulateTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPopulateTableActionPerformed(evt);
-            }
-        });
 
         btnRefresh.setBackground(new java.awt.Color(153, 255, 255));
         btnRefresh.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -103,9 +94,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(btnPopulateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(66, 1130, Short.MAX_VALUE)
                 .addComponent(btnRefresh)
                 .addGap(145, 145, 145))
             .addGroup(layout.createSequentialGroup()
@@ -128,9 +117,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPopulateTable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,12 +132,6 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnPopulateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateTableActionPerformed
-        // TODO add your handling code here:
-//        lblStuID.setText(selectedStudent.getFirstName());
-        populateImmTable();
-    }//GEN-LAST:event_btnPopulateTableActionPerformed
 
     public void populateImmTable(){
         DefaultTableModel model = (DefaultTableModel) tblImmunizationInfo.getModel();
@@ -184,7 +165,6 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnPopulateTable;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
