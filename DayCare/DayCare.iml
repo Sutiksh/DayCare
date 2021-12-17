@@ -30,5 +30,6 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="javax.mail.api" level="project" />
     <orderEntry type="library" exported="" name="toedter.jcalendar" level="project" />
+    <orderEntry type="library" exported="" name="javax.activation" level="project" />
   </component>
 </module>
