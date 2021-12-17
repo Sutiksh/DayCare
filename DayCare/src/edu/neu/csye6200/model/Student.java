@@ -39,6 +39,12 @@ public class Student extends Person {
         this.registrationDate = registrationDate;
     }
 
+    public Student(long studentId, String firstName, String lastName, String email, String address, String parentName, long phoneNum, LocalDate dob, Date reg_date) {
+        super(firstName, lastName, address, dob, email, phoneNum, parentName);
+        this.studentId = studentId;
+        this.registrationDate = reg_date;
+    }
+
     public long getStudentId() {
         return studentId;
     }

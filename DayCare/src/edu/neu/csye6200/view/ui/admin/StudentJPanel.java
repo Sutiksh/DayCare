@@ -9,16 +9,11 @@ import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.utils.AutoAssignUtil;
 import edu.neu.csye6200.utils.ConvertUtil;
 import java.awt.CardLayout;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -38,6 +33,7 @@ public class StudentJPanel extends javax.swing.JPanel {
     public StudentJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        populateTable();
     }
     
 
@@ -74,7 +70,6 @@ public class StudentJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnImmune = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-        btnPopulateTable = new javax.swing.JButton();
         jDateRegis = new com.toedter.calendar.JDateChooser();
         jDateDoB = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
@@ -168,14 +163,6 @@ public class StudentJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnPopulateTable.setBackground(new java.awt.Color(153, 255, 255));
-        btnPopulateTable.setText("Populate Table");
-        btnPopulateTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPopulateTableActionPerformed(evt);
-            }
-        });
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/unnamed.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
@@ -218,7 +205,7 @@ public class StudentJPanel extends javax.swing.JPanel {
                                 .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblFirstName7)
@@ -241,9 +228,7 @@ public class StudentJPanel extends javax.swing.JPanel {
                                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(64, 64, 64)
                                         .addComponent(btnImmune)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(btnPopulateTable)
-                                        .addGap(36, 36, 36)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -261,8 +246,6 @@ public class StudentJPanel extends javax.swing.JPanel {
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jDateDoB, jDateRegis, txtPhoneNumber});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnImmune, btnPopulateTable});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +292,6 @@ public class StudentJPanel extends javax.swing.JPanel {
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnImmune)
-                    .addComponent(btnPopulateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,6 +312,13 @@ public class StudentJPanel extends javax.swing.JPanel {
 
     public void traverseStudentCSVFileRow(String path) {
         String line = "";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Duplicate records found: \n");
+        StudentController studentController = new StudentController();
+        List<Student> studentsDB = studentController.getAllStudents();
+        Map<String, Student> studentMap = new HashMap<>();
+        studentsDB.forEach(student -> studentMap.put(student.getEmail(), student));
+        long lastStudId = studentsDB.get(studentsDB.size() - 1).getStudentId();
         List<Student> students = new ArrayList<>();
         try{
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -339,7 +328,7 @@ public class StudentJPanel extends javax.swing.JPanel {
                     i++;
                     continue;
                 }
-                String[] values = line.split(",");
+                String[] values = line.split(";");
                 String firstName = values[0];
                 String lastName = values[1];
                 String address = values[2];
@@ -348,14 +337,22 @@ public class StudentJPanel extends javax.swing.JPanel {
                 String email = values[5];
                 Date reg_date = ConvertUtil.stringToDate(values[6]);
                 long phoneNum = Long.parseLong(values[7]);
-                Student student = new Student(firstName, lastName, email, address, parentName, phoneNum, dob, reg_date);
-                students.add(student);
+                long studentId = (lastStudId + i);
+                Student studentExist = studentMap.get(email);
+                if(studentExist!=null) {
+                    stringBuilder.append(line).append("\n");
+                }else {
+                    Student student = new Student(studentId, firstName, lastName, email, address, parentName, phoneNum, dob, reg_date);
+                    students.add(student);
+                    studentMap.put(student.getEmail(), student);
+                }
             }
         } catch(IOException e){
             e.printStackTrace();
         }
         StudentController controller = new StudentController();
         controller.addStudent(students);
+        JOptionPane.showMessageDialog(this, stringBuilder.toString());
     }
 
     public void uploadCSV() {
@@ -588,11 +585,6 @@ public class StudentJPanel extends javax.swing.JPanel {
         btnRefreshActionPerformed(evt);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnPopulateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopulateTableActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-    }//GEN-LAST:event_btnPopulateTableActionPerformed
-
 public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
         model.setRowCount(0);
@@ -615,7 +607,6 @@ public void populateTable(){
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnImmune;
-    private javax.swing.JButton btnPopulateTable;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUploadCSV;

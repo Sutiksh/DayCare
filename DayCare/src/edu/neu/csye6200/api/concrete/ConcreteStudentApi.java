@@ -4,8 +4,6 @@ import edu.neu.csye6200.api.StudentApi;
 import edu.neu.csye6200.dao.StudentDao;
 import edu.neu.csye6200.model.Student;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
