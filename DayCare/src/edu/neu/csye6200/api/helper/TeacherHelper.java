@@ -23,14 +23,18 @@ public class TeacherHelper {
             g_id = rs.getInt("group_id");
         }
 
-        return new Teacher(rs.getString("first_name"),
-            rs.getString("last_name"),
-            rs.getString("address"),
-            ConvertUtil.stringtoLocalDate(rs.getString("date_of_birth")),
-            rs.getLong("phone_no"),
-            rs.getString("parent_name"),
-            c_id, g_id,
-            rs.getLong("teacher_id")
+        Teacher teacher = new Teacher(rs.getString("first_name"),
+                rs.getString("last_name"),
+                rs.getString("address"),
+                ConvertUtil.stringtoLocalDate(rs.getString("date_of_birth")),
+                rs.getLong("phone_no"),
+                rs.getString("parent_name"),
+                c_id, g_id,
+                rs.getLong("teacher_id")
         );
+
+        teacher.setRating(rs.getDouble("rating"));
+
+        return teacher;
     }
 }

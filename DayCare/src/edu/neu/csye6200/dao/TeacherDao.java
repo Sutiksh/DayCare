@@ -154,31 +154,26 @@ public class TeacherDao {
             String.valueOf(teacherId));
     }
 
-    public static double getRatingDao(int teacherId) {
+    public static double getRatingDao(long teacherId) {
         try {
             Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM teacher WHERE teacher_id = " + teacherId;
             ResultSet rs = state.executeQuery(sql);
-            int ratingAvg = 0;
+            double ratingAvg = 0;
             if(rs.next()){
                 int classroom_id = rs.getInt("classroom_id");
                 int group_id = rs.getInt("group_id");
 
-                sql = "SELECT raing FROM student WHERE classroom_id = " + classroom_id +
+                sql = "SELECT AVG(rating) as avgRating FROM student WHERE classroom_id = " + classroom_id +
                         " AND group_id = " + group_id;
                 rs = state.executeQuery(sql);
-                int ratingSum = 0;
-                int count = 0;
-                while(rs.next()){
-                    ratingSum += rs.getInt("rating");
-                    count++;
+                if(rs.next()){
+                    ratingAvg = rs.getDouble("avgRating");
                 }
-                if(count == 0) count = 1;
-                ratingAvg = ratingSum / count;
 
-                sql = "UPDATE teacher SET raing = " + ratingAvg +
+                sql = "UPDATE teacher SET rating = " + ratingAvg +
                         " WHERE teacher_id = " + teacherId;
                 DatabaseUtil.executeSQL(sql);
             }

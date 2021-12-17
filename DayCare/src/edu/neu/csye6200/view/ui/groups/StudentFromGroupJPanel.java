@@ -132,7 +132,7 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         jScrollPane3.setViewportView(jTable2);
 
-        lblEmail.setText(student.getEmail());
+        lblEmail.setText("Email" + student.getEmail());
 
         jLabel1.setText(student.getFirstName());
 
@@ -144,7 +144,7 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         jLabel5.setText(String.valueOf(student.getAge()));
 
-        jLabel6.setText("List below");
+        jLabel6.setText("");
 
         jLabel7.setText(student.getParentName());
 

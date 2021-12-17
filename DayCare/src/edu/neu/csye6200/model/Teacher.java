@@ -1,5 +1,7 @@
 package edu.neu.csye6200.model;
 
+import edu.neu.csye6200.dao.TeacherDao;
+
 import java.time.LocalDate;
 
 public class Teacher extends Person {
@@ -23,7 +25,12 @@ public class Teacher extends Person {
     }
 
     public double getRating() {
-		return rating;
+		if(rating > 0){
+			return rating;
+		}
+		else {
+			return TeacherDao.getRatingDao(teacherId);
+		}
 	}
 
 	public void setRating(double rating) {

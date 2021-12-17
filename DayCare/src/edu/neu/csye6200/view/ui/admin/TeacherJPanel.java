@@ -354,6 +354,7 @@ public class TeacherJPanel extends javax.swing.JPanel {
     private void btnPopulateTableActionPerformed(ActionEvent evt){
         populateTable();
     }
+
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int row = jTable2.getSelectedRow();
@@ -426,8 +427,8 @@ public class TeacherJPanel extends javax.swing.JPanel {
 //        //TODO: Assign Teacher to group
 //        teacherController.updateTeacher(teacher);
 //        btnRefreshActionPerformed(evt);
-        SchoolController schoolController = new SchoolController();
-        schoolController.rateAllTeachers();
+//        SchoolController schoolController = new SchoolController();
+//        schoolController.rateAllTeachers();
         btnRefreshActionPerformed(evt);
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -444,6 +445,9 @@ public class TeacherJPanel extends javax.swing.JPanel {
             String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
             String address = teacher.getAddress();
             String rating = ConvertUtil.doubleToString(teacher.getRating());
+            if(rating.length() > 4){
+                rating = rating.substring(0, 4);
+            }
             Object[] row = {teacherId, firstName, lastName, dateOfBirth, email, address, phoneNumber, rating};
             model.addRow(row);
         }
