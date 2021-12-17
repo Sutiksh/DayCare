@@ -95,7 +95,7 @@ public class TeacherJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUpdate.setText("Update");
+        btnUpdate.setText("Get Rating");
 
         btnDelete.setText("Delete");
 
@@ -394,72 +394,70 @@ public class TeacherJPanel extends javax.swing.JPanel {
     }
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-
-
         int row = jTable2.getSelectedRow();
-        long teacherId = ConvertUtil.stringToLong(jTable2.getModel().getValueAt(row, 0).toString());
-        String firstName = jTable2.getModel().getValueAt(row, 1).toString();
-        String lastName = jTable2.getModel().getValueAt(row, 2).toString();
-        String address = jTable2.getModel().getValueAt(row, 3).toString();
-        String email = jTable2.getModel().getValueAt(row, 4).toString();
-        String parentName = jTable2.getModel().getValueAt(row, 5).toString();
-        String phoneNumber = jTable2.getModel().getValueAt(row, 6).toString();
-        Date dob = ConvertUtil.stringToDate(jTable2.getModel().getValueAt(row, 5).toString());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
-        try {
-            if(firstName == null || firstName.isEmpty()){
-                throw new NullPointerException("First Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "First Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(lastName == null || lastName.isEmpty()){
-                throw new NullPointerException("Last Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Last Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(address == null || address.isEmpty()){
-                throw new NullPointerException("Address field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Address field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(email == null || email.isEmpty()){
-                throw new NullPointerException("Email field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Email field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(parentName == null || parentName.isEmpty()){
-                throw new NullPointerException("Parent Name field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Parent Name field cannot be Empty !!!");
-            return;
-        }
-
-        try {
-            if(phoneNumber == null || phoneNumber.isEmpty()){
-                throw new NullPointerException("Parent Phone Number field cannot be Empty !!!");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
-            return;
-        }
+//        long teacherId = ConvertUtil.stringToLong(jTable2.getModel().getValueAt(row, 0).toString());
+//        String firstName = jTable2.getModel().getValueAt(row, 1).toString();
+//        String lastName = jTable2.getModel().getValueAt(row, 2).toString();
+//        String address = jTable2.getModel().getValueAt(row, 3).toString();
+//        String email = jTable2.getModel().getValueAt(row, 4).toString();
+//        String parentName = jTable2.getModel().getValueAt(row, 5).toString();
+//        String phoneNumber = jTable2.getModel().getValueAt(row, 6).toString();
+//        Date dob = ConvertUtil.stringToDate(jTable2.getModel().getValueAt(row, 5).toString());
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
+//        try {
+//            if(firstName == null || firstName.isEmpty()){
+//                throw new NullPointerException("First Name field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "First Name field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(lastName == null || lastName.isEmpty()){
+//                throw new NullPointerException("Last Name field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Last Name field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(address == null || address.isEmpty()){
+//                throw new NullPointerException("Address field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Address field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(email == null || email.isEmpty()){
+//                throw new NullPointerException("Email field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Email field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(parentName == null || parentName.isEmpty()){
+//                throw new NullPointerException("Parent Name field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Parent Name field cannot be Empty !!!");
+//            return;
+//        }
+//
+//        try {
+//            if(phoneNumber == null || phoneNumber.isEmpty()){
+//                throw new NullPointerException("Parent Phone Number field cannot be Empty !!!");
+//            }
+//        } catch(NullPointerException e){
+//            JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
+//            return;
+//        }
 //        Teacher teacher = new Teacher(firstName, lastName, address, dateOfBirth, email, ConvertUtil.stringToLong(phoneNumber), parentName);
 ////        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
 //        TeacherController teacherController = new TeacherController();
@@ -468,21 +466,23 @@ public class TeacherJPanel extends javax.swing.JPanel {
 //        btnRefreshActionPerformed(evt);
         SchoolController schoolController = new SchoolController();
         schoolController.rateAllTeachers();
+        btnRefreshActionPerformed(evt);
     }//GEN-LAST:event_btnAddActionPerformed
 
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         TeacherController controller = new TeacherController();
-        List<Teacher> studentList = controller.getAllTeachers();
-        for(Teacher teacher: studentList){
+        List<Teacher> teachers = controller.getAllTeachers();
+        for(Teacher teacher: teachers){
             String teacherId = ConvertUtil.longToString(teacher.getTeacherId());
             String firstName = teacher.getFirstName();
             String lastName = teacher.getLastName();
-            String parentName = teacher.getParentName();
-            String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
+            String dateOfBirth = ConvertUtil.dateToString(teacher.getDateOfBirth());
             String email = teacher.getEmail();
+            String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
             String address = teacher.getAddress();
-            Object[] row = {teacherId, firstName, lastName, parentName, phoneNumber, email, address};
+            String rating = ConvertUtil.doubleToString(teacher.getRating());
+            Object[] row = {teacherId, firstName, lastName, dateOfBirth, email, address, phoneNumber, rating};
             model.addRow(row);
         }
     }
