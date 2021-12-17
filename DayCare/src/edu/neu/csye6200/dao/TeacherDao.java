@@ -111,7 +111,7 @@ public class TeacherDao {
     }
 
     public static void addTeacherDao(Teacher teacher) {
-        String sql = "INSERT into TEACHER (teacher_id, classroom_id, group_id, "
+        String sql = "INSERT into teacher (teacher_id, classroom_id, group_id, "
             + "first_name, last_name, date_of_birth, "
             + "address, parent_name, phone_no, rating)"
             + "VALUES("
@@ -136,11 +136,11 @@ public class TeacherDao {
             + "', address = '" + teacher.getAddress()
             + "', date_of_birth = '" + teacher.getDateOfBirth()
             + "', parent_name = '" + teacher.getParentName()
-            + "', phone_no = " + teacher.getPhoneNum()
-            + ", classroom_id = " + ConvertUtil.idToString(teacher.getClassroom_id())
-            + ", group_id = " + ConvertUtil.idToString(teacher.getGroup_id())
-            + ", rating = " + teacher.getRating()
-            +" WHERE teacher_id = " + teacher.getTeacherId();
+            + "', phone_no = '" + teacher.getPhoneNum()
+            + "', classroom_id = '" + ConvertUtil.idToString(teacher.getClassroom_id())
+            + "', group_id = '" + ConvertUtil.idToString(teacher.getGroup_id())
+            + "', rating = '" + teacher.getRating()
+            +" WHERE teacher_id = '" + teacher.getTeacherId() + "';";
         DatabaseUtil.executeSQL(sql);
     }
 
@@ -149,7 +149,7 @@ public class TeacherDao {
             String.valueOf(teacher.getTeacherId()));
     }
 
-    public static void deleteTeacherDao(int teacherId) {
+    public static void deleteTeacherDao(long teacherId) {
         DatabaseUtil.deleteRecord("teacher", "teacher_id",
             String.valueOf(teacherId));
     }

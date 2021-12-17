@@ -5,13 +5,21 @@
  */
 package edu.neu.csye6200.view.ui.admin;
 
+import edu.neu.csye6200.controller.SchoolController;
+import edu.neu.csye6200.controller.StudentController;
 import edu.neu.csye6200.controller.TeacherController;
+import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.utils.AutoAssignUtil;
 import edu.neu.csye6200.utils.ConvertUtil;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -118,6 +126,13 @@ public class TeacherJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnDeleteActionPerformed(e);
+            }
+        });
+
         lblFirstName2.setText("Email:");
 
         lblPhoneNumber.setText("Phone Number:");
@@ -125,7 +140,19 @@ public class TeacherJPanel extends javax.swing.JPanel {
         lblFirstName3.setText("Parent Name:");
 
         btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnRefreshActionPerformed(e);
+            }
+        });
 
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnUpdateActionPerformed(e);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,6 +282,29 @@ public class TeacherJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRefreshActionPerformed(ActionEvent e) {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        model.fireTableDataChanged();
+        populateTable();
+    }
+
+    private void btnDeleteActionPerformed(ActionEvent e) {
+        int selectedRowIndex = jTable2.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        long teacherId = ConvertUtil.stringToLong(model.getValueAt(selectedRowIndex, 0).toString());
+        TeacherController teacherController = new TeacherController();
+        teacherController.deleteTeacher(teacherId);
+        ((DefaultTableModel) jTable2.getModel()).fireTableDataChanged();
+        btnRefreshActionPerformed(e);
+    }
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
 
@@ -265,14 +315,15 @@ public class TeacherJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String parentName = txtParentName.getText();
         String phoneNumber = txtPhoneNumber.getText();
-
+        Date dob = jDateChooser1.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
         try {
             if(firstName == null || firstName.isEmpty()){
                 throw new NullPointerException("First Name field cannot be Empty !!!");
@@ -327,33 +378,35 @@ public class TeacherJPanel extends javax.swing.JPanel {
             return;
         }
 
+        Teacher teacher = new Teacher(firstName, lastName, address, dateOfBirth, email, ConvertUtil.stringToLong(phoneNumber), parentName);
+//        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+        TeacherController teacherController = new TeacherController();
+        List<Teacher> teachers = teacherController.getAllTeachers();
+        long lastTeachId = teachers.get(teachers.size() - 1).getTeacherId();
+        //TODO: Assign Teacher to group
+        teacher.setTeacherId(lastTeachId + 1);
+        teacherController.addTeacher(teacher);
+        btnRefreshActionPerformed(evt);
     }
 
     private void btnPopulateTableActionPerformed(ActionEvent evt){
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        TeacherController controller = new TeacherController();
-        List<Teacher> teacherList = controller.getAllTeachers();
-            for(Teacher teacher: teacherList){
-                String studentId = ConvertUtil.longToString(teacher.getTeacherId());
-                String firstName = teacher.getFirstName();
-                String lastName = teacher.getFirstName();
-                String parentName = teacher.getParentName();
-                String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
-                String email = teacher.getEmail();
-                String address = teacher.getAddress();
-                Object[] row = {studentId, firstName, lastName, parentName, phoneNumber, email, address};
-                model.addRow(row);
-            }
+        populateTable();
     }
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String firstName = txtFirstName.getText();
-        String lastName = txtLastName.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        String parentName = txtParentName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
 
+
+        int row = jTable2.getSelectedRow();
+        long teacherId = ConvertUtil.stringToLong(jTable2.getModel().getValueAt(row, 0).toString());
+        String firstName = jTable2.getModel().getValueAt(row, 1).toString();
+        String lastName = jTable2.getModel().getValueAt(row, 2).toString();
+        String address = jTable2.getModel().getValueAt(row, 3).toString();
+        String email = jTable2.getModel().getValueAt(row, 4).toString();
+        String parentName = jTable2.getModel().getValueAt(row, 5).toString();
+        String phoneNumber = jTable2.getModel().getValueAt(row, 6).toString();
+        Date dob = ConvertUtil.stringToDate(jTable2.getModel().getValueAt(row, 5).toString());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate dateOfBirth = ConvertUtil.stringtoLocalDate(dateFormat.format(dob));
         try {
             if(firstName == null || firstName.isEmpty()){
                 throw new NullPointerException("First Name field cannot be Empty !!!");
@@ -407,8 +460,32 @@ public class TeacherJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Parent Phone Number field cannot be Empty !!!");
             return;
         }
+//        Teacher teacher = new Teacher(firstName, lastName, address, dateOfBirth, email, ConvertUtil.stringToLong(phoneNumber), parentName);
+////        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
+//        TeacherController teacherController = new TeacherController();
+//        //TODO: Assign Teacher to group
+//        teacherController.updateTeacher(teacher);
+//        btnRefreshActionPerformed(evt);
+        SchoolController schoolController = new SchoolController();
+        schoolController.rateAllTeachers();
     }//GEN-LAST:event_btnAddActionPerformed
 
+    public void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        TeacherController controller = new TeacherController();
+        List<Teacher> studentList = controller.getAllTeachers();
+        for(Teacher teacher: studentList){
+            String teacherId = ConvertUtil.longToString(teacher.getTeacherId());
+            String firstName = teacher.getFirstName();
+            String lastName = teacher.getLastName();
+            String parentName = teacher.getParentName();
+            String phoneNumber = ConvertUtil.longToString(teacher.getPhoneNum());
+            String email = teacher.getEmail();
+            String address = teacher.getAddress();
+            Object[] row = {teacherId, firstName, lastName, parentName, phoneNumber, email, address};
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;

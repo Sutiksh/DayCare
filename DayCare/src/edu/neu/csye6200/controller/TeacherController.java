@@ -42,7 +42,7 @@ public class TeacherController {
 		api.deleteTeacher(teacher);
 	}
 
-	public void deleteTeacher(int teacherId) {
+	public void deleteTeacher(long teacherId) {
 		api.deleteTeacher(teacherId);
 	}
 

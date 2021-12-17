@@ -491,7 +491,6 @@ public class StudentJPanel extends javax.swing.JPanel {
 
     private void btnTrackImmunizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrackImmunizationActionPerformed
         int selectedRowIndex = tblStudentInfo.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblStudentInfo.getModel();
 
         long studentId = ConvertUtil.stringToLong(tblStudentInfo.getModel().getValueAt(selectedRowIndex, 0).toString());
 

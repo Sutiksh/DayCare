@@ -2,7 +2,7 @@ package edu.neu.csye6200.model;
 
 import edu.neu.csye6200.utils.ConvertUtil;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
 
 public class Student extends Person {
