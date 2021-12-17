@@ -4,6 +4,8 @@ import edu.neu.csye6200.api.StudentApi;
 import edu.neu.csye6200.dao.StudentDao;
 import edu.neu.csye6200.model.Student;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -12,6 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.sql.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +128,7 @@ public class ConcreteStudentApi implements StudentApi {
             mimeMessage.setSubject(sub);
             MimeMultipart multipart = new MimeMultipart();
             MimeBodyPart bodypart = new MimeBodyPart();
-            bodypart.setContent(body, "html/text");
+            bodypart.setText(body);
             multipart.addBodyPart(bodypart);
             mimeMessage.setContent(multipart);
         } catch (MessagingException me){
@@ -143,8 +146,10 @@ public class ConcreteStudentApi implements StudentApi {
             mimeMessage.setSubject(sub);
             MimeMultipart multipart = new MimeMultipart();
             MimeBodyPart bodypart = new MimeBodyPart();
-            bodypart.setContent(body, "html/text");
+            bodypart.setText(body);
+
             multipart.addBodyPart(bodypart);
+
             mimeMessage.setContent(multipart);
         } catch (MessagingException me){
             me.printStackTrace();

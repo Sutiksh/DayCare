@@ -149,6 +149,7 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
         for(Student student: students){
             studentController.sendEmail(student);
         }
+//        studentController.sendEmail(students.get(students.size() - 2));
     }//GEN-LAST:event_btnEmailActionPerformed
 
 
