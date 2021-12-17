@@ -143,6 +143,12 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
 //        }
 //        StudentController controller = new StudentController();
 //        controller.sendEmail(this.studentList.get(selectedRowIndex));
+
+        StudentController studentController = new StudentController();
+        List<Student> students = studentController.getAllStudents();
+        for(Student student: students){
+            studentController.sendEmail(student);
+        }
     }//GEN-LAST:event_btnEmailActionPerformed
 
 
