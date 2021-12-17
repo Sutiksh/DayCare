@@ -34,10 +34,9 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
 //    }
 
     public TrackImmunizationJPanel(JPanel userProcessContainer, long studentId) {
-        initComponents();
-
         this.userProcessContainer = userProcessContainer;
         this.studentId = studentId;
+        initComponents();
     }
 
     /**

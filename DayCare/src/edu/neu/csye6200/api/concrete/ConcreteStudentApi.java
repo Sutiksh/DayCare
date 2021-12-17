@@ -80,6 +80,14 @@ public class ConcreteStudentApi implements StudentApi {
     }
 
     @Override
+    public void sendMail(Student student){
+        setupServerProp();
+        draftMail(student);
+        mailingInfo();
+        System.out.println("Email Sent Successfully!");
+    }
+
+    @Override
     public void addStudent(List<Student> students) {
         for(Student student : students) {
             addStudent(student);
@@ -102,7 +110,7 @@ public class ConcreteStudentApi implements StudentApi {
 
     }
 
-    private MimeMessage draftMail(List<Student> studentList, String vaccineName, int doseNumber) {
+    private void draftMail(List<Student> studentList, String vaccineName, int doseNumber) {
         List<String> emaillist = new ArrayList<>();
         for(Student stud: studentList) {
             emaillist.add(stud.getEmail());
@@ -123,7 +131,24 @@ public class ConcreteStudentApi implements StudentApi {
         } catch (MessagingException me){
             me.printStackTrace();
         }
-        return mimeMessage;
+    }
+
+    private void draftMail(Student student) {
+        String sub = "Registration Reminder";
+        String body = "Your child‘s registration is success!";
+        mimeMessage = new MimeMessage(session);
+        try {
+            mimeMessage.addRecipient(Message.RecipientType.TO,
+                    new InternetAddress(student.getEmail()));
+            mimeMessage.setSubject(sub);
+            MimeMultipart multipart = new MimeMultipart();
+            MimeBodyPart bodypart = new MimeBodyPart();
+            bodypart.setContent(body, "html/text");
+            multipart.addBodyPart(bodypart);
+            mimeMessage.setContent(multipart);
+        } catch (MessagingException me){
+            me.printStackTrace();
+        }
     }
 
     private void setupServerProp() {

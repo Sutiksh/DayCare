@@ -28,7 +28,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="javax.mail.api" level="project" />
-    <orderEntry type="library" name="toedter.jcalendar" level="project" />
+    <orderEntry type="library" exported="" name="javax.mail.api" level="project" />
+    <orderEntry type="library" exported="" name="toedter.jcalendar" level="project" />
   </component>
 </module>
