@@ -80,19 +80,17 @@ public class TeacherDao {
         return teachers;
     }
 
-    public static List<Teacher> getTeacherInGroupDao(int classroomId, int groupId) {
-        List<Teacher> teachers = new ArrayList<>();
-
+    public static Teacher getTeacherInGroupDao(int classroomId, int groupId) {
         try {
             Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM teacher "
                 + "WHERE classroom_id = " + classroomId
-                + ", group_id = " + groupId;
+                + " AND group_id = " + groupId;
             ResultSet rs = state.executeQuery(sql);
-            while(rs.next()){
-                teachers.add(TeacherHelper.createTeacher(rs));
+            if(rs.next()){
+                return TeacherHelper.createTeacher(rs);
             }
 
             rs.close();
@@ -101,11 +99,19 @@ public class TeacherDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return teachers;
+        return null;
+    }
+
+    public static void assignTeacherToGroupDao(Teacher teacher, int classroomId, int groupId) {
+        String sql = "UPDATE teacher set classroom_id = " + classroomId + ", group_id = " + groupId;
+        DatabaseUtil.executeSQL(sql);
+
+        sql = "UPDATE group1 SET teacher_id = " + teacher.getTeacherId();
+        DatabaseUtil.executeSQL(sql);
     }
 
     public static void addTeacherDao(Teacher teacher) {
-        String sql = "INSERT into TEACHER (teacher_id, classroom_id, group_id, "
+        String sql = "INSERT into teacher (teacher_id, classroom_id, group_id, "
             + "first_name, last_name, date_of_birth, "
             + "address, parent_name, phone_no, rating)"
             + "VALUES("
@@ -130,11 +136,11 @@ public class TeacherDao {
             + "', address = '" + teacher.getAddress()
             + "', date_of_birth = '" + teacher.getDateOfBirth()
             + "', parent_name = '" + teacher.getParentName()
-            + "', phone_no = " + teacher.getPhoneNum()
-            + ", classroom_id = " + ConvertUtil.idToString(teacher.getClassroom_id())
-            + ", group_id = " + ConvertUtil.idToString(teacher.getGroup_id())
-            + ", rating = " + teacher.getRating()
-            +" WHERE teacher_id = " + teacher.getTeacherId();
+            + "', phone_no = '" + teacher.getPhoneNum()
+            + "', classroom_id = '" + ConvertUtil.idToString(teacher.getClassroom_id())
+            + "', group_id = '" + ConvertUtil.idToString(teacher.getGroup_id())
+            + "', rating = '" + teacher.getRating()
+            +" WHERE teacher_id = '" + teacher.getTeacherId() + "';";
         DatabaseUtil.executeSQL(sql);
     }
 
@@ -143,7 +149,7 @@ public class TeacherDao {
             String.valueOf(teacher.getTeacherId()));
     }
 
-    public static void deleteTeacherDao(int teacherId) {
+    public static void deleteTeacherDao(long teacherId) {
         DatabaseUtil.deleteRecord("teacher", "teacher_id",
             String.valueOf(teacherId));
     }
@@ -153,17 +159,34 @@ public class TeacherDao {
             Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
-            String sql = "SELECT rating FROM teacher WHERE teacher_id = " + teacherId;
+            String sql = "SELECT * FROM teacher WHERE teacher_id = " + teacherId;
             ResultSet rs = state.executeQuery(sql);
-            int rating = 0;
+            int ratingAvg = 0;
             if(rs.next()){
-                rating = rs.getInt("rating");
+                int classroom_id = rs.getInt("classroom_id");
+                int group_id = rs.getInt("group_id");
+
+                sql = "SELECT raing FROM student WHERE classroom_id = " + classroom_id +
+                        " AND group_id = " + group_id;
+                rs = state.executeQuery(sql);
+                int ratingSum = 0;
+                int count = 0;
+                while(rs.next()){
+                    ratingSum += rs.getInt("rating");
+                    count++;
+                }
+                if(count == 0) count = 1;
+                ratingAvg = ratingSum / count;
+
+                sql = "UPDATE teacher SET raing = " + ratingAvg +
+                        " WHERE teacher_id = " + teacherId;
+                DatabaseUtil.executeSQL(sql);
             }
 
             rs.close();
             state.close();
             con.close();
-            return rating;
+            return ratingAvg;
         }catch (SQLException e){
             e.printStackTrace();
         }

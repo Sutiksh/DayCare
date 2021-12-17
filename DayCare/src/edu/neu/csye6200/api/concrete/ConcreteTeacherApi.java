@@ -23,8 +23,15 @@ public class ConcreteTeacherApi implements TeacherApi {
     }
 
     @Override
-    public List<Teacher> getTeacherInGroup(int classroomId, int groupId) {
+    public Teacher getTeacherInGroup(int classroomId, int groupId) {
         return TeacherDao.getTeacherInGroupDao(classroomId, groupId);
+    }
+
+    @Override
+    public void assignTeacherToGroup(Teacher teacher, int classroomId, int groupId) {
+        TeacherDao.assignTeacherToGroupDao(teacher, classroomId, groupId);
+        teacher.setClassroom_id(classroomId);
+        teacher.setGroup_id(groupId);
     }
 
     @Override
@@ -43,7 +50,7 @@ public class ConcreteTeacherApi implements TeacherApi {
     }
 
     @Override
-    public void deleteTeacher(int teacherId) {
+    public void deleteTeacher(long teacherId) {
         TeacherDao.deleteTeacherDao(teacherId);
     }
 

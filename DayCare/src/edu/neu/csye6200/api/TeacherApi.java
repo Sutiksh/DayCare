@@ -12,7 +12,9 @@ public interface TeacherApi {
 
     List<Teacher> getAllTeachersInClassroom(int classroomId);
 
-    List<Teacher> getTeacherInGroup(int classroomId, int groupId);
+    Teacher getTeacherInGroup(int classroomId, int groupId);
+
+    void assignTeacherToGroup(Teacher teacher, int classroomId, int groupId);
 
     void addTeacher(Teacher teacher);
 
@@ -20,7 +22,7 @@ public interface TeacherApi {
 
     void deleteTeacher(Teacher teacher);
 
-    void deleteTeacher(int teacherId);
+    void deleteTeacher(long teacherId);
 
     double getRating(int teacherId);
 }

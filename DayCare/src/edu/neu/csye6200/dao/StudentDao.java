@@ -113,7 +113,7 @@ public class StudentDao {
             Statement state = con.createStatement();
             String sql = "SELECT * FROM student "
                     + "WHERE classroom_id = " + classroomId
-                    + ", group_id = " + groupId;
+                    + " AND group_id = " + groupId;
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 students.add(StudentHelper.createStudent(rs));
@@ -126,6 +126,27 @@ public class StudentDao {
             e.printStackTrace();
         }
         return students;
+    }
+
+    public static Student getStudentByIdDao(long studentId){
+
+        try {
+            Connection con = DatabaseUtil.getRemoteConnection();
+            assert con != null;
+            Statement state = con.createStatement();
+            String sql = "SELECT * FROM student WHERE student_id = " + studentId;
+            ResultSet rs = state.executeQuery(sql);
+            if (rs.next()) {
+                return StudentHelper.createStudent(rs);
+            }
+
+            rs.close();
+            state.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void clearClassroomAndGroup(){

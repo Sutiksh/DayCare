@@ -160,9 +160,12 @@ public class AutoAssignUtil {
         }
 
         for (int i = 0; i < count; i++) {
-            partialGroupFillingStudents.add(AllStudentList.get(i));
+            if(i >= AllStudentList.size()){
+                break;
+            }
+                partialGroupFillingStudents.add(AllStudentList.get(i));
         }
-        AllStudentList.removeAll(partialGroupFillingStudents);
+//        AllStudentList.removeAll(partialGroupFillingStudents);
 
 
         if (groupList.size() > 0) {
@@ -184,6 +187,9 @@ public class AutoAssignUtil {
                 // If group has enough space, add students to it.
                 List<Student> addedStudents = new ArrayList<>();
                 for(int i = 0; i < seat; i++) {
+                    if(i >= studentFromDb.size()){
+                        break;
+                    }
                     Student student = studentFromDb.get(i);
                     student.setClassroom_id(group.getClassroomId());
                     student.setGroup_id(group.getGroupId());
@@ -218,7 +224,7 @@ public class AutoAssignUtil {
             int currentGroupNum = classroom.getNumOfGroup();
             while(currentGroupNum < classroomType.getMaxGroupPerClass()){
                 Group newGroup =
-                        groupFactory.getObject(currentGroupNum + 1,
+                        groupFactory.getObject(currentGroupNum,
                                 classroom.getClassroomId());
 
                 List<Student> addedStudents = new ArrayList<>();
@@ -226,13 +232,14 @@ public class AutoAssignUtil {
                     i++) {
                     Student student = studentFromDb.get(i);
                     student.setClassroom_id(classroom.getClassroomId());
-                    student.setGroup_id(currentGroupNum + 1);
+                    student.setGroup_id(currentGroupNum);
                     studentApi.updateStudent(student);
                     addedStudents.add(student);
                 }
                 studentFromDb.removeAll(addedStudents);
+                currentGroupNum++;
                 classroom.setNumOfStudent(classroom.getNumOfStudent() + addedStudents.size());
-                classroom.setNumOfGroup(classroom.getNumOfGroup() + 1);
+                classroom.setNumOfGroup(currentGroupNum);
 
                 groupApi.addGroup(newGroup);
                 totalNewGroup--;
@@ -259,23 +266,24 @@ public class AutoAssignUtil {
             int currentGroupNum = newClassroom.getNumOfGroup();
             while(currentGroupNum < classroomType.getMaxGroupPerClass()){
                 Group newGroup =
-                        groupFactory.getObject(currentGroupNum + 1,
+                        groupFactory.getObject(currentGroupNum,
                                 newClassroom.getClassroomId());
                 System.out.println("Created a new group  ID: " + newGroup.getGroupId());
-                currentGroupNum++;
+//                currentGroupNum++;
 
                 List<Student> addedStudents = new ArrayList<>();
                 for(int i = 0; i < groupType.getMaxStudentPerGroup() && i < studentFromDb.size();
                     i++) {
                     Student student = studentFromDb.get(i);
                     student.setClassroom_id(newClassroom.getClassroomId());
-                    student.setGroup_id(currentGroupNum + 1);
+                    student.setGroup_id(currentGroupNum);
                     studentApi.updateStudent(student);
                     addedStudents.add(student);
                 }
                 studentFromDb.removeAll(addedStudents);
+                currentGroupNum++;
                 newClassroom.setNumOfStudent(newClassroom.getNumOfStudent() + addedStudents.size());
-                newClassroom.setNumOfGroup(newClassroom.getNumOfGroup() + 1);
+                newClassroom.setNumOfGroup(currentGroupNum);
 
                 groupApi.addGroup(newGroup);
                 totalNewGroup--;

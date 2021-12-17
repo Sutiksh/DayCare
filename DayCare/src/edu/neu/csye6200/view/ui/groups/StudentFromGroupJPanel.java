@@ -5,6 +5,18 @@
  */
 package edu.neu.csye6200.view.ui.groups;
 
+import edu.neu.csye6200.controller.ImmunizationController;
+import edu.neu.csye6200.controller.StudentController;
+import edu.neu.csye6200.model.Immunization;
+import edu.neu.csye6200.model.Student;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
 /**
  *
  * @author nagashreeseshadri
@@ -15,11 +27,14 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
     /**
      * Creates new form Student
      */
-    public StudentFromGroupJPanel() {
-        initComponents();
-        
-    }
+    private JPanel userProcessContainer;
+    private long studentId;
+    public StudentFromGroupJPanel(JPanel userProcessContainer, long studentId) {
+        this.userProcessContainer = userProcessContainer;
+        this.studentId = studentId;
 
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,51 +101,63 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
             },
             new String [] {
                 "Student ID", "Immunization History"
             }
         ));
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ImmunizationController controller = new ImmunizationController();
+        List<Immunization> immuList = controller.getImmunizationByIdDao(studentId);
+        for(Immunization imm: immuList){
+            Object[] row = {String.valueOf(studentId), imm.getImmunizationName()};
+            model.addRow(row);
+        }
+
         jScrollPane2.setViewportView(jTable1);
 
         lblStudentInfoHeading3.setText("Track Student Immunization History");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
             },
             new String [] {
                 "Student ID", "Enrollment History"
             }
         ));
+
+        StudentController controller_2 = new StudentController();
+        Student student = controller_2.getStudentById(studentId);
+
         jScrollPane3.setViewportView(jTable2);
 
-        lblEmail.setText("Email:");
+        lblEmail.setText(student.getEmail());
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText(student.getFirstName());
 
-        jLabel2.setText("jLabel1");
+        jLabel2.setText(student.getAddress());
 
-        jLabel3.setText("jLabel1");
+        jLabel3.setText(student.getLastName());
 
-        jLabel4.setText("jLabel1");
+        jLabel4.setText(String.valueOf(student.getRegistrationDate()));
 
-        jLabel5.setText("jLabel1");
+        jLabel5.setText(String.valueOf(student.getAge()));
 
-        jLabel6.setText("jLabel1");
+        jLabel6.setText("List below");
 
-        jLabel7.setText("jLabel1");
+        jLabel7.setText(student.getParentName());
 
-        jLabel8.setText("jLabel1");
+        jLabel8.setText(String.valueOf(student.getPhoneNum()));
 
         jLabel9.setText("jLabel1");
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnBackActionPerformed(e);
+            }
+        });
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -257,6 +284,13 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
                 .addContainerGap(223, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

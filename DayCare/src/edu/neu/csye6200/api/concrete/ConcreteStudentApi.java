@@ -47,6 +47,11 @@ public class ConcreteStudentApi implements StudentApi {
     }
 
     @Override
+    public Student getStudentById(long studentId) {
+        return StudentDao.getStudentByIdDao(studentId);
+    }
+
+    @Override
     public void addStudent(Student student) {
         StudentDao.addStudentDao(student);
     }
@@ -72,6 +77,13 @@ public class ConcreteStudentApi implements StudentApi {
         draftMail(studentList, vaccineName, doseNumber);
         mailingInfo();
         System.out.println("Email Sent Successfully!");
+    }
+
+    @Override
+    public void addStudent(List<Student> students) {
+        for(Student student : students) {
+            addStudent(student);
+        }
     }
 
     private void mailingInfo() {

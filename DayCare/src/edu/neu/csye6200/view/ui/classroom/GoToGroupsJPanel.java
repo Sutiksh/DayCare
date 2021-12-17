@@ -5,23 +5,31 @@
  */
 package edu.neu.csye6200.view.ui.classroom;
 
+import edu.neu.csye6200.controller.ClassroomController;
+import edu.neu.csye6200.controller.GroupController;
+import edu.neu.csye6200.model.Classroom;
+import edu.neu.csye6200.model.Group;
 import edu.neu.csye6200.view.ui.groups.GroupJPanel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 /**
  *
  * @author nagashreeseshadri
  */
 public class GoToGroupsJPanel extends JPanel {
+    private int classroomId;
 
     /**
      * Creates new form GoToGroupsJPanel
      */
     private JPanel userProcessContainer;
     
-    public GoToGroupsJPanel(JPanel userProcessContainer) {
+    public GoToGroupsJPanel(JPanel userProcessContainer, int classroomId) {
+        this.classroomId = classroomId;
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -35,7 +43,6 @@ public class GoToGroupsJPanel extends JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         lblStudentInfoHeading1 = new javax.swing.JLabel();
         lblClassroomID = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -49,16 +56,29 @@ public class GoToGroupsJPanel extends JPanel {
         lblClassroomID.setText("jLabel1");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
+            new Object [][] {},
             new String [] {
-                "Group ID"
+                "Classroom ID, ", "Group ID", "Teacher ID"
             }
         ));
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        GroupController controller = new GroupController();
+        List<Group> groupList;
+        if(classroomId < 0){
+            groupList = controller.getAllGroupsInClassroom(0);
+        }
+        else{
+            groupList = controller.getAllGroupsInClassroom(classroomId);
+        }
+
+        for(Group group: groupList){
+            String groupId = String.valueOf(group.getGroupId());
+            String teacherID = String.valueOf(group.getTeacherId());
+            Object[] row = {classroomId, groupId, teacherID};
+            model.addRow(row);
+        }
+
         jScrollPane2.setViewportView(jTable1);
 
         btnGroupInfo.setText("View Group Info");
@@ -114,12 +134,17 @@ public class GoToGroupsJPanel extends JPanel {
 
     private void btnGroupInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroupInfoActionPerformed
         // TODO add your handling code here:
-    GroupJPanel groupJPanel = new GroupJPanel(userProcessContainer);
-    userProcessContainer.add("Student Panel Opening", groupJPanel);
-    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    layout.next(userProcessContainer);
-        
-        
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if(selectedRowIndex < 0){
+            selectedRowIndex = 0;
+        }
+        int groupId = Integer.parseInt(jTable1.getModel()
+                .getValueAt(selectedRowIndex, 1).toString());
+
+        GroupJPanel groupJPanel = new GroupJPanel(userProcessContainer, classroomId, groupId);
+        userProcessContainer.add("Student Panel Opening", groupJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnGroupInfoActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

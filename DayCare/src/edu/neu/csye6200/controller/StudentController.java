@@ -25,6 +25,10 @@ public class StudentController {
 		return api.getAllStudentsInGroup(classroomId, groupId);
 	}
 
+	public Student getStudentById(long studentId){
+		return api.getStudentById(studentId);
+	}
+
 	public void addStudent(Student student) {
 		api.addStudent(student);
 	}
@@ -43,5 +47,9 @@ public class StudentController {
 
 	public void sendEmail(List<Student> studentList, String vaccineName, int doseNumber){
 		api.sendMail(studentList, vaccineName, doseNumber);
+	}
+
+	public void addStudent(List<Student> students) {
+		api.addStudent(students);
 	}
 }

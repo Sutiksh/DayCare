@@ -27,6 +27,8 @@ public interface StudentApi {
 
     List<Student> getAllStudentsInGroup(int classroomId, int groupId);
 
+    Student getStudentById(long studentId);
+
     void addStudent(Student student);
 
     void updateStudent(Student student);
@@ -36,4 +38,6 @@ public interface StudentApi {
     void deleteStudent(long studentId);
 
     void sendMail(List<Student> studentList, String vaccineName, int doseNumber);
+
+    void addStudent(List<Student> students);
 }
