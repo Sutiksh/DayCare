@@ -22,7 +22,7 @@ public interface TeacherApi {
 
     void deleteTeacher(Teacher teacher);
 
-    void deleteTeacher(int teacherId);
+    void deleteTeacher(long teacherId);
 
     double getRating(int teacherId);
 }

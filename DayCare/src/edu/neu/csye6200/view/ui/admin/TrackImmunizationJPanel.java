@@ -88,7 +88,7 @@ public class TrackImmunizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblStuID.setText("jLabel1");
+        lblStuID.setText(String.valueOf(studentId));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

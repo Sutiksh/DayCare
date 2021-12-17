@@ -50,7 +50,7 @@ public class ConcreteTeacherApi implements TeacherApi {
     }
 
     @Override
-    public void deleteTeacher(int teacherId) {
+    public void deleteTeacher(long teacherId) {
         TeacherDao.deleteTeacherDao(teacherId);
     }
 

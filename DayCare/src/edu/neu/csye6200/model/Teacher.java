@@ -18,7 +18,11 @@ public class Teacher extends Person {
 		this.teacherId = teacherId;
 	}
 
-	public double getRating() {
+    public Teacher(String firstName, String lastName, String address, LocalDate dateOfBirth, String email,  long phoneNumber, String parentName) {
+        super(firstName, lastName, address, dateOfBirth, email,  phoneNumber, parentName);
+    }
+
+    public double getRating() {
 		return rating;
 	}
 

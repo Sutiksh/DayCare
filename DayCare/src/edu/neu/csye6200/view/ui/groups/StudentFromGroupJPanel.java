@@ -12,6 +12,9 @@ import edu.neu.csye6200.model.Student;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -32,7 +35,6 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -149,6 +151,13 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
         jLabel8.setText(String.valueOf(student.getPhoneNum()));
 
         jLabel9.setText("jLabel1");
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnBackActionPerformed(e);
+            }
+        });
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -275,6 +284,13 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
                 .addContainerGap(223, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
