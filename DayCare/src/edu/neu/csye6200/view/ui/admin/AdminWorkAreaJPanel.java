@@ -142,6 +142,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnTrackStudentEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTeachers1ActionPerformed
         // TODO add your handling code here:
+        TrackStudentEnrollmentJPanel trackStudentEnrollmentJPanel = new TrackStudentEnrollmentJPanel(userProcessContainer);
+        userProcessContainer.add("Tracking student enrollment", trackStudentEnrollmentJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+                                       
         
     }//GEN-LAST:event_btnManageTeachers1ActionPerformed
 

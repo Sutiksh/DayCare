@@ -168,12 +168,12 @@
               </Group>
               <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnAdd" linkSize="3" alignment="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnUpdate" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnDelete" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnImmune" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPopulateTable" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnAdd" linkSize="3" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="btnUploadCSV" linkSize="3" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>

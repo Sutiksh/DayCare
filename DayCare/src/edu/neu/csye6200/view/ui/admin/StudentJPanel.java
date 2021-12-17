@@ -294,12 +294,12 @@ public class StudentJPanel extends javax.swing.JPanel {
                     .addComponent(lblFirstName4))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnUpdate)
                         .addComponent(btnDelete)
                         .addComponent(btnImmune)
-                        .addComponent(btnPopulateTable)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnPopulateTable))
                     .addComponent(btnUploadCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,12 +380,14 @@ public class StudentJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRowIndex = tblStudentInfo.getSelectedRow();
 
-        long studentId = ConvertUtil.stringToLong(tblStudentInfo.getModel().getValueAt(selectedRowIndex, 0).toString());
-
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a student to view Immunization.");
             return;
         }
+        
+        long studentId = ConvertUtil.stringToLong(tblStudentInfo.getModel().getValueAt(selectedRowIndex, 0).toString());
+
+        
 
         TrackImmunizationJPanel trackImmunizationJPanel = new edu.neu.csye6200.view.ui.admin.TrackImmunizationJPanel(userProcessContainer, studentId);
         userProcessContainer.add("Tracking student Immunization", trackImmunizationJPanel);
