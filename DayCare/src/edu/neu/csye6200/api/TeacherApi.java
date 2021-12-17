@@ -14,6 +14,8 @@ public interface TeacherApi {
 
     Teacher getTeacherInGroup(int classroomId, int groupId);
 
+    void assignTeacherToGroup(Teacher teacher, int classroomId, int groupId);
+
     void addTeacher(Teacher teacher);
 
     void updateTeacher(Teacher teacher);

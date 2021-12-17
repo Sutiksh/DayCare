@@ -102,6 +102,14 @@ public class TeacherDao {
         return null;
     }
 
+    public static void assignTeacherToGroupDao(Teacher teacher, int classroomId, int groupId) {
+        String sql = "UPDATE teacher set classroom_id = " + classroomId + ", group_id = " + groupId;
+        DatabaseUtil.executeSQL(sql);
+
+        sql = "UPDATE group1 SET teacher_id = " + teacher.getTeacherId();
+        DatabaseUtil.executeSQL(sql);
+    }
+
     public static void addTeacherDao(Teacher teacher) {
         String sql = "INSERT into TEACHER (teacher_id, classroom_id, group_id, "
             + "first_name, last_name, date_of_birth, "

@@ -28,6 +28,13 @@ public class ConcreteTeacherApi implements TeacherApi {
     }
 
     @Override
+    public void assignTeacherToGroup(Teacher teacher, int classroomId, int groupId) {
+        TeacherDao.assignTeacherToGroupDao(teacher, classroomId, groupId);
+        teacher.setClassroom_id(classroomId);
+        teacher.setGroup_id(groupId);
+    }
+
+    @Override
     public void addTeacher(Teacher teacher) {
         TeacherDao.addTeacherDao(teacher);
     }

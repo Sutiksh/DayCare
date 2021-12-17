@@ -2,6 +2,7 @@ package edu.neu.csye6200.controller;
 
 import edu.neu.csye6200.api.TeacherApi;
 import edu.neu.csye6200.api.concrete.ConcreteTeacherApi;
+import edu.neu.csye6200.dao.TeacherDao;
 import edu.neu.csye6200.model.Teacher;
 
 import java.util.List;
@@ -23,6 +24,10 @@ public class TeacherController {
 
 	public Teacher getTeacherInGroup(int classroomId, int groupId) {
 		return api.getTeacherInGroup(classroomId, groupId);
+	}
+
+	public void assignTeacherToGroup(Teacher teacher, int classroomId, int groupId) {
+		api.assignTeacherToGroup(teacher, classroomId, groupId);
 	}
 
 	public void addTeacher(Teacher teacher) {
