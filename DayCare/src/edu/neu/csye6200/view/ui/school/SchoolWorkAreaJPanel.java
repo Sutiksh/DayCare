@@ -45,9 +45,13 @@ public class SchoolWorkAreaJPanel extends JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
-        lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         lblStudentInfoHeading1.setText("Welcome to the Day Care");
 
+        btnListClassRooms.setBackground(new java.awt.Color(153, 255, 255));
+        btnListClassRooms.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnListClassRooms.setText("List Classrooms");
         btnListClassRooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +59,8 @@ public class SchoolWorkAreaJPanel extends JPanel {
             }
         });
 
+        btnAdmin.setBackground(new java.awt.Color(153, 255, 255));
+        btnAdmin.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnAdmin.setText("Enter as Admin");
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +87,7 @@ public class SchoolWorkAreaJPanel extends JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblStudentInfoHeading2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 621, Short.MAX_VALUE)
                 .addComponent(btnListClassRooms)
                 .addGap(350, 350, 350))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -98,7 +104,7 @@ public class SchoolWorkAreaJPanel extends JPanel {
                         .addGap(196, 196, 196)
                         .addComponent(btnAdmin))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(426, 426, 426)
+                        .addGap(481, 481, 481)
                         .addComponent(lblStudentInfoHeading1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +129,7 @@ public class SchoolWorkAreaJPanel extends JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnListClassRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()

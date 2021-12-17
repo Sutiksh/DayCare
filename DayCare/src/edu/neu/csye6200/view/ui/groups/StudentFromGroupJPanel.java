@@ -74,6 +74,9 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        lblStudentInfoHeading.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblStudentInfoHeading.setText("Student Information");
 
         lblFirstName.setText("First Name:");
@@ -94,16 +97,15 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         lblImmunizationDate.setText("Immunization Date:");
 
+        btnBack.setBackground(new java.awt.Color(153, 255, 255));
         btnBack.setText("<<Back");
 
         lblStudentInfoHeading2.setText("Track Student Enrollment History");
 
+        jTable1.setBackground(new java.awt.Color(153, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Student ID", "Immunization History"
@@ -113,12 +115,10 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         lblStudentInfoHeading3.setText("Track Student Immunization History");
 
+        jTable2.setBackground(new java.awt.Color(153, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Student ID", "Enrollment History"
@@ -212,8 +212,8 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
                                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(btnBack)
-                                                .addGap(236, 236, 236)
-                                                .addComponent(lblStudentInfoHeading))))
+                                                .addGap(321, 321, 321)
+                                                .addComponent(lblStudentInfoHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,12 +239,13 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblStudentInfoHeading)
-                        .addGap(124, 124, 124)
+                        .addGap(140, 140, 140)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStudentInfoHeading, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblFirstName)

@@ -64,17 +64,17 @@ public class GroupJPanel extends JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading1.setText("Hello, you are viewing the Group");
 
         lblGroupID.setText("jLabel1");
 
+        tblGroupInfoStudent.setBackground(new java.awt.Color(153, 255, 255));
         tblGroupInfoStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Student ID", "Student First Name", "Student Last Name"
@@ -96,6 +96,7 @@ public class GroupJPanel extends JPanel {
 
         lblLastNameTeacher.setText("jLabel1");
 
+        btnViewStudentInfo.setBackground(new java.awt.Color(153, 255, 255));
         btnViewStudentInfo.setText("View Student Info");
         btnViewStudentInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +104,7 @@ public class GroupJPanel extends JPanel {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(153, 255, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +171,7 @@ public class GroupJPanel extends JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStudentInfoHeading1)
-                            .addComponent(btnBack))
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblGroupID)
                         .addGap(44, 44, 44)

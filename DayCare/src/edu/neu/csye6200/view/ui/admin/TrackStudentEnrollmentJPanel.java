@@ -47,16 +47,15 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
         jTable2 = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnSendEmail = new javax.swing.JButton();
 
         lblStudentInfoHeading.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblStudentInfoHeading.setText("Student Enrollment Information");
 
+        jTable2.setBackground(new java.awt.Color(153, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Student ID", "First Name", "Last Name", "Email", "Last Registration Date", "Next Registration Date"
@@ -64,6 +63,8 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
         ));
         jScrollPane3.setViewportView(jTable2);
 
+        btnBack.setBackground(new java.awt.Color(153, 255, 255));
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +75,10 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/banner-enrollment-1.jpeg"))); // NOI18N
         jLabel1.setText("jLabel1");
 
+        btnSendEmail.setBackground(new java.awt.Color(153, 255, 255));
+        btnSendEmail.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnSendEmail.setText("Send Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,18 +86,21 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(btnBack)
-                                .addGap(300, 300, 300)
-                                .addComponent(lblStudentInfoHeading))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(134, 134, 134)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 281, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addComponent(btnBack)
+                        .addGap(300, 300, 300)
+                        .addComponent(lblStudentInfoHeading)
+                        .addGap(0, 558, Short.MAX_VALUE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSendEmail)
+                .addGap(332, 332, 332))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1033, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +109,9 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStudentInfoHeading))
-                .addGap(91, 91, 91)
+                .addGap(33, 33, 33)
+                .addComponent(btnSendEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,6 +145,7 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSendEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
