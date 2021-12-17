@@ -90,11 +90,11 @@ public class GroupJPanel extends JPanel {
 
         lblTeacherInfoHeading.setText("Teacher Information for this group");
 
-        lblTeacherID.setText("jLabel1");
-
-        lblFNameTeacher.setText("jLabel1");
-
-        lblLastNameTeacher.setText("jLabel1");
+        TeacherController controller = new TeacherController();
+        Teacher teacher = controller.getTeacherInGroup(classroomId, groupId);
+        lblTeacherID.setText(String.valueOf(teacher.getTeacherId()));
+        lblFNameTeacher.setText(teacher.getFirstName());
+        lblLastNameTeacher.setText(teacher.getLastName());
 
         btnViewStudentInfo.setBackground(new java.awt.Color(153, 255, 255));
         btnViewStudentInfo.setText("View Student Info");
@@ -197,6 +197,18 @@ public class GroupJPanel extends JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        DefaultTableModel model = (DefaultTableModel) tblGroupInfoStudent.getModel();
+        StudentController controller_2 = new StudentController();
+        List<Student> studentList =
+                controller_2.getAllStudentsInGroup(classroomId, groupId);
+        for(Student student: studentList){
+            String stuID = String.valueOf(student.getStudentId());
+            String stuFName = student.getFirstName();
+            String stuLName = student.getLastName();
+            Object[] row = {stuID, stuFName, stuLName};
+            model.addRow(row);
+        }
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -12,6 +12,8 @@ import edu.neu.csye6200.utils.ConvertUtil;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -78,7 +80,12 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
         btnSendEmail.setBackground(new java.awt.Color(153, 255, 255));
         btnSendEmail.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnSendEmail.setText("Send Email");
-
+        btnSendEmail.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnEmailActionPerformed(e);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,6 +123,20 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        StudentController studentController = new StudentController();
+        List<Student> studentList = studentController.getAllStudents();
+        for(Student student: studentList){
+            String studentId = String.valueOf(student.getStudentId());
+            String firstName = String.valueOf(student.getFirstName());
+            String lastName = String.valueOf(student.getLastName());
+            String email = String.valueOf(student.getEmail());
+            String lastRegDate = String.valueOf(student.getRegistrationDate());
+//            String nextRegDate = ;
+            Object[] row = {studentId, firstName, lastName, email, lastRegDate};
+            model.addRow(row);
+        }
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

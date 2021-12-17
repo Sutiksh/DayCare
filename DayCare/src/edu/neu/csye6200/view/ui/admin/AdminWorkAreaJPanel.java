@@ -7,6 +7,8 @@ package edu.neu.csye6200.view.ui.admin;
 
 import edu.neu.csye6200.view.ui.MainJFrame;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 /**
@@ -99,6 +101,12 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         lblTrackStudentEnrollmentImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/trackEnrollmentIcon.png"))); // NOI18N
         lblTrackStudentEnrollmentImage.setText("jLabel1");
 
+        btnTrackStudentEnrollment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnTrackStudentEnrollmentActionPerformed(e);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

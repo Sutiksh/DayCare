@@ -92,6 +92,18 @@ public class ViewClassroomJPanel extends JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/unnamed.png"))); // NOI18N
         jLabel3.setText("jLabel2");
 
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ClassroomController controller = new ClassroomController();
+        List<Classroom> classroomList = controller.getAllClassrooms();
+
+        for(Classroom classroom: classroomList){
+            String classroomId = String.valueOf(classroom.getClassroomId());
+            String studentNum = String.valueOf(classroom.getNumOfStudent());
+            String groupNum = String.valueOf(classroom.getNumOfGroup());
+            Object[] row = {classroomId, studentNum, groupNum};
+            model.addRow(row);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

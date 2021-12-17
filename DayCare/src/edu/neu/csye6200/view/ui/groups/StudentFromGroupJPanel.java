@@ -99,6 +99,12 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
 
         btnBack.setBackground(new java.awt.Color(153, 255, 255));
         btnBack.setText("<<Back");
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnBackActionPerformed(e);
+            }
+        });
 
         lblStudentInfoHeading2.setText("Track Student Enrollment History");
 
@@ -111,10 +117,22 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
                 "Student ID", "Immunization History"
             }
         ));
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ImmunizationController controller = new ImmunizationController();
+        List<Immunization> immuList = controller.getImmunizationByIdDao(studentId);
+        for(Immunization imm: immuList){
+            Object[] row = {String.valueOf(studentId), imm.getImmunizationName()};
+            model.addRow(row);
+        }
+
+
         jScrollPane2.setViewportView(jTable1);
 
         lblStudentInfoHeading3.setText("Track Student Immunization History");
 
+        StudentController controller_2 = new StudentController();
+        Student student = controller_2.getStudentById(studentId);
         jTable2.setBackground(new java.awt.Color(153, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,27 +142,31 @@ public class StudentFromGroupJPanel extends javax.swing.JPanel {
                 "Student ID", "Enrollment History"
             }
         ));
+
+        model = (DefaultTableModel) jTable2.getModel();
+        Object[] row = {String.valueOf(studentId), String.valueOf(student.getRegistrationDate())};
+        model.addRow(row);
         jScrollPane3.setViewportView(jTable2);
 
-        lblEmail.setText("Email:");
+        lblEmail.setText("Email: " + student.getEmail());
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText(student.getFirstName());
 
-        jLabel2.setText("jLabel1");
+        jLabel2.setText(student.getAddress());
 
-        jLabel3.setText("jLabel1");
+        jLabel3.setText(student.getLastName());
 
-        jLabel4.setText("jLabel1");
+        jLabel4.setText(String.valueOf(student.getRegistrationDate()));
 
-        jLabel5.setText("jLabel1");
+        jLabel5.setText(String.valueOf(student.getAge()));
 
-        jLabel6.setText("jLabel1");
+        jLabel6.setText("");
 
-        jLabel7.setText("jLabel1");
+        jLabel7.setText(student.getParentName());
 
-        jLabel8.setText("jLabel1");
+        jLabel8.setText(String.valueOf(student.getPhoneNum()));
 
-        jLabel9.setText("jLabel1");
+        jLabel9.setText("");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/childrenplaying.gif"))); // NOI18N
         jLabel10.setText("jLabel10");

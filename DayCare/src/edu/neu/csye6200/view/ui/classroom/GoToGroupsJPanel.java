@@ -139,6 +139,23 @@ public class GoToGroupsJPanel extends JPanel {
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        GroupController controller = new GroupController();
+        List<Group> groupList;
+        if(classroomId < 0){
+            groupList = controller.getAllGroupsInClassroom(0);
+        }
+        else{
+            groupList = controller.getAllGroupsInClassroom(classroomId);
+        }
+
+        for(Group group: groupList){
+            String groupId = String.valueOf(group.getGroupId());
+            String teacherID = String.valueOf(group.getTeacherId());
+            Object[] row = {groupId};
+            model.addRow(row);
+        }
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGroupInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroupInfoActionPerformed
@@ -148,7 +165,7 @@ public class GoToGroupsJPanel extends JPanel {
             selectedRowIndex = 0;
         }
         int groupId = Integer.parseInt(jTable1.getModel()
-                .getValueAt(selectedRowIndex, 1).toString());
+                .getValueAt(selectedRowIndex, 0).toString());
 
         GroupJPanel groupJPanel = new GroupJPanel(userProcessContainer, classroomId, groupId);
         userProcessContainer.add("Student Panel Opening", groupJPanel);
