@@ -79,6 +79,13 @@ public class ConcreteStudentApi implements StudentApi {
         System.out.println("Email Sent Successfully!");
     }
 
+    @Override
+    public void addStudent(List<Student> students) {
+        for(Student student : students) {
+            addStudent(student);
+        }
+    }
+
     private void mailingInfo() {
         System.out.println("Sending Email...");
         String fromEmail ="daycare.ad21@gmail.com";
