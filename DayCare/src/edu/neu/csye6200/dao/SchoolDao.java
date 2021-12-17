@@ -15,13 +15,13 @@ import java.util.List;
 
 public class SchoolDao {
     public static void rateAllTeachersDao() {
-        String sql = "UPDATE teacher" +
+        String sql = "UPDATE teacher " +
                 "SET teacher.rating = " +
                 "(SELECT avg(student.rating) as rating " +
                 "FROM student " +
                 "INNER JOIN group1 ON student.classroom_id = group1.classroom_id AND student.group_id = group1.group_id " +
-                "WHERE student.rating is not null" +
-                "GROUP BY group1.teacher_id);";
+                "WHERE student.rating is not null " +
+                " GROUP BY group1.teacher_id);";
         DatabaseUtil.executeSQL(sql);
     }
 
