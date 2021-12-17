@@ -38,4 +38,6 @@ public interface StudentApi {
     void deleteStudent(long studentId);
 
     void sendMail(List<Student> studentList, String vaccineName, int doseNumber);
+
+    void addStudent(List<Student> students);
 }
