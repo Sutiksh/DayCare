@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="DayCare/src"/>
+	<classpathentry exported="true" kind="lib" path="DayCare/jar_files/mysql-connector-java-8.0.22.jar"/>
+	<classpathentry exported="true" kind="lib" path="DayCare/jar_files/protobuf-java-3.11.4.jar"/>
 	<classpathentry kind="output" path="DayCare/bin"/>
 </classpath>

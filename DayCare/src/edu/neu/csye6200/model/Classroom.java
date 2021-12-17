@@ -1,133 +1,67 @@
 package edu.neu.csye6200.model;
 
-import java.util.List;
+import edu.neu.csye6200.model.enums.ClassroomType;
 
-public class Classroom extends AbstractClassroom {
-	
-	private int classroomId;
-	private List<Student> students;
-	private List<Teacher> teachers;
-	private List<Group> groups;
+public class Classroom {
+    private int classroomId;
+    private ClassroomType classroomType;
+    private int numOfStudent;
+    private int numOfTeacher;
+    private int numOfGroup;
 
-	public int getClassroomId() {
-		return this.classroomId;
-	}
+    public Classroom(int classroomId, ClassroomType classroomType) {
+        this.classroomId = classroomId;
+        this.classroomType = classroomType;
+        this.numOfStudent = 0;
+        this.numOfTeacher = 0;
+        this.numOfGroup = 0;
+    }
 
-	/**
-	 * 
-	 * @param id
-	 */
-	protected void setClassroomId(int id) {
-		this.classroomId = id;
-	}
+    public Classroom(int classroomId, ClassroomType classroomType, int numOfStudent, int numOfTeacher, int numOfGroup) {
+        this.classroomId = classroomId;
+        this.classroomType = classroomType;
+        this.numOfStudent = numOfStudent;
+        this.numOfTeacher = numOfTeacher;
+        this.numOfGroup = numOfGroup;
+    }
 
-	public int getNumOfStudents() {
-		// TODO - implement AbstractClassroom.getNumOfStudents
-		return students.size();
-	}
+    public int getClassroomId() {
+        return classroomId;
+    }
 
-	public List<Student> getAllStudents() {
-		// TODO - implement AbstractClassroom.getAllStudents
-		return students.stream().sorted().toList();
-	}
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
+    }
 
-	/**
-	 * 
-	 * @param student
-	 */
-	public void addStudent(Student student) {
-		// TODO - implement AbstractClassroom.addStudent
-		students.add(student);
-	}
+    public ClassroomType getClassroomType() {
+        return classroomType;
+    }
 
-	/**
-	 * 
-	 * @param student
-	 */
-	public void delStudent(Student student) {
-		// TODO - implement AbstractClassroom.delStudent
-		students.remove(student);
-	}
+    public void setClassroomType(ClassroomType classroomType) {
+        this.classroomType = classroomType;
+    }
 
-	/**
-	 * 
-	 * @param studentId
-	 */
-	public void delStudent(long studentId) {
-		// TODO - implement AbstractClassroom.delStudent
-	}
+    public int getNumOfStudent() {
+        return numOfStudent;
+    }
 
-	public int getNumOfTeachers() {
-		// TODO - implement AbstractClassroom.getNumOfTeachers
-		return teachers.size();
-	}
+    public void setNumOfStudent(int numOfStudent) {
+        this.numOfStudent = numOfStudent;
+    }
 
-	public List<Teacher> getAllTeachers() {
-		// TODO - implement AbstractClassroom.getAllTeachers
-		return teachers.stream().sorted().toList();
-	}
+    public int getNumOfTeacher() {
+        return numOfTeacher;
+    }
 
-	/**
-	 * 
-	 * @param teacher
-	 */
-	public void addTeacher(Teacher teacher) {
-		// TODO - implement AbstractClassroom.addTeacher
-		teachers.add(teacher);
-	}
+    public void setNumOfTeacher(int numOfTeacher) {
+        this.numOfTeacher = numOfTeacher;
+    }
 
-	/**
-	 * 
-	 * @param teacher
-	 */
-	public void delTeacher(Teacher teacher) {
-		// TODO - implement AbstractClassroom.delTeacher
-		teachers.remove(teacher);
-	}
+    public int getNumOfGroup() {
+        return numOfGroup;
+    }
 
-	/**
-	 * 
-	 * @param teacherId
-	 */
-	public void delTeacher(long teacherId) {
-		// TODO - implement AbstractClassroom.delTeacher
-		throw new UnsupportedOperationException();
-	}
-
-	public int getNumOfGroups() {
-		// TODO - implement AbstractClassroom.getNumOfGroups
-		return groups.size();
-	}
-
-	public List<Group> getAllGroups() {
-		// TODO - implement AbstractClassroom.getAllGroups
-		return groups.stream().sorted().toList();
-	}
-
-	/**
-	 * 
-	 * @param teacher
-	 */
-	public void addGroup(Group grp) {
-		// TODO - implement AbstractClassroom.addGroup
-		groups.add(grp);
-	}
-
-	/**
-	 * 
-	 * @param group
-	 */
-	public void delGroup(Group group) {
-		// TODO - implement AbstractClassroom.delGroup
-		groups.remove(group);
-	}
-
-	/**
-	 * 
-	 * @param groupId
-	 */
-	public void delGroup(int groupId) {
-		// TODO - implement AbstractClassroom.delGroup
-		throw new UnsupportedOperationException();
-	}
+    public void setNumOfGroup(int numOfGroup) {
+        this.numOfGroup = numOfGroup;
+    }
 }

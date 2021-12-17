@@ -1,37 +1,59 @@
 package edu.neu.csye6200.controller;
 
+import edu.neu.csye6200.api.StudentApi;
+import edu.neu.csye6200.api.concrete.ConcreteStudentApi;
 import edu.neu.csye6200.model.Student;
 
-import java.time.*;
+import java.util.List;
 
 public class StudentController {
-	private Student model;
-	
-	StudentController(Student model){
-		this.model = model;
-	}
-	
-	public void setImmunizationDate(LocalDate immunizationDate) {
-		model.setImmunizationDate(immunizationDate);
+	private final StudentApi api = new ConcreteStudentApi();
+
+	public int getNumOfStudents() {
+		return api.getNumOfStudents();
 	}
 
-	public LocalDate getImmunizationDate() {
-		return model.getImmunizationDate();
+	public List<Student> getAllStudents() {
+		return api.getAllStudents();
 	}
 
-	public void setRegistrationDate(LocalDate registrationDate) {
-		model.setRegistrationDate(registrationDate);
+	public List<Student> getAllStudentsInClassroom(int classroomId) {
+		return api.getAllStudentsInClassroom(classroomId);
 	}
 
-	public LocalDate getRegistrationDate() {
-		return model.getRegistrationDate();
-	}
-	
-	public void setStudentId(long studentId) {
-		model.setStudentId(studentId);
+	public List<Student> getAllStudentsInGroup(int classroomId, int groupId) {
+		return api.getAllStudentsInGroup(classroomId, groupId);
 	}
 
-	public long getStudentId() {
-		return model.getStudentId();
+	public Student getStudentById(long studentId){
+		return api.getStudentById(studentId);
+	}
+
+	public void addStudent(Student student) {
+		api.addStudent(student);
+	}
+
+	public void updateStudent(Student student) {
+		api.updateStudent(student);
+	}
+
+	public void deleteStudent(Student student) {
+		api.deleteStudent(student);
+	}
+
+	public void deleteStudent(long studentId) {
+		api.deleteStudent(studentId);
+	}
+
+	public void sendEmail(List<Student> studentList, String vaccineName, int doseNumber){
+		api.sendMail(studentList, vaccineName, doseNumber);
+	}
+
+	public void sendEmail(Student student){
+		api.sendMail(student);
+	}
+
+	public void addStudent(List<Student> students) {
+		api.addStudent(students);
 	}
 }

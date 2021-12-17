@@ -1,72 +1,45 @@
 package edu.neu.csye6200.model;
 
-import java.util.List;
+import edu.neu.csye6200.model.enums.GroupType;
+import edu.neu.csye6200.model.enums.StatusType;
 
-public class Group extends AbstractGroup{
+public class Group {
+    private int groupId;
+    private int classroomId;
+    private long teacherId;
 
-	private Teacher teacher;
-	private List<Student> students;
-	private int groupId;
-	
-	public Teacher getTeacher() {
-		return this.teacher;
-	}
+    public Group(int groupId, int classroomId) {
+        this.groupId = groupId;
+        this.classroomId = classroomId;
+    }
 
-	/**
-	 * 
-	 * @param teacher
-	 */
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
+    public Group(int groupId, int classroomId, int teacherId) {
+        this.groupId = groupId;
+        this.classroomId = classroomId;
+        this.teacherId = teacherId;
+    }
 
-	public List<Student> getAllStudents() {
-		// TODO - implement AbstractGroup.getAllStudents
-		return students.stream().sorted().toList();
-	}
+    public int getGroupId() {
+        return groupId;
+    }
 
-	public int getGroupId() {
-		return this.groupId;
-	}
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
 
-	/**
-	 * 
-	 * @param groupId
-	 */
-	protected void setGroupId(int groupId) {
-		this.groupId = groupId;
-	}
+    public int getClassroomId() {
+        return classroomId;
+    }
 
-	/**
-	 * 
-	 * @param student
-	 */
-	public void addStudent(Student student) {
-		// TODO - implement AbstractGroup.addStudent
-		students.add(student);
-	}
+    public void setClassroomId(int classroomId) {
+        this.classroomId = classroomId;
+    }
 
-	/**
-	 * 
-	 * @param student
-	 */
-	public void delStudent(Student student) {
-		// TODO - implement AbstractGroup.delStudent
-		students.add(student);
-	}
+    public long getTeacherId() {
+        return teacherId;
+    }
 
-	/**
-	 * 
-	 * @param studentId
-	 */
-	public void delStudent(long studentId) {
-		// TODO - implement AbstractGroup.delStudent
-		throw new UnsupportedOperationException();
-	}
-
-	public int getNumOfStudents() {
-		// TODO - implement AbstractGroup.getNumOfStudents
-		return students.size();
-	}
-
+    public void setTeacherId(long teacherId) {
+        this.teacherId = teacherId;
+    }
 }
