@@ -39,5 +39,7 @@ public interface StudentApi {
 
     void sendMail(List<Student> studentList, String vaccineName, int doseNumber);
 
+    void sendMail(Student student);
+
     void addStudent(List<Student> students);
 }

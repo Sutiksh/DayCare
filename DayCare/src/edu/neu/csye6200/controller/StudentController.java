@@ -49,6 +49,10 @@ public class StudentController {
 		api.sendMail(studentList, vaccineName, doseNumber);
 	}
 
+	public void sendEmail(Student student){
+		api.sendMail(student);
+	}
+
 	public void addStudent(List<Student> students) {
 		api.addStudent(students);
 	}

@@ -66,7 +66,7 @@ public class GroupJPanel extends JPanel {
         lblStudentInfoHeading1.setText("Hello, you are viewing the Group");
 
         String groupInfo = "Classroom ID: " + classroomId + "  Group Id: " + groupId;
-        lblGroupID.setText(groupInfo);
+        lblGroupID.setText("");
 
         tblGroupInfoStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

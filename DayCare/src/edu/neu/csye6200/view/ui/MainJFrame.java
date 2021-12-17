@@ -35,6 +35,7 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         btnWelcome = new javax.swing.JButton();
         userProcessContainer = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,20 +51,24 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlPanelLayout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addComponent(btnWelcome)
                 .addGap(222, 222, 222))
         );
 
         splitPane.setLeftComponent(controlPanel);
 
-        userProcessContainer.setLayout(new CardLayout());
+        userProcessContainer.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/view/ui/Images/istockphoto-1202754514-612x612.jpeg"))); // NOI18N
+        userProcessContainer.add(jLabel1, "card2");
+
         splitPane.setRightComponent(userProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -72,7 +77,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE))
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +141,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnWelcome;
     private javax.swing.JPanel controlPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables

@@ -79,7 +79,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

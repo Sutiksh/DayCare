@@ -24,6 +24,7 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
      * Creates new form StudentEnrollmentJPanel
      */
     private JPanel userProcessContainer;
+    private List<Student> studentList;
 
     public TrackStudentEnrollmentJPanel(JPanel userProcessContainer) {
         initComponents();
@@ -52,10 +53,10 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null},
-                        {null, null, null, null, null, null}
+//                        {null, null, null, null, null, null},
+//                        {null, null, null, null, null, null},
+//                        {null, null, null, null, null, null},
+//                        {null, null, null, null, null, null}
                 },
                 new String [] {
                         "Student ID", "First Name", "Last Name", "Email", "Last Registration Date", "Next Registration Date"
@@ -77,6 +78,7 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
             model.addRow(row);
         }
 
+        this.studentList = studentList;
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +137,19 @@ public class TrackStudentEnrollmentJPanel extends JPanel {
 
     private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
         // TODO add your handling code here:
+//        int selectedRowIndex = jTable2.getSelectedRow();
+//        if (selectedRowIndex < 0){
+//            selectedRowIndex = 0;
+//        }
+//        StudentController controller = new StudentController();
+//        controller.sendEmail(this.studentList.get(selectedRowIndex));
+
+        StudentController studentController = new StudentController();
+        List<Student> students = studentController.getAllStudents();
+        for(Student student: students){
+            studentController.sendEmail(student);
+        }
+//        studentController.sendEmail(students.get(students.size() - 2));
     }//GEN-LAST:event_btnEmailActionPerformed
 
 

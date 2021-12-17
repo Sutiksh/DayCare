@@ -51,14 +51,14 @@ public class GoToGroupsJPanel extends JPanel {
         btnBack = new javax.swing.JButton();
 
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        lblStudentInfoHeading1.setText("Hello, you are in Classroom:");
+        lblStudentInfoHeading1.setText("Hello, you are in Classroom: " + classroomId);
 
-        lblClassroomID.setText("jLabel1");
+        lblClassroomID.setText("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
             new String [] {
-                "Classroom ID, ", "Group ID", "Teacher ID"
+                "Classroom ID", "Group ID", "Teacher ID"
             }
         ));
 
