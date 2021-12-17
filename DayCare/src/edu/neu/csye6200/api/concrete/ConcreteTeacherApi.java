@@ -23,7 +23,7 @@ public class ConcreteTeacherApi implements TeacherApi {
     }
 
     @Override
-    public List<Teacher> getTeacherInGroup(int classroomId, int groupId) {
+    public Teacher getTeacherInGroup(int classroomId, int groupId) {
         return TeacherDao.getTeacherInGroupDao(classroomId, groupId);
     }
 

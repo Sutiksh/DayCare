@@ -27,6 +27,8 @@ public interface StudentApi {
 
     List<Student> getAllStudentsInGroup(int classroomId, int groupId);
 
+    Student getStudentById(long studentId);
+
     void addStudent(Student student);
 
     void updateStudent(Student student);

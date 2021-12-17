@@ -80,19 +80,17 @@ public class TeacherDao {
         return teachers;
     }
 
-    public static List<Teacher> getTeacherInGroupDao(int classroomId, int groupId) {
-        List<Teacher> teachers = new ArrayList<>();
-
+    public static Teacher getTeacherInGroupDao(int classroomId, int groupId) {
         try {
             Connection con = DatabaseUtil.getRemoteConnection();
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM teacher "
                 + "WHERE classroom_id = " + classroomId
-                + ", group_id = " + groupId;
+                + " AND group_id = " + groupId;
             ResultSet rs = state.executeQuery(sql);
-            while(rs.next()){
-                teachers.add(TeacherHelper.createTeacher(rs));
+            if(rs.next()){
+                return TeacherHelper.createTeacher(rs);
             }
 
             rs.close();
@@ -101,7 +99,7 @@ public class TeacherDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return teachers;
+        return null;
     }
 
     public static void addTeacherDao(Teacher teacher) {

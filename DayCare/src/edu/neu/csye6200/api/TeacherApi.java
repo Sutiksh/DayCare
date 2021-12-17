@@ -12,7 +12,7 @@ public interface TeacherApi {
 
     List<Teacher> getAllTeachersInClassroom(int classroomId);
 
-    List<Teacher> getTeacherInGroup(int classroomId, int groupId);
+    Teacher getTeacherInGroup(int classroomId, int groupId);
 
     void addTeacher(Teacher teacher);
 

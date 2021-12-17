@@ -21,7 +21,7 @@ public class TeacherController {
 		return api.getAllTeachersInClassroom(classroomId);
 	}
 
-	public List<Teacher> getTeacherInGroup(int classroomId, int groupId) {
+	public Teacher getTeacherInGroup(int classroomId, int groupId) {
 		return api.getTeacherInGroup(classroomId, groupId);
 	}
 

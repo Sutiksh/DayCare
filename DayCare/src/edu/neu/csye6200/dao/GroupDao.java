@@ -47,7 +47,7 @@ public class GroupDao {
             assert con != null;
             Statement state = con.createStatement();
             String sql = "SELECT * FROM group1"
-                    + "WHERE classroom_id = " + classroomId;
+                    + " WHERE classroom_id = " + classroomId;
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 groups.add(GroupHelper.createGroup(rs));

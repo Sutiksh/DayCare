@@ -47,6 +47,11 @@ public class ConcreteStudentApi implements StudentApi {
     }
 
     @Override
+    public Student getStudentById(long studentId) {
+        return StudentDao.getStudentByIdDao(studentId);
+    }
+
+    @Override
     public void addStudent(Student student) {
         StudentDao.addStudentDao(student);
     }

@@ -5,21 +5,35 @@
  */
 package edu.neu.csye6200.view.ui.groups;
 
+import edu.neu.csye6200.controller.GroupController;
+import edu.neu.csye6200.controller.StudentController;
+import edu.neu.csye6200.controller.TeacherController;
+import edu.neu.csye6200.model.Group;
+import edu.neu.csye6200.model.Student;
+import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.utils.ConvertUtil;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 /**
  *
  * @author nagashreeseshadri
  */
 public class GroupJPanel extends JPanel {
+    private int classroomId;
+    private int groupId;
 
     /**
      * Creates new form GroupJPanel
      */
     private JPanel userProcessContainer;
     
-    public GroupJPanel(JPanel userProcessContainer) {
+    public GroupJPanel(JPanel userProcessContainer, int classroomId, int groupId) {
+        this.classroomId = classroomId;
+        this.groupId = groupId;
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -51,19 +65,28 @@ public class GroupJPanel extends JPanel {
         lblStudentInfoHeading1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblStudentInfoHeading1.setText("Hello, you are viewing the Group");
 
-        lblGroupID.setText("jLabel1");
+        String groupInfo = "Classroom ID: " + classroomId + "  Group Id: " + groupId;
+        lblGroupID.setText(groupInfo);
 
         tblGroupInfoStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
             },
             new String [] {
                 "Student ID", "Student First Name", "Student Last Name"
             }
         ));
+
+        DefaultTableModel model = (DefaultTableModel) tblGroupInfoStudent.getModel();
+        StudentController controller_2 = new StudentController();
+        List<Student> studentList =
+                controller_2.getAllStudentsInGroup(classroomId, groupId);
+        for(Student student: studentList){
+            String stuID = String.valueOf(student.getStudentId());
+            String stuFName = student.getFirstName();
+            String stuLName = student.getLastName();
+            Object[] row = {stuID, stuFName, stuLName};
+            model.addRow(row);
+        }
         jScrollPane2.setViewportView(tblGroupInfoStudent);
 
         lblFirstName1.setText("Last Name:");
@@ -74,11 +97,11 @@ public class GroupJPanel extends JPanel {
 
         lblTeacherInfoHeading.setText("Teacher Information for this group");
 
-        lblTeacherID.setText("jLabel1");
-
-        lblFNameTeacher.setText("jLabel1");
-
-        lblLastNameTeacher.setText("jLabel1");
+        TeacherController controller = new TeacherController();
+        Teacher teacher = controller.getTeacherInGroup(classroomId, groupId);
+        lblTeacherID.setText(String.valueOf(teacher.getTeacherId()));
+        lblFNameTeacher.setText(teacher.getFirstName());
+        lblLastNameTeacher.setText(teacher.getLastName());
 
         btnViewStudentInfo.setText("View Student Info");
         btnViewStudentInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +188,7 @@ public class GroupJPanel extends JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -172,6 +196,15 @@ public class GroupJPanel extends JPanel {
 
     private void btnViewStudentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentInfoActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblGroupInfoStudent.getSelectedRow();
+        if (selectedRowIndex < 0){
+            selectedRowIndex = 0;
+        }
+        long studentId = ConvertUtil.stringToLong(tblGroupInfoStudent.getModel().getValueAt(selectedRowIndex, 0).toString());
+        StudentFromGroupJPanel studentFromGroupJPanel = new StudentFromGroupJPanel(userProcessContainer, studentId);
+        userProcessContainer.add("Student Information From Group ", studentFromGroupJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_btnViewStudentInfoActionPerformed
 

@@ -25,6 +25,10 @@ public class StudentController {
 		return api.getAllStudentsInGroup(classroomId, groupId);
 	}
 
+	public Student getStudentById(long studentId){
+		return api.getStudentById(studentId);
+	}
+
 	public void addStudent(Student student) {
 		api.addStudent(student);
 	}

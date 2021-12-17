@@ -5,10 +5,16 @@
  */
 package edu.neu.csye6200.view.ui.school;
 
+import edu.neu.csye6200.controller.ClassroomController;
+import edu.neu.csye6200.controller.StudentController;
+import edu.neu.csye6200.model.Classroom;
+import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.view.ui.classroom.GoToGroupsJPanel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 /**
  *
@@ -46,16 +52,23 @@ public class ViewClassroomJPanel extends JPanel {
         lblStudentInfoHeading1.setText(" View Classrooms in School");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
+            new Object [][] {},
             new String [] {
-                "ClassRoom"
+                "ClassRoomId", "StudentNum", "GroupNum"
             }
         ));
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ClassroomController controller = new ClassroomController();
+        List<Classroom> classroomList = controller.getAllClassrooms();
+
+        for(Classroom classroom: classroomList){
+            String classroomId = String.valueOf(classroom.getClassroomId());
+            String studentNum = String.valueOf(classroom.getNumOfStudent());
+            String groupNum = String.valueOf(classroom.getNumOfGroup());
+            Object[] row = {classroomId, studentNum, groupNum};
+            model.addRow(row);
+        }
+
         jScrollPane1.setViewportView(jTable1);
 
         btnBack.setText("<<Back");
@@ -116,10 +129,18 @@ public class ViewClassroomJPanel extends JPanel {
 
     private void btnViewGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewGroupActionPerformed
         // TODO add your handling code here:
-    GoToGroupsJPanel goToGroupsJPanel = new GoToGroupsJPanel(userProcessContainer);
-    userProcessContainer.add("Opening Groups and Panel", goToGroupsJPanel);
-    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    layout.next(userProcessContainer);
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if(selectedRowIndex < 0){
+            selectedRowIndex = 0;
+        }
+        int classroomId = Integer.parseInt(jTable1.getModel()
+                .getValueAt(selectedRowIndex, 0).toString());
+
+        GoToGroupsJPanel goToGroupsJPanel =
+                new GoToGroupsJPanel(userProcessContainer, classroomId);
+        userProcessContainer.add("Opening Groups and Panel", goToGroupsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewGroupActionPerformed
 
 
